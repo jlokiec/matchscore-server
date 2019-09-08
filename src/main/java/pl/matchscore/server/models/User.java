@@ -1,4 +1,4 @@
-package pl.matchscore.server.model;
+package pl.matchscore.server.models;
 
 import lombok.Data;
 

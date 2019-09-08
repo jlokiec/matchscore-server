@@ -1,4 +1,4 @@
-package pl.matchscore.server.model;
+package pl.matchscore.server.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
