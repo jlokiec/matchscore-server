@@ -50,6 +50,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             throw new BadCredentialsException("Request body is not a valid JSON.", e);
         }
 
+        if (credentials == null) {
+            throw new BadCredentialsException("Credentials DTO is null");
+        }
+
         String username = credentials.getUsername();
         String password = credentials.getPassword();
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
