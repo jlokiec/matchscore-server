@@ -47,6 +47,9 @@ dependencies {
 
 	// Guava
 	compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
+
+	// Mockito
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.0.0'
 }
 
 test {
