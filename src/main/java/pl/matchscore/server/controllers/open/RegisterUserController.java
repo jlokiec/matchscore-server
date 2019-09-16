@@ -13,6 +13,7 @@ import pl.matchscore.server.services.exceptions.EmailTakenException;
 import pl.matchscore.server.services.exceptions.UsernameTakenException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(ApiPaths.PUBLIC_REGISTER_PATH)
@@ -25,7 +26,7 @@ public class RegisterUserController {
     }
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void register(@RequestBody UserRegistrationDto userDto, HttpServletResponse response) {
+    public void register(@RequestBody @Valid UserRegistrationDto userDto, HttpServletResponse response) {
         try {
             service.register(userDto);
         } catch (UsernameTakenException | EmailTakenException e) {
