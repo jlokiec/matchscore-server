@@ -25,7 +25,7 @@ public class RegisterUserController {
         this.service = service;
     }
 
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void register(@RequestBody @Valid UserRegistrationDto userDto, HttpServletResponse response) {
         try {
             service.register(userDto);

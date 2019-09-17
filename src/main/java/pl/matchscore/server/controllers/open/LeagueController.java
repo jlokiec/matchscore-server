@@ -15,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping(ApiPaths.PUBLIC_LEAGUES_PATH)
 public class LeagueController {
-    private static final String GET_ALL = "/all";
     private static final String CATEGORY_ID_PARAM = "category";
 
     private LeagueService service;
@@ -25,7 +24,7 @@ public class LeagueController {
         this.service = service;
     }
 
-    @GetMapping(value = GET_ALL, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LeagueDto> getAll(@RequestParam(required = false, name = CATEGORY_ID_PARAM) Long categoryId) {
         if (categoryId == null) {
             return service.getAll();
