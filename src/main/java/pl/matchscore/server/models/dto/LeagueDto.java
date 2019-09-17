@@ -1,16 +1,12 @@
 package pl.matchscore.server.models.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import pl.matchscore.server.models.League;
 
 @Data
 public class LeagueDto {
     private long id;
-
-    @JsonProperty("category_id")
     private long categoryId;
-
     private String name;
 
     public LeagueDto() {
