@@ -14,8 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(ApiPaths.PUBLIC_TEAMS_PATH)
 public class TeamController {
-    private static final String GET_ALL = "/all";
-
     private TeamService service;
 
     @Autowired
@@ -23,7 +21,7 @@ public class TeamController {
         this.service = service;
     }
 
-    @GetMapping(value = GET_ALL, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TeamDto> getAll() {
         return service.getAll();
     }
