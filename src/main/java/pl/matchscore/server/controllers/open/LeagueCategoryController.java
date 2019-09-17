@@ -14,8 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(ApiPaths.PUBLIC_LEAGUE_CATEGORIES_PATH)
 public class LeagueCategoryController {
-    private static final String GET_ALL = "/all";
-
     private LeagueCategoryService service;
 
     @Autowired
@@ -23,7 +21,7 @@ public class LeagueCategoryController {
         this.service = service;
     }
 
-    @GetMapping(value = LeagueCategoryController.GET_ALL, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LeagueCategoryDto> getAll() {
         return service.getAll();
     }
