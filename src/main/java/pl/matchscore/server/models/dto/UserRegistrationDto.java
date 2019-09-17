@@ -1,6 +1,5 @@
 package pl.matchscore.server.models.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -15,11 +14,9 @@ public class UserRegistrationDto {
     @Size(min = 5, max = 32)
     private String email;
 
-    @JsonProperty("first_name")
     @Size(min = 3, max = 32)
     private String firstName;
 
-    @JsonProperty("last_name")
     @Size(min = 3, max = 32)
     private String lastName;
 
