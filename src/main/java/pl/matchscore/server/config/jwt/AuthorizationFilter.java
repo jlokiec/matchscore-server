@@ -1,7 +1,6 @@
 package pl.matchscore.server.config.jwt;
 
 import com.google.common.base.Strings;
-import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
 import org.slf4j.Logger;
@@ -10,17 +9,18 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
     private Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
@@ -46,11 +46,18 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(HttpHeaders.AUTHORIZATION);
+        String token = null;
+        Optional<Cookie> cookie = Arrays
+                .stream(request.getCookies())
+                .filter(c -> c.getName().equals(SecurityConstants.COOKIE_NAME))
+                .findFirst();
 
-        if (!Strings.isNullOrEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+        if (cookie.isPresent()) {
+            token = cookie.get().getValue();
+        }
+
+        if (!Strings.isNullOrEmpty(token)) {
             byte[] signingKey = SecurityConstants.SECRET.getBytes();
-            token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
 
             Jws<Claims> parsedToken = null;
 
@@ -74,14 +81,8 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
                 return null;
             }
 
-            String username = parsedToken
-                    .getBody()
-                    .getSubject();
-
-            List<GrantedAuthority> authorities = ((List<?>) parsedToken.getBody().get(SecurityConstants.ROLES_HEADER))
-                    .stream()
-                    .map(authority -> new SimpleGrantedAuthority((String) authority))
-                    .collect(Collectors.toList());
+            String username = JwtUtils.getUsername(parsedToken);
+            List<GrantedAuthority> authorities = JwtUtils.getAuthorities(parsedToken);
 
             if (!Strings.isNullOrEmpty(username)) {
                 return new UsernamePasswordAuthenticationToken(username, null, authorities);

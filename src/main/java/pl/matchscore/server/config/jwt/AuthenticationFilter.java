@@ -1,13 +1,8 @@
 package pl.matchscore.server.config.jwt;
 
 import com.google.common.io.CharStreams;
-import com.google.common.net.HttpHeaders;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import io.jsonwebtoken.Header;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,7 +18,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,17 +69,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .collect(Collectors.toList());
 
         byte[] key = SecurityConstants.SECRET.getBytes();
+        String token = JwtUtils.create(key, user.getUsername(), roles);
 
-        String token = Jwts.builder()
-                .signWith(Keys.hmacShaKeyFor(key), SignatureAlgorithm.HS512)
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer(SecurityConstants.TOKEN_ISSUER)
-                .setAudience(SecurityConstants.TOKEN_AUDIENCE)
-                .setSubject(user.getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.TOKEN_EXPIRATION_MILLIS))
-                .claim(SecurityConstants.ROLES_HEADER, roles)
-                .compact();
-
-        response.addHeader(HttpHeaders.AUTHORIZATION, SecurityConstants.TOKEN_PREFIX + token);
+        response.addCookie(JwtCookie.create(token));
     }
 }
