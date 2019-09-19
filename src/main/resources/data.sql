@@ -1994,3 +1994,198 @@ insert into teams(id,`name`,league_id) values(1449,"Stal Lipiany",380);
 insert into teams(id,`name`,league_id) values(1450,"Piast Karsko",380);
 insert into teams(id,`name`,league_id) values(1451,"Gavia Choszczno",380);
 insert into teams(id,`name`,league_id) values(1452,"Morzycko Moryń",380);
+
+-- matches
+-- Ekstraklasa
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(1,1,14,0,2,3,unix_timestamp('2019-07-19 18:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(2,1,5,1,3,2,unix_timestamp('2019-07-21 17:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(3,1,15,0,10,0,unix_timestamp('2019-07-19 20:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(4,1,7,1,6,1,unix_timestamp('2019-07-20 20:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(5,1,12,0,16,1,unix_timestamp('2019-07-20 15:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(6,1,8,0,1,1,unix_timestamp('2019-07-20 17:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(7,1,11,1,9,1,unix_timestamp('2019-07-22 18:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(8,1,13,1,4,1,unix_timestamp('2019-07-21 15:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(9,1,4,1,15,2,unix_timestamp('2019-07-27 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(10,1,9,1,13,0,unix_timestamp('2019-07-26 18:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(11,1,2,0,12,1,unix_timestamp('2019-07-27 20:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(12,1,16,1,5,2,unix_timestamp('2019-07-28 15:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(13,1,6,4,11,0,unix_timestamp('2019-07-26 20:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(14,1,10,0,8,0,unix_timestamp('2019-07-28 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(15,1,3,2,14,0,unix_timestamp('2019-07-29 18:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(16,1,1,2,7,1,unix_timestamp('2019-07-28 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(17,1,14,1,16,1,unix_timestamp('2019-08-02 18:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(18,1,5,0,1,0,unix_timestamp('2019-08-04 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(19,1,15,1,6,2,unix_timestamp('2019-08-03 20:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(20,1,7,0,3,0,unix_timestamp('2019-08-04 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(21,1,12,1,4,3,unix_timestamp('2019-08-03 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(22,1,8,1,9,0,unix_timestamp('2019-08-05 18:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(23,1,11,1,10,2,unix_timestamp('2019-08-04 15:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(24,1,13,2,2,2,unix_timestamp('2019-08-02 20:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(25,1,4,1,16,0,unix_timestamp('2019-08-11 17:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(26,1,9,1,12,0,unix_timestamp('2019-08-10 20:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(27,1,6,1,1,3,unix_timestamp('2019-08-09 20:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(28,1,10,1,2,1,unix_timestamp('2019-08-12 18:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(29,1,15,0,7,1,unix_timestamp('2019-08-11 15:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(30,1,3,1,8,0,unix_timestamp('2019-08-10 15:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(31,1,11,1,5,0,unix_timestamp('2019-09-18 18:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(32,1,13,2,14,0,unix_timestamp('2019-08-10 17:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(33,1,14,0,6,0,unix_timestamp('2019-08-17 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(34,1,2,3,9,1,unix_timestamp('2019-08-17 20:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(35,1,16,0,3,1,unix_timestamp('2019-08-19 18:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(36,1,5,1,13,0,unix_timestamp('2019-08-18 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(37,1,7,1,11,0,unix_timestamp('2019-08-18 15:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(38,1,12,2,10,1,unix_timestamp('2019-08-18 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(39,1,1,2,4,1,unix_timestamp('2019-08-17 15:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(40,1,8,4,15,0,unix_timestamp('2019-08-16 20:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(41,1,4,3,14,1,unix_timestamp('2019-08-24 15:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(42,1,9,3,16,0,unix_timestamp('2019-08-25 15:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(43,1,2,3,8,2,unix_timestamp('2019-08-23 20:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(44,1,10,1,1,1,unix_timestamp('2019-08-24 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(45,1,15,2,5,3,unix_timestamp('2019-08-25 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(46,1,3,1,11,2,unix_timestamp('2019-08-26 18:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(47,1,12,2,6,3,unix_timestamp('2019-08-24 20:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(48,1,13,0,7,3,unix_timestamp('2019-08-25 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(49,1,14,1,9,0,unix_timestamp('2019-08-30 18:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(50,1,16,0,2,2,unix_timestamp('2019-08-30 20:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(51,1,6,1,4,2,unix_timestamp('2019-09-01 17:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(52,1,5,3,12,1,unix_timestamp('2019-09-01 20:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(53,1,7,1,10,2,unix_timestamp('2019-08-31 17:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(54,1,1,1,3,1,unix_timestamp('2019-09-01 15:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(55,1,8,4,13,2,unix_timestamp('2019-08-31 20:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(56,1,11,2,15,1,unix_timestamp('2019-08-31 15:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(57,1,4,2,7,0,unix_timestamp('2019-09-16 18:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(58,1,9,0,1,0,unix_timestamp('2019-09-15 17:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(59,1,2,0,5,0,unix_timestamp('2019-09-13 20:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(60,1,16,1,8,1,unix_timestamp('2019-09-14 20:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(61,1,10,2,6,1,unix_timestamp('2019-09-14 17:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(62,1,3,1,15,0,unix_timestamp('2019-09-15 15:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(63,1,12,2,14,0,unix_timestamp('2019-09-14 15:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(64,1,13,5,11,0,unix_timestamp('2019-09-13 18:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(65,1,4,null,5,null,unix_timestamp('2019-09-22 17:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(66,1,6,null,2,null,unix_timestamp('2019-09-20 20:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(67,1,10,null,16,null,unix_timestamp('2019-09-21 17:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(68,1,15,null,14,null,unix_timestamp('2019-09-21 15:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(69,1,7,null,12,null,unix_timestamp('2019-09-20 18:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(70,1,3,null,9,null,unix_timestamp('2019-09-22 15:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(71,1,1,null,13,null,unix_timestamp('2019-09-21 20:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(72,1,11,null,8,null,unix_timestamp('2019-09-22 12:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(73,1,14,null,7,null,unix_timestamp('2019-09-29 12:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(74,1,9,null,6,null,unix_timestamp('2019-09-28 20:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(75,1,2,null,3,null,unix_timestamp('2019-09-29 15:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(76,1,16,null,1,null,unix_timestamp('2019-09-27 20:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(77,1,5,null,10,null,unix_timestamp('2019-09-28 17:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(78,1,12,null,11,null,unix_timestamp('2019-09-28 15:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(79,1,8,null,4,null,unix_timestamp('2019-09-29 17:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(80,1,13,null,15,null,unix_timestamp('2019-09-30 18:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(81,1,4,null,9,null,unix_timestamp('2019-10-06 15:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(82,1,6,null,8,null,unix_timestamp('2019-10-05 17:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(83,1,10,null,13,null,unix_timestamp('2019-10-05 20:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(84,1,15,null,16,null,unix_timestamp('2019-10-06 12:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(85,1,7,null,5,null,unix_timestamp('2019-10-06 17:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(86,1,3,null,12,null,unix_timestamp('2019-10-05 15:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(87,1,1,null,2,null,unix_timestamp('2019-10-04 20:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(88,1,11,null,14,null,unix_timestamp('2019-10-04 18:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(89,1,14,null,10,null,unix_timestamp('2019-10-20 15:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(90,1,9,null,15,null,unix_timestamp('2019-10-20 17:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(91,1,2,null,4,null,unix_timestamp('2019-10-19 20:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(92,1,16,null,11,null,unix_timestamp('2019-10-19 15:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(93,1,5,null,6,null,unix_timestamp('2019-10-19 17:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(94,1,12,null,1,null,unix_timestamp('2019-10-21 18:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(95,1,8,null,7,null,unix_timestamp('2019-10-18 20:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(96,1,13,null,3,null,unix_timestamp('2019-10-18 18:00:00'),12,false);
