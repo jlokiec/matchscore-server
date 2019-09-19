@@ -5,6 +5,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,12 @@ public class JwtUtils {
         return parsedToken.getBody().getExpiration();
     }
 
-    public static String create(byte[] key, String username, List<String> roles) {
+    public static String create(byte[] key, String username, Collection<? extends GrantedAuthority> authorities) {
+        List<String> roles = authorities
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
         String token = Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(key), SignatureAlgorithm.HS512)
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
@@ -39,5 +45,17 @@ public class JwtUtils {
                 .compact();
 
         return token;
+    }
+
+    public static Jws<Claims> parse(String token, byte[] signingKey) {
+        return Jwts.parser()
+                .setSigningKey(signingKey)
+                .parseClaimsJws(token);
+    }
+
+    public static String refresh(Jws<Claims> parsedOldToken, byte[] signingKey) {
+        String username = JwtUtils.getUsername(parsedOldToken);
+        List<GrantedAuthority> authorities = JwtUtils.getAuthorities(parsedOldToken);
+        return JwtUtils.create(signingKey, username, authorities);
     }
 }
