@@ -1,122 +1,113 @@
 package pl.matchscore.server.test.services;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.matchscore.server.dao.LeagueCategoryDao;
 import pl.matchscore.server.dao.LeagueDao;
 import pl.matchscore.server.models.League;
 import pl.matchscore.server.models.LeagueCategory;
 import pl.matchscore.server.models.dto.LeagueDto;
 import pl.matchscore.server.services.LeagueService;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class LeagueServiceTest {
+    @Autowired
+    private LeagueDao leagueDao;
+
+    @Autowired
+    private LeagueCategoryDao leagueCategoryDao;
+
     private LeagueService service;
-    private LeagueDao dao;
 
     @BeforeEach
     public void init() {
-        dao = mock(LeagueDao.class);
-        service = new LeagueService(dao);
-    }
-
-    @AfterEach
-    public void clean() {
-        dao = null;
-        service = null;
+        service = new LeagueService(leagueDao);
     }
 
     @Test
     public void testGetAll() {
-        when(dao.findAll()).thenReturn(initLeagues());
+        initLeagues();
 
         List<LeagueDto> leagues = service.getAll();
-
-        assertEquals(5, leagues.size(), "leagues size is incorrect");
-        assertEquals(1, leagues.get(0).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(0).getCategoryId(), "league category id is incorrect");
-        assertEquals("Ekstraklasa", leagues.get(0).getName(), "league name is incorrect");
-        assertEquals(2, leagues.get(1).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(1).getCategoryId(), "league category id is incorrect");
-        assertEquals("I liga", leagues.get(1).getName(), "league name is incorrect");
-        assertEquals(3, leagues.get(2).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(2).getCategoryId(), "league category id is incorrect");
-        assertEquals("II liga", leagues.get(2).getName(), "league name is incorrect");
-        assertEquals(4, leagues.get(3).getId(), "league id is incorect");
-        assertEquals(2, leagues.get(3).getCategoryId(), "league category id is incorrect");
-        assertEquals("III liga grupa I", leagues.get(3).getName(), "league name is incorrect");
-        assertEquals(5, leagues.get(4).getId(), "league id is incorect");
-        assertEquals(3, leagues.get(4).getCategoryId(), "league category id is incorrect");
-        assertEquals("IV liga", leagues.get(4).getName(), "league name is incorrect");
+        assertNotNull(leagues);
+        assertEquals(3, leagues.size());
     }
 
     @Test
-    public void testGetAll_NoLeagues() {
-        when(dao.findAll()).thenReturn(new ArrayList<>());
-
+    public void testGetAll_Empty() {
         List<LeagueDto> leagues = service.getAll();
-
-        assertTrue(leagues.isEmpty(), "leagues size is incorrect");
+        assertNotNull(leagues);
+        assertTrue(leagues.isEmpty());
     }
 
     @Test
     public void testGetByCategoryId() {
-        long categoryId = 1;
-        when(dao.findAllByCategory_Id(categoryId)).thenReturn(initLeaguesByCategory());
-        when(dao.findAll()).thenReturn(initLeagues());
+        initLeagues();
 
-        List<LeagueDto> leagues = service.getByCategoryId(categoryId);
+        List<LeagueDto> leagues = service.getByCategoryId(1);
+        assertNotNull(leagues);
+        assertEquals(2, leagues.size());
+    }
 
-        assertEquals(3, leagues.size(), "leagues by category size is incorrect");
-        assertEquals(1, leagues.get(0).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(0).getCategoryId(), "league category id is incorrect");
-        assertEquals("Ekstraklasa", leagues.get(0).getName(), "league name is incorrect");
-        assertEquals(2, leagues.get(1).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(1).getCategoryId(), "league category id is incorrect");
-        assertEquals("I liga", leagues.get(1).getName(), "league name is incorrect");
-        assertEquals(3, leagues.get(2).getId(), "league id is incorect");
-        assertEquals(1, leagues.get(2).getCategoryId(), "league category id is incorrect");
-        assertEquals("II liga", leagues.get(2).getName(), "league name is incorrect");
+    @Test
+    public void testGetByCategoryId_Empty() {
+        List<LeagueDto> leagues = service.getByCategoryId(1);
+        assertNotNull(leagues);
+        assertTrue(leagues.isEmpty());
     }
 
     @Test
     public void testGetByCategoryId_InvalidCategoryId() {
-        long categoryId = 100;
-        when(dao.findAllByCategory_Id(categoryId)).thenReturn(new ArrayList<>());
+        initLeagues();
 
-        List<LeagueDto> leagues = service.getByCategoryId(categoryId);
-
-        assertTrue(leagues.isEmpty(), "leagues by category size is incorrect");
+        List<LeagueDto> leagues = service.getByCategoryId(3);
+        assertNotNull(leagues);
+        assertTrue(leagues.isEmpty());
     }
 
-    private List<League> initLeagues() {
-        List<League> leagues = new ArrayList<>();
+    private void initLeagues() {
+        LeagueCategory category1 = new LeagueCategory();
+        category1.setId(1);
+        category1.setName("Category 1");
+        category1 = leagueCategoryDao.save(category1);
 
-        LeagueCategory topLeagues = new LeagueCategory(1, "Ligi centralne");
-        LeagueCategory thirdLeagues = new LeagueCategory(2, "III ligi");
-        LeagueCategory localLeagues = new LeagueCategory(3, "Województwo łódzkie");
+        LeagueCategory category2 = new LeagueCategory();
+        category2.setId(2);
+        category2.setName("Category 2");
+        category2 = leagueCategoryDao.save(category2);
 
-        leagues.add(new League(1, "Ekstraklasa", topLeagues));
-        leagues.add(new League(2, "I liga", topLeagues));
-        leagues.add(new League(3, "II liga", topLeagues));
-        leagues.add(new League(4, "III liga grupa I", thirdLeagues));
-        leagues.add(new League(5, "IV liga", localLeagues));
+        League league1 = new League();
+        league1.setId(1);
+        league1.setName("League 1");
+        league1.setCategory(category1);
+        leagueDao.save(league1);
 
-        return leagues;
-    }
+        League league2 = new League();
+        league2.setId(2);
+        league2.setName("League 2");
+        league2.setCategory(category1);
+        leagueDao.save(league2);
 
-    private List<League> initLeaguesByCategory() {
-        return initLeagues()
-                .stream()
-                .filter(league -> league.getCategory().getId() == 1)
-                .collect(Collectors.toList());
+        League league3 = new League();
+        league3.setId(3);
+        league3.setName("League 3");
+        league3.setCategory(category2);
+        leagueDao.save(league3);
     }
 }
