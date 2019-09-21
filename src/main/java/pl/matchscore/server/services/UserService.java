@@ -1,9 +1,12 @@
 package pl.matchscore.server.services;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.matchscore.server.dao.RoleDao;
 import pl.matchscore.server.dao.UserDao;
+import pl.matchscore.server.models.Role;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.UserRegistrationDto;
 import pl.matchscore.server.services.exceptions.EmailTakenException;
@@ -13,13 +16,18 @@ import java.time.Instant;
 
 @Service
 public class UserService {
-    private UserDao dao;
+    private static final String USER_ROLE_NAME = "ROLE_USER";
+
+    private UserDao userDao;
+
+    private RoleDao roleDao;
 
     private PasswordEncoder bCryptEncoder;
 
     @Autowired
-    public UserService(UserDao dao, PasswordEncoder passwordEncoder) {
-        this.dao = dao;
+    public UserService(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder) {
+        this.userDao = userDao;
+        this.roleDao = roleDao;
         this.bCryptEncoder = passwordEncoder;
     }
 
@@ -43,8 +51,9 @@ public class UserService {
         user.setLastName(userToRegister.getLastName());
         user.setEnabled(true);
         user.setCreatedAt(Instant.now().getEpochSecond());
+        user.setRoles(Lists.newArrayList(getUserRole()));
 
-        return dao.save(user);
+        return userDao.save(user);
     }
 
     private String hashPassword(String passwordInPlainText) {
@@ -52,12 +61,22 @@ public class UserService {
     }
 
     private boolean isUsernameTaken(String username) {
-        User userWithGivenUsername = dao.findByUsername(username);
+        User userWithGivenUsername = userDao.findByUsername(username);
         return userWithGivenUsername != null;
     }
 
     private boolean isEmailTaken(String email) {
-        User userWithGivenEmail = dao.findByEmail(email);
+        User userWithGivenEmail = userDao.findByEmail(email);
         return userWithGivenEmail != null;
+    }
+
+    private Role getUserRole() {
+        Role userRole = roleDao.findByRoleName(USER_ROLE_NAME);
+
+        if (userRole != null) {
+            return userRole;
+        } else {
+            return roleDao.save(new Role(USER_ROLE_NAME));
+        }
     }
 }
