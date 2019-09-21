@@ -1,11 +1,19 @@
 package pl.matchscore.server.test.services;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.matchscore.server.config.jwt.SecurityConstants;
+import pl.matchscore.server.dao.RoleDao;
 import pl.matchscore.server.dao.UserDao;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.UserRegistrationDto;
@@ -13,80 +21,83 @@ import pl.matchscore.server.services.UserService;
 import pl.matchscore.server.services.exceptions.EmailTakenException;
 import pl.matchscore.server.services.exceptions.UsernameTakenException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import java.time.Instant;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserServiceTest {
-    private UserDao dao;
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
+
     private UserService service;
-    private PasswordEncoder bCryptEncoder;
 
     @BeforeEach
     public void init() {
-        dao = mock(UserDao.class);
-        bCryptEncoder = new BCryptPasswordEncoder(SecurityConstants.BCRYPT_ROUNDS);
-        service = new UserService(dao, bCryptEncoder);
-    }
-
-    @AfterEach
-    public void clean() {
-        dao = null;
-        service = null;
-        bCryptEncoder = null;
+        PasswordEncoder bCryptEncoder = new BCryptPasswordEncoder(SecurityConstants.BCRYPT_ROUNDS);
+        service = new UserService(userDao, roleDao, bCryptEncoder);
     }
 
     @Test
-    public void testRegisterUser() throws EmailTakenException, UsernameTakenException {
-        String username = "test";
-        String email = "test@domain.com";
+    public void testRegister() throws EmailTakenException, UsernameTakenException {
+        UserRegistrationDto userDto = initUser();
 
-        UserRegistrationDto userDto = new UserRegistrationDto();
-        userDto.setUsername(username);
-        userDto.setEmail(email);
-        userDto.setPassword("testpassword");
-
-        when(dao.findByUsername(username)).thenReturn(null);
-        when(dao.findByEmail(email)).thenReturn(null);
-        when(dao.save(any(User.class))).thenReturn(new User());
-
+        long timestampBeforeRegistration = Instant.now().getEpochSecond();
         User registeredUser = service.register(userDto);
+        long timestampAfterRegistration = Instant.now().getEpochSecond();
 
-        assertNotNull(registeredUser, "registered user is null");
+        assertNotNull(registeredUser);
+        assertEquals(1, registeredUser.getId());
+        assertEquals("jsmith@domain.com", registeredUser.getEmail());
+        assertEquals("John", registeredUser.getFirstName());
+        assertEquals("Smith", registeredUser.getLastName());
+        assertTrue(registeredUser.isEnabled());
+        assertTrue(registeredUser.getCreatedAt() >= timestampBeforeRegistration);
+        assertTrue(registeredUser.getCreatedAt() <= timestampAfterRegistration);
+        assertNotNull(registeredUser.getRoles());
+        assertEquals(1, registeredUser.getRoles().size());
+        assertEquals("ROLE_USER", registeredUser.getRoles().get(0).getRoleName());
     }
 
     @Test
-    public void testRegisterUser_UsernameTaken() {
-        String username = "test";
-        String email = "test@domain.com";
+    public void testRegister_UsernameTaken() {
+        User user = new User();
+        user.setUsername("jsmith");
+        userDao.save(user);
 
-        UserRegistrationDto userDto = new UserRegistrationDto();
-        userDto.setUsername(username);
-        userDto.setEmail(email);
-
-        when(dao.findByUsername(username)).thenReturn(new User());
-        when(dao.findByEmail(email)).thenReturn(null);
-        when(dao.save(any(User.class))).thenReturn(new User());
+        UserRegistrationDto userDto = initUser();
 
         UsernameTakenException exception = assertThrows(UsernameTakenException.class, () -> service.register(userDto));
-        assertEquals("Username test is already taken.", exception.getMessage());
+        assertEquals("Username jsmith is already taken.", exception.getMessage());
     }
 
     @Test
-    public void testRegisterUser_EmailTaken() {
-        String username = "test";
-        String email = "test@domain.com";
+    public void testRegister_EmailTaken() {
+        User user = new User();
+        user.setEmail("jsmith@domain.com");
+        userDao.save(user);
 
-        UserRegistrationDto userDto = new UserRegistrationDto();
-        userDto.setUsername(username);
-        userDto.setEmail(email);
-
-        when(dao.findByUsername(username)).thenReturn(null);
-        when(dao.findByEmail(email)).thenReturn(new User());
-        when(dao.save(any(User.class))).thenReturn(new User());
+        UserRegistrationDto userDto = initUser();
 
         EmailTakenException exception = assertThrows(EmailTakenException.class, () -> service.register(userDto));
-        assertEquals("Email test@domain.com is already taken.", exception.getMessage());
+        assertEquals("Email jsmith@domain.com is already taken.", exception.getMessage());
+    }
+
+    private UserRegistrationDto initUser() {
+        UserRegistrationDto userDto = new UserRegistrationDto();
+        userDto.setUsername("jsmith");
+        userDto.setEmail("jsmith@domain.com");
+        userDto.setFirstName("John");
+        userDto.setLastName("Smith");
+        userDto.setPassword("testpassword");
+
+        return userDto;
     }
 }
