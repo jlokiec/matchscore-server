@@ -1,63 +1,46 @@
 package pl.matchscore.server.test.services;
 
 import com.google.common.collect.Lists;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.matchscore.server.dao.RoleDao;
 import pl.matchscore.server.dao.UserDao;
 import pl.matchscore.server.models.Role;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.services.DatabaseUserDetailsService;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class DatabaseUserDetailsServiceTest {
-    private UserDao dao;
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
+
     private DatabaseUserDetailsService service;
 
-    @BeforeEach
+    @BeforeAll
     public void init() {
-        dao = mock(UserDao.class);
-        service = new DatabaseUserDetailsService(dao);
-    }
-
-    @AfterEach
-    public void clean() {
-        dao = null;
-        service = null;
-    }
-
-    @Test
-    public void testLoadUserByUsername() {
-        String username = "testUser";
-        when(dao.findByUsername(username)).thenReturn(initUser());
-
-        UserDetails user = service.loadUserByUsername(username);
-
-        assertNotNull(user, "user is null");
-        assertEquals(username, user.getUsername(), "user username is incorrect");
-        assertEquals("$2y$11$/wk6fSjj.EdQZC/CC8/b8ebHXY8j6ZCfEC8/ae7NPqlgAASJx37SG", user.getPassword(), "user password is incorrect");
-        assertTrue(user.isEnabled(), "user enabled is incorrect");
-        assertEquals(1, user.getAuthorities().size(), "user authorities size is incorrect");
-    }
-
-    @Test
-    public void testLoadUserByUsername_UserNotFound() {
-        String username = "testUser";
-        when(dao.findByUsername(username)).thenThrow(new UsernameNotFoundException(username));
-
-        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> service.loadUserByUsername(username));
-        assertEquals(username, exception.getMessage());
-    }
-
-    private User initUser() {
-        Role userRole = new Role("ROLE_USER");
+        Role userRole = new Role();
         userRole.setId(1);
-
+        userRole.setRoleName("ROLE_USER");
+        userRole = roleDao.save(userRole);
 
         User user = new User();
         user.setId(1);
@@ -68,9 +51,21 @@ public class DatabaseUserDetailsServiceTest {
         user.setLastName("Smith");
         user.setEnabled(true);
         user.setRoles(Lists.newArrayList(userRole));
+        userDao.save(user);
 
-        userRole.addUser(user);
+        service = new DatabaseUserDetailsService(userDao);
+    }
 
-        return user;
+    @Test
+    public void testLoadUserByUsername() {
+        UserDetails user = service.loadUserByUsername("testUser");
+        assertNotNull(user);
+        assertEquals("testUser", user.getUsername());
+    }
+
+    @Test
+    public void testLoadUserByUsername_UserNotFound() {
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> service.loadUserByUsername("invalidUsername"));
+        assertEquals("invalidUsername", exception.getMessage());
     }
 }
