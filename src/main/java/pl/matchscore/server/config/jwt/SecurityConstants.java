@@ -1,8 +1,10 @@
 package pl.matchscore.server.config.jwt;
 
 public final class SecurityConstants {
-    public static final String TOKEN_PREFIX = "Bearer ";
-    public static final long TOKEN_EXPIRATION_MILLIS = 24 * 60 * 60 * 1000;
+    public static final int COOKIE_MAX_AGE = 7 * 24 * 60 * 60;
+    public static final String COOKIE_NAME = "matchscore_jwt";
+    public static final String COOKIE_PATH = "/api";
+    public static final long TOKEN_EXPIRATION_MILLIS = 7 * 24 * 60 * 60 * 1000;
     public static final String TOKEN_ISSUER = "matchscore-api";
     public static final String TOKEN_AUDIENCE = "matchscore-client";
     public static final String ROLES_HEADER = "roles";
