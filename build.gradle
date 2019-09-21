@@ -50,6 +50,9 @@ dependencies {
 
 	// Mockito
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.0.0'
+
+	// H2 in-memory database for testing
+	testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
 }
 
 test {
