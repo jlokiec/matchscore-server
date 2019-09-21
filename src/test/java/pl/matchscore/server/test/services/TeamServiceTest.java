@@ -1,70 +1,94 @@
 package pl.matchscore.server.test.services;
 
-import com.google.common.collect.Lists;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.matchscore.server.dao.LeagueDao;
 import pl.matchscore.server.dao.TeamDao;
 import pl.matchscore.server.models.League;
-import pl.matchscore.server.models.LeagueCategory;
 import pl.matchscore.server.models.Team;
 import pl.matchscore.server.models.dto.TeamDto;
 import pl.matchscore.server.services.TeamService;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class TeamServiceTest {
-    private TeamDao dao;
+    @Autowired
+    private TeamDao teamDao;
+
+    @Autowired
+    private LeagueDao leagueDao;
+
     private TeamService service;
 
     @BeforeEach
     public void init() {
-        dao = mock(TeamDao.class);
-        service = new TeamService(dao);
-    }
-
-    @AfterEach
-    public void clean() {
-        dao = null;
-        service = null;
+        service = new TeamService(teamDao);
     }
 
     @Test
     public void testGetAll() {
-        when(dao.findAll()).thenReturn(initTeams());
+        initTeams();
 
         List<TeamDto> teams = service.getAll();
-
-        assertEquals(2, teams.size(), "teams size is incorrect");
-        assertEquals(1, teams.get(0).getId(), "team id is incorrect");
-        assertEquals("Widzew Łódź", teams.get(0).getName(), "team name is incorrect");
-        assertEquals(1, teams.get(0).getLeagueId(), "team league id is incorrect");
-        assertEquals(2, teams.get(1).getId(), "team id is incorrect");
-        assertEquals("Górnik Łęczna", teams.get(1).getName(), "team name is incorrect");
-        assertEquals(1, teams.get(1).getLeagueId(), "team league id is incorrect");
+        assertNotNull(teams);
+        assertEquals(4, teams.size());
     }
 
     @Test
-    public void testGetAll_NoTeams() {
-        when(dao.findAll()).thenReturn(new ArrayList<>());
-
+    public void testGetAll_Empty() {
         List<TeamDto> teams = service.getAll();
-
-        assertTrue(teams.isEmpty(), "teams size is incorrect");
+        assertNotNull(teams);
+        assertTrue(teams.isEmpty());
     }
 
-    private List<Team> initTeams() {
-        LeagueCategory category = new LeagueCategory(1, "ligi centralne");
-        League secondDivision = new League(1, "II liga", category);
-        Team team1 = new Team(1, "Widzew Łódź", secondDivision);
-        Team team2 = new Team(2, "Górnik Łęczna", secondDivision);
+    private void initTeams() {
+        League league1 = new League();
+        league1.setId(1);
+        league1.setName("League 1");
+        league1 = leagueDao.save(league1);
 
-        return Lists.newArrayList(team1, team2);
+        League league2 = new League();
+        league2.setId(2);
+        league2.setName("League 2");
+        league2 = leagueDao.save(league2);
+
+        Team team1 = new Team();
+        team1.setId(1);
+        team1.setName("Team 1");
+        team1.setLeague(league1);
+        teamDao.save(team1);
+
+        Team team2 = new Team();
+        team2.setId(2);
+        team2.setName("Team 2");
+        team2.setLeague(league1);
+        teamDao.save(team2);
+
+        Team team3 = new Team();
+        team3.setId(3);
+        team3.setName("Team 3");
+        team3.setLeague(league2);
+        teamDao.save(team3);
+
+        Team team4 = new Team();
+        team4.setId(4);
+        team4.setName("Team 4");
+        team4.setLeague(league2);
+        teamDao.save(team4);
     }
 }
