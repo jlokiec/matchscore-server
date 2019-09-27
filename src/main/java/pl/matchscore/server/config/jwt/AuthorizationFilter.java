@@ -91,6 +91,11 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
     private String getTokenFromCookies(Cookie[] cookies) {
         String token = null;
+
+        if (cookies == null) {
+            return token;
+        }
+
         Optional<Cookie> cookie = Arrays
                 .stream(cookies)
                 .filter(c -> c.getName().equals(SecurityConstants.COOKIE_NAME))
