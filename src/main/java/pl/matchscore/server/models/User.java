@@ -33,6 +33,9 @@ public class User {
     @Column(name = "created_at")
     private long createdAt;
 
+    @Column(name = "registration_id")
+    private String registrationId;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),

@@ -10,25 +10,27 @@ import pl.matchscore.server.models.Role;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.UserRegistrationDto;
 import pl.matchscore.server.services.exceptions.EmailTakenException;
+import pl.matchscore.server.services.exceptions.UserNotFoundException;
 import pl.matchscore.server.services.exceptions.UsernameTakenException;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Service
 public class UserService {
     private static final String USER_ROLE_NAME = "ROLE_USER";
 
     private UserDao userDao;
-
     private RoleDao roleDao;
-
     private PasswordEncoder bCryptEncoder;
+    private EmailService emailService;
 
     @Autowired
-    public UserService(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder) {
+    public UserService(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder, EmailService emailService) {
         this.userDao = userDao;
         this.roleDao = roleDao;
         this.bCryptEncoder = passwordEncoder;
+        this.emailService = emailService;
     }
 
     public User register(UserRegistrationDto userToRegister) throws UsernameTakenException, EmailTakenException {
@@ -49,11 +51,27 @@ public class UserService {
         user.setPasswordHash(hashPassword(userToRegister.getPassword()));
         user.setFirstName(userToRegister.getFirstName());
         user.setLastName(userToRegister.getLastName());
-        user.setEnabled(true);
+        user.setEnabled(false);
         user.setCreatedAt(Instant.now().getEpochSecond());
+        user.setRegistrationId(UUID.randomUUID().toString());
         user.setRoles(Lists.newArrayList(getUserRole()));
 
-        return userDao.save(user);
+        user = userDao.save(user);
+        sendCompleteRegistrationEmail(user);
+
+        return user;
+    }
+
+    public void completeRegistration(String registrationId) throws UserNotFoundException {
+        User user = userDao.findByRegistrationId(registrationId);
+
+        if (user == null) {
+            throw new UserNotFoundException("User with registration id " + registrationId + " not found.");
+        }
+
+        user.setRegistrationId(null);
+        user.setEnabled(true);
+        userDao.save(user);
     }
 
     private String hashPassword(String passwordInPlainText) {
@@ -78,5 +96,9 @@ public class UserService {
         } else {
             return roleDao.save(new Role(USER_ROLE_NAME));
         }
+    }
+
+    private void sendCompleteRegistrationEmail(User user) {
+        new Thread(() -> emailService.sendConfirmationEmail(user)).start();
     }
 }
