@@ -1,5 +1,6 @@
 package pl.matchscore.server.test.services;
 
+import com.google.common.base.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -17,13 +18,18 @@ import pl.matchscore.server.dao.RoleDao;
 import pl.matchscore.server.dao.UserDao;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.UserRegistrationDto;
+import pl.matchscore.server.services.EmailService;
 import pl.matchscore.server.services.UserService;
 import pl.matchscore.server.services.exceptions.EmailTakenException;
+import pl.matchscore.server.services.exceptions.UserNotFoundException;
 import pl.matchscore.server.services.exceptions.UsernameTakenException;
 
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -42,7 +48,9 @@ public class UserServiceTest {
     @BeforeEach
     public void init() {
         PasswordEncoder bCryptEncoder = new BCryptPasswordEncoder(SecurityConstants.BCRYPT_ROUNDS);
-        service = new UserService(userDao, roleDao, bCryptEncoder);
+        EmailService emailService = mock(EmailService.class);
+        doNothing().when(emailService).sendConfirmationEmail(any(User.class));
+        service = new UserService(userDao, roleDao, bCryptEncoder, emailService);
     }
 
     @Test
@@ -58,9 +66,10 @@ public class UserServiceTest {
         assertEquals("jsmith@domain.com", registeredUser.getEmail());
         assertEquals("John", registeredUser.getFirstName());
         assertEquals("Smith", registeredUser.getLastName());
-        assertTrue(registeredUser.isEnabled());
+        assertFalse(registeredUser.isEnabled());
         assertTrue(registeredUser.getCreatedAt() >= timestampBeforeRegistration);
         assertTrue(registeredUser.getCreatedAt() <= timestampAfterRegistration);
+        assertFalse(Strings.isNullOrEmpty(registeredUser.getRegistrationId()));
         assertNotNull(registeredUser.getRoles());
         assertEquals(1, registeredUser.getRoles().size());
         assertEquals("ROLE_USER", registeredUser.getRoles().get(0).getRoleName());
@@ -88,6 +97,31 @@ public class UserServiceTest {
 
         EmailTakenException exception = assertThrows(EmailTakenException.class, () -> service.register(userDto));
         assertEquals("Email jsmith@domain.com is already taken.", exception.getMessage());
+    }
+
+    @Test
+    public void testCompleteRegistration() throws UserNotFoundException {
+        User user = new User();
+        user.setUsername("jsmith");
+        user.setEnabled(false);
+        user.setRegistrationId("dbccad73-71ea-4380-a53e-ab95ea861655");
+        userDao.save(user);
+
+        service.completeRegistration("dbccad73-71ea-4380-a53e-ab95ea861655");
+
+        User enabledUser = userDao.findByUsername("jsmith");
+        assertTrue(enabledUser.isEnabled());
+        assertNull(enabledUser.getRegistrationId());
+    }
+
+    @Test
+    public void testCompleteRegistration_InvalidRegistrationId() {
+        User user = new User();
+        user.setRegistrationId("dbccad73-71ea-4380-a53e-ab95ea861655");
+        userDao.save(user);
+
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> service.completeRegistration("49b2b71d-e5fc-4d6a-9b4b-a94f20f99e2a"));
+        assertEquals("User with registration id 49b2b71d-e5fc-4d6a-9b4b-a94f20f99e2a not found.", exception.getMessage());
     }
 
     private UserRegistrationDto initUser() {
