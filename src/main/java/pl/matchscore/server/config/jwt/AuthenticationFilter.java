@@ -3,6 +3,9 @@ package pl.matchscore.server.config.jwt;
 import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,13 +15,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import pl.matchscore.server.config.ApiPaths;
 import pl.matchscore.server.models.UserSecurityDetails;
 import pl.matchscore.server.models.dto.CredentialsDto;
+import pl.matchscore.server.models.dto.UserLoginDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    private Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -64,5 +70,31 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String token = JwtUtils.create(key, user.getUsername(), user.getAuthorities());
 
         response.addCookie(JwtCookie.create(token));
+        addUserDetailsToResponse(response, user);
+    }
+
+    private void addUserDetailsToResponse(HttpServletResponse response, UserSecurityDetails userSecurityDetails) {
+        PrintWriter writer = null;
+
+        try {
+            writer = response.getWriter();
+        } catch (IOException e) {
+            logger.info("Unable to get HttpServletResponse writer.");
+        }
+
+        if (writer == null) {
+            return;
+        }
+
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+        writer.print(convertUserDetailsToJson(userSecurityDetails));
+        writer.flush();
+    }
+
+    private String convertUserDetailsToJson(UserSecurityDetails userSecurityDetails) {
+        UserLoginDto userLoginDto = new UserLoginDto(userSecurityDetails);
+        return new Gson().toJson(userLoginDto);
     }
 }
