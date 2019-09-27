@@ -30,6 +30,7 @@ public class UserDaoTest {
         User user = new User();
         user.setUsername("jsmith");
         user.setEmail("john.smith@domain.com");
+        user.setRegistrationId("91c9a14d-c832-4762-a7b0-06edaeb4479a");
         dao.save(user);
     }
 
@@ -54,6 +55,18 @@ public class UserDaoTest {
     @Test
     public void testFindByEmail_InvalidEmail() {
         User user = dao.findByEmail("john.doe@mail.com");
+        assertNull(user);
+    }
+
+    @Test
+    public void testFindByRegistrationId() {
+        User user = dao.findByRegistrationId("91c9a14d-c832-4762-a7b0-06edaeb4479a");
+        assertNotNull(user);
+    }
+
+    @Test
+    public void testFindByRegistrationId_InvalidRegistrationId() {
+        User user = dao.findByRegistrationId("271edf8d-6b3a-4069-bb39-61b79bb32494");
         assertNull(user);
     }
 }
