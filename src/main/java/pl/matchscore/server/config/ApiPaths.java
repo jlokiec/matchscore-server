@@ -9,6 +9,7 @@ public final class ApiPaths {
     public static final String PUBLIC_TEAMS_PATH = PUBLIC + "/teams";
     public static final String PUBLIC_REGISTER_PATH = PUBLIC + "/register";
     public static final String PUBLIC_MATCHES_PATH = PUBLIC + "/matches";
+    public static final String LOGOUT = PUBLIC + "/logout";
 
     private ApiPaths() {
 
