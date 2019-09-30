@@ -42,7 +42,8 @@ public class EmailService {
     private String confirmationEmailContent(String name, String uuid) {
         String header = "<h1>Witaj " + name + ",</h1><br />";
         String text = "<p>Aby dokończyć proces rejestracji, kliknij w poniższy link lub wklej go do przeglądarki:</p><br />";
-        String url = "<a href=\"http://localhost:8080/api/public/register/confirm?uuid=" + uuid + "\">Complete registration process</a>";
-        return header + text + url;
+        String url = "http://localhost:8080/api/public/register/confirm?uuid=" + uuid;
+        String confirmationLink = "<a href=\"" + url + "\">" + url + "</a>";
+        return header + text + confirmationLink;
     }
 }
