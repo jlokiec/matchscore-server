@@ -12,4 +12,14 @@ public class JwtCookie {
 //        cookie.setSecure(true);
         return cookie;
     }
+
+    public static Cookie delete() {
+        Cookie cookie = new Cookie(SecurityConstants.COOKIE_NAME, "");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(0);
+        cookie.setPath(SecurityConstants.COOKIE_PATH);
+//        uncomment when https is configured
+//        cookie.setSecure(true);
+        return cookie;
+    }
 }
