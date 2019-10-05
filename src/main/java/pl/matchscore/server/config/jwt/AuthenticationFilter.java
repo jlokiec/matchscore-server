@@ -1,6 +1,7 @@
 package pl.matchscore.server.config.jwt;
 
 import com.google.common.io.CharStreams;
+import com.google.common.net.HttpHeaders;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.slf4j.Logger;
@@ -69,8 +70,12 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         byte[] key = SecurityConstants.SECRET.getBytes();
         String token = JwtUtils.create(key, user.getUsername(), user.getAuthorities());
 
-        response.addCookie(JwtCookie.create(token));
+        setAuthorizationHeader(response, token);
         addUserDetailsToResponse(response, user);
+    }
+
+    private void setAuthorizationHeader(HttpServletResponse response, String token) {
+        response.setHeader(HttpHeaders.AUTHORIZATION, SecurityConstants.TOKEN_BEARER_PREFIX + token);
     }
 
     private void addUserDetailsToResponse(HttpServletResponse response, UserSecurityDetails userSecurityDetails) {

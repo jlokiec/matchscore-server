@@ -1,6 +1,7 @@
 package pl.matchscore.server.config.jwt;
 
 import com.google.common.base.Strings;
+import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
 import org.slf4j.Logger;
@@ -14,14 +15,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
     private Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
@@ -42,7 +40,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             return;
         }
 
-        String token = getTokenFromCookies(request.getCookies());
+        String token = getTokenFromRequest(request);
 
         if (token == null) {
             return;
@@ -59,9 +57,8 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
             byte[] signingKey = SecurityConstants.SECRET.getBytes();
             String newToken = JwtUtils.refresh(parsedToken, signingKey);
-            Cookie newCookieToken = JwtCookie.create(newToken);
 
-            response.addCookie(newCookieToken);
+            addTokenToResponse(response, newToken);
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -69,7 +66,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = getTokenFromCookies(request.getCookies());
+        String token = getTokenFromRequest(request);
 
         if (!Strings.isNullOrEmpty(token)) {
             Jws<Claims> parsedToken = parseToken(token);
@@ -89,23 +86,18 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         return null;
     }
 
-    private String getTokenFromCookies(Cookie[] cookies) {
-        String token = null;
+    private String getTokenFromRequest(HttpServletRequest request) {
+        String token = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        if (cookies == null) {
-            return token;
-        }
-
-        Optional<Cookie> cookie = Arrays
-                .stream(cookies)
-                .filter(c -> c.getName().equals(SecurityConstants.COOKIE_NAME))
-                .findFirst();
-
-        if (cookie.isPresent()) {
-            token = cookie.get().getValue();
+        if (token != null) {
+            return token.replace(SecurityConstants.TOKEN_BEARER_PREFIX, "");
         }
 
         return token;
+    }
+
+    private void addTokenToResponse(HttpServletResponse response, String refreshedToken) {
+        response.addHeader(HttpHeaders.AUTHORIZATION, SecurityConstants.TOKEN_BEARER_PREFIX + refreshedToken);
     }
 
     private Jws<Claims> parseToken(String token) {
@@ -136,6 +128,6 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         long currentTimestamp = System.currentTimeMillis();
         long timeDiff = tokenExpirationTimestamp - currentTimestamp;
 
-        return timeDiff <= 24 * 60 * 60 * 1000 && timeDiff > 0;
+        return timeDiff <= SecurityConstants.TOKEN_REFRESH_THRESHOLD && timeDiff > 0;
     }
 }
