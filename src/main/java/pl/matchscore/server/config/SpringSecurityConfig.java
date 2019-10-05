@@ -1,6 +1,7 @@
 package pl.matchscore.server.config;
 
 import com.google.common.collect.Lists;
+import com.google.common.net.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -62,6 +63,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
         corsConfiguration.setAllowedMethods(Lists.newArrayList("GET", "POST", "PUT", "DELETE"));
+        corsConfiguration.setExposedHeaders(Lists.newArrayList(HttpHeaders.AUTHORIZATION));
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }
