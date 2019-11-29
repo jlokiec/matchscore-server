@@ -11,6 +11,7 @@ public final class ApiPaths {
     public static final String PUBLIC_REGISTER_PATH = PUBLIC + "/register";
     public static final String PUBLIC_MATCHES_PATH = PUBLIC + "/matches";
     public static final String SECURE_REPORTS_PATH = SECURE + "/reports";
+    public static final String SECURE_EVENTS_PATH = SECURE + "/events";
 
     private ApiPaths() {
 
