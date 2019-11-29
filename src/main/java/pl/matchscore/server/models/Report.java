@@ -24,7 +24,7 @@ public class Report {
     @ManyToOne
     private Match match;
 
-    @OneToOne
+    @OneToOne(mappedBy = "report")
     private ReportRating reportRating;
 
     @OneToMany(mappedBy = "report")
