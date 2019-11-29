@@ -13,4 +13,6 @@ public interface MatchDao extends JpaRepository<Match, Long> {
     List<Match> findByKickOffTimestampBetween(long start, long end);
 
     List<Match> findByLeague_IdAndKickOffTimestampBetween(long leagueId, long start, long end);
+
+    Match findById(long id);
 }
