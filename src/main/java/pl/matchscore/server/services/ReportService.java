@@ -9,10 +9,13 @@ import pl.matchscore.server.models.Match;
 import pl.matchscore.server.models.Report;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.ReportDto;
+import pl.matchscore.server.models.dto.UnratedReportDto;
 import pl.matchscore.server.services.exceptions.MatchNotFoundException;
 import pl.matchscore.server.services.exceptions.UserNotFoundException;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ReportService {
@@ -46,5 +49,16 @@ public class ReportService {
         report.setMatch(match);
 
         return new ReportDto(reportDao.save(report));
+    }
+
+    public List<UnratedReportDto> getAllUnrated() {
+        List<UnratedReportDto> convertedReports = new ArrayList<>();
+        List<Report> reports = reportDao.findByReportRating_RatingIsNull();
+
+        for (Report report : reports) {
+            convertedReports.add(new UnratedReportDto(report));
+        }
+
+        return convertedReports;
     }
 }

@@ -3,19 +3,18 @@ package pl.matchscore.server.controllers.secure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.matchscore.server.config.ApiPaths;
 import pl.matchscore.server.models.dto.CreateReportDto;
 import pl.matchscore.server.models.dto.ReportDto;
+import pl.matchscore.server.models.dto.UnratedReportDto;
 import pl.matchscore.server.services.ReportService;
 import pl.matchscore.server.services.exceptions.MatchNotFoundException;
 import pl.matchscore.server.services.exceptions.UserNotFoundException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping(ApiPaths.SECURE_REPORTS_PATH)
@@ -39,5 +38,11 @@ public class ReportController {
         }
 
         return report;
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping(value = "/unrated", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UnratedReportDto> getAllUnrated() {
+        return service.getAllUnrated();
     }
 }

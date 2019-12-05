@@ -21,4 +21,6 @@ public class ReportRating {
     private User ratedBy;
 
     private long ratingTimestamp;
+
+    private String comment;
 }
