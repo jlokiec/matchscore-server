@@ -10,7 +10,7 @@ import java.util.List;
 public interface ReportDao extends JpaRepository<Report, Long> {
     Report findById(long id);
 
-    List<Report> findByMatch_Id(long matchId);
+    Report findByMatch_IdAndUser_Username(long id, String username);
 
     List<Report> findByReportRating_RatingIsNull();
 }

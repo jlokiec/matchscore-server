@@ -11,6 +11,7 @@ import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.ReportDto;
 import pl.matchscore.server.models.dto.UnratedReportDto;
 import pl.matchscore.server.services.exceptions.MatchNotFoundException;
+import pl.matchscore.server.services.exceptions.ReportNotFoundException;
 import pl.matchscore.server.services.exceptions.UserNotFoundException;
 
 import java.time.Instant;
@@ -60,5 +61,27 @@ public class ReportService {
         }
 
         return convertedReports;
+    }
+
+    public ReportDto getForMatchIdAndUsername(long matchId, String username) throws UserNotFoundException, MatchNotFoundException, ReportNotFoundException {
+        User user = userDao.findByUsername(username);
+
+        if (user == null) {
+            throw new UserNotFoundException("User " + username + " not found.");
+        }
+
+        Match match = matchDao.findById(matchId);
+
+        if (match == null) {
+            throw new MatchNotFoundException("Match ID " + matchId + " not found.");
+        }
+
+        Report report = reportDao.findByMatch_IdAndUser_Username(matchId, username);
+
+        if (report == null) {
+            throw new ReportNotFoundException("Report for match ID " + matchId + " and username " + username + " not found.");
+        }
+
+        return new ReportDto(report);
     }
 }

@@ -10,6 +10,7 @@ import pl.matchscore.server.models.dto.ReportDto;
 import pl.matchscore.server.models.dto.UnratedReportDto;
 import pl.matchscore.server.services.ReportService;
 import pl.matchscore.server.services.exceptions.MatchNotFoundException;
+import pl.matchscore.server.services.exceptions.ReportNotFoundException;
 import pl.matchscore.server.services.exceptions.UserNotFoundException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,8 @@ import java.util.List;
 @RestController
 @RequestMapping(ApiPaths.SECURE_REPORTS_PATH)
 public class ReportController {
+    private static final String MATCH_ID_PARAM = "matchId";
+
     private ReportService service;
 
     @Autowired
@@ -44,5 +47,24 @@ public class ReportController {
     @GetMapping(value = "/unrated", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UnratedReportDto> getAllUnrated() {
         return service.getAllUnrated();
+    }
+
+    @Secured("ROLE_USER")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ReportDto getForMatchIdAndUsername(
+            @RequestParam(required = false, name = MATCH_ID_PARAM) Long matchId,
+            Principal user,
+            HttpServletResponse response
+    ) {
+        if (matchId != null) {
+            try {
+                return service.getForMatchIdAndUsername(matchId, user.getName());
+            } catch (UserNotFoundException | MatchNotFoundException e) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            } catch (ReportNotFoundException e) {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+        }
+        return null;
     }
 }
