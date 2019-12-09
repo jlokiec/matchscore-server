@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.matchscore.server.config.ApiPaths;
 import pl.matchscore.server.models.dto.ReportDto;
 import pl.matchscore.server.services.ReportService;
-import pl.matchscore.server.services.exceptions.MatchNotFoundException;
-import pl.matchscore.server.services.exceptions.ReportAlreadyExistsException;
-import pl.matchscore.server.services.exceptions.ReportNotFoundException;
-import pl.matchscore.server.services.exceptions.UserNotFoundException;
+import pl.matchscore.server.services.exceptions.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -20,6 +17,9 @@ import java.util.List;
 @RequestMapping(ApiPaths.SECURE_REPORTS_PATH)
 public class ReportController {
     private static final String MATCH_ID_PARAM = "matchId";
+    private static final String REPORT_ID_PATH = "reportId";
+    private static final String START_TIMESTAMP_PARAM = "start";
+    private static final String END_TIMESTAMP_PARAM = "end";
 
     private ReportService service;
 
@@ -66,6 +66,35 @@ public class ReportController {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
 
+        return null;
+    }
+
+    @Secured("ROLE_USER")
+    @PutMapping(value = "/{" + REPORT_ID_PATH + "}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ReportDto setStartTimestamp(
+            @PathVariable(name = REPORT_ID_PATH) Long reportId,
+            @RequestParam(name = START_TIMESTAMP_PARAM, required = false) Long start,
+            @RequestParam(name = END_TIMESTAMP_PARAM, required = false) Long end,
+            Principal user,
+            HttpServletResponse response
+    ) {
+        if (start != null) {
+            try {
+                return service.setStartTimestamp(reportId, start, user.getName());
+            } catch (ReportNotFoundException e) {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            } catch (UsernamesNotMatchException e) {
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            }
+        } else if (end != null) {
+            try {
+                return service.setEndTimestamp(reportId, end, user.getName());
+            } catch (ReportNotFoundException e) {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            } catch (UsernamesNotMatchException e) {
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            }
+        }
         return null;
     }
 }

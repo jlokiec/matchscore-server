@@ -9,12 +9,8 @@ import pl.matchscore.server.models.Match;
 import pl.matchscore.server.models.Report;
 import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.ReportDto;
-import pl.matchscore.server.services.exceptions.MatchNotFoundException;
-import pl.matchscore.server.services.exceptions.ReportAlreadyExistsException;
-import pl.matchscore.server.services.exceptions.ReportNotFoundException;
-import pl.matchscore.server.services.exceptions.UserNotFoundException;
+import pl.matchscore.server.services.exceptions.*;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,5 +90,35 @@ public class ReportService {
         }
 
         return report;
+    }
+
+    public ReportDto setStartTimestamp(long reportId, long startTimestamp, String username) throws ReportNotFoundException, UsernamesNotMatchException {
+        Report report = reportDao.findById(reportId);
+
+        if (report == null) {
+            throw new ReportNotFoundException("Report ID " + reportId + " not found.");
+        }
+
+        if (!username.equals(report.getUser().getUsername())) {
+            throw new UsernamesNotMatchException("Report and request usernames don't match.");
+        }
+
+        report.setStartTimestamp(startTimestamp);
+        return new ReportDto(reportDao.save(report));
+    }
+
+    public ReportDto setEndTimestamp(long reportId, long endTimestamp, String username) throws ReportNotFoundException, UsernamesNotMatchException {
+        Report report = reportDao.findById(reportId);
+
+        if (report == null) {
+            throw new ReportNotFoundException("Report ID " + reportId + " not found.");
+        }
+
+        if (!username.equals(report.getUser().getUsername())) {
+            throw new UsernamesNotMatchException("Report and request usernames don't match.");
+        }
+
+        report.setEndTimestamp(endTimestamp);
+        return new ReportDto(reportDao.save(report));
     }
 }
