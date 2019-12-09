@@ -11,6 +11,9 @@ import pl.matchscore.server.models.dto.EventDto;
 import pl.matchscore.server.services.exceptions.ReportNotFoundException;
 import pl.matchscore.server.services.exceptions.UsernamesNotMatchException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EventService {
     private EventDao eventDao;
@@ -38,7 +41,19 @@ public class EventService {
         event.setEventType(createEventDto.getEventType());
         event.setReport(report);
         event.setDescription(createEventDto.getDescription());
+        event.setCategory(createEventDto.getCategory());
 
         return new EventDto(eventDao.save(event));
+    }
+
+    public List<EventDto> getAllForReport(long reportId) {
+        List<Event> events = eventDao.findByReport_Id(reportId);
+        List<EventDto> convertedEvents = new ArrayList<>();
+
+        for (Event event : events) {
+            convertedEvents.add(new EventDto(event));
+        }
+
+        return convertedEvents;
     }
 }

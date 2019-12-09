@@ -17,6 +17,9 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventType eventType;
 
+    @Enumerated(EnumType.STRING)
+    private EventCategory category;
+
     @ManyToOne
     private Report report;
 

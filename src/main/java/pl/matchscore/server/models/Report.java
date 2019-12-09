@@ -17,9 +17,9 @@ public class Report {
     @ManyToOne
     private User user;
 
-    private long startTimestamp;
+    private Long startTimestamp;
 
-    private long endTimestamp;
+    private Long endTimestamp;
 
     @ManyToOne
     private Match match;
