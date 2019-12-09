@@ -47,8 +47,8 @@ public class ReportController {
 
     @Secured("ROLE_ADMIN")
     @GetMapping(value = "/unrated", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ReportDto> getAllUnrated() {
-        return service.getAllUnrated();
+    public List<ReportDto> getAllPending() {
+        return service.getAllPending();
     }
 
     @Secured("ROLE_USER")

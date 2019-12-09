@@ -43,9 +43,9 @@ public class ReportService {
         }
     }
 
-    public List<ReportDto> getAllUnrated() {
+    public List<ReportDto> getAllPending() {
         List<ReportDto> convertedReports = new ArrayList<>();
-        List<Report> reports = reportDao.findByReportRating_RatingIsNull();
+        List<Report> reports = reportDao.findByEndTimestampIsNotNullAndReportRating_RatingIsNull();
 
         for (Report report : reports) {
             convertedReports.add(new ReportDto(report));
