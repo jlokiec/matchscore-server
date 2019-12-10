@@ -7,4 +7,5 @@ public class RateReportDto {
     private long reportId;
     private int rating;
     private long ratingTimestamp;
+    private String comment;
 }

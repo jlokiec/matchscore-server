@@ -10,6 +10,7 @@ public class ReportRatingDto {
     private int rating;
     private String ratedBy;
     private long ratingTimestamp;
+    private String comment;
 
     public ReportRatingDto(ReportRating reportRating) {
         this.id = reportRating.getId();
@@ -17,5 +18,6 @@ public class ReportRatingDto {
         this.rating = reportRating.getRating();
         this.ratedBy = reportRating.getRatedBy().getUsername();
         this.ratingTimestamp = reportRating.getRatingTimestamp();
+        this.comment = reportRating.getComment();
     }
 }
