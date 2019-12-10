@@ -49,6 +49,7 @@ public class ReportRatingService {
         reportRating.setRating(rateReportDto.getRating());
         reportRating.setRatedBy(ratedBy);
         reportRating.setRatingTimestamp(rateReportDto.getRatingTimestamp());
+        reportRating.setComment(rateReportDto.getComment());
 
         return new ReportRatingDto(reportRatingDao.save(reportRating));
     }
