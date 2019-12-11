@@ -19,6 +19,7 @@ import java.util.UUID;
 @Service
 public class UserService {
     private static final String USER_ROLE_NAME = "ROLE_USER";
+    private static final int USER_INITIAL_REPUTATION = 0;
 
     private UserDao userDao;
     private RoleDao roleDao;
@@ -55,6 +56,7 @@ public class UserService {
         user.setCreatedAt(Instant.now().getEpochSecond());
         user.setRegistrationId(UUID.randomUUID().toString());
         user.setRoles(Lists.newArrayList(getUserRole()));
+        user.setReputation(USER_INITIAL_REPUTATION);
 
         user = userDao.save(user);
         sendCompleteRegistrationEmail(user);

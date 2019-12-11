@@ -14,6 +14,7 @@ public final class ApiPaths {
     public static final String SECURE_EVENTS_PATH = SECURE + "/events";
     public static final String SECURE_REPORT_RATINGS_PATH = SECURE + "/ratings";
     public static final String PUBLIC_PLAYERS_PATH = PUBLIC + "/players";
+    public static final String PUBLIC_REPORTS_PATH = PUBLIC + "/reports";
 
     private ApiPaths() {
 
