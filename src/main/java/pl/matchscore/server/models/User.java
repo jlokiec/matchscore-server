@@ -43,4 +43,8 @@ public class User {
     private List<Role> roles;
 
     private int reputation;
+
+    public void addReputation(int reputation) {
+        this.reputation += reputation;
+    }
 }

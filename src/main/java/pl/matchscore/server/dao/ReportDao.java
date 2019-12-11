@@ -13,4 +13,6 @@ public interface ReportDao extends JpaRepository<Report, Long> {
     Report findByMatch_IdAndUser_Username(long id, String username);
 
     List<Report> findByEndTimestampIsNotNullAndReportRating_RatingIsNull();
+
+    List<Report> findByMatch_IdAndStartTimestampIsNotNull(long matchId);
 }

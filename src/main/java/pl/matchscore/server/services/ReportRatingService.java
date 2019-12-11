@@ -44,6 +44,9 @@ public class ReportRatingService {
             throw new UserNotFoundException("User " + username + " not found.");
         }
 
+        User user = report.getUser();
+        user.addReputation(rateReportDto.getRating());
+
         ReportRating reportRating = new ReportRating();
         reportRating.setReport(report);
         reportRating.setRating(rateReportDto.getRating());
@@ -51,6 +54,9 @@ public class ReportRatingService {
         reportRating.setRatingTimestamp(rateReportDto.getRatingTimestamp());
         reportRating.setComment(rateReportDto.getComment());
 
-        return new ReportRatingDto(reportRatingDao.save(reportRating));
+        ReportRatingDto reportRatingDto = new ReportRatingDto(reportRatingDao.save(reportRating));
+        userDao.save(user);
+
+        return reportRatingDto;
     }
 }

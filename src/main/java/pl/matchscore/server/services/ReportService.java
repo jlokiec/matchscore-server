@@ -11,8 +11,7 @@ import pl.matchscore.server.models.User;
 import pl.matchscore.server.models.dto.ReportDto;
 import pl.matchscore.server.services.exceptions.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ReportService {
@@ -120,5 +119,36 @@ public class ReportService {
 
         report.setEndTimestamp(endTimestamp);
         return new ReportDto(reportDao.save(report));
+    }
+
+    public ReportDto getLiveReportForMatch(long matchId) throws ReportNotFoundException {
+        List<Report> reports = reportDao.findByMatch_IdAndStartTimestampIsNotNull(matchId);
+
+        if (reports.isEmpty()) {
+            throw new ReportNotFoundException("Report for match ID " + matchId + " not found.");
+        }
+
+        Report report = getReportForMostTrustedUser(reports);
+        return new ReportDto(report);
+    }
+
+    private Report getReportForMostTrustedUser(List<Report> reports) throws ReportNotFoundException {
+        if (reports.size() == 1) {
+            return reports.get(0);
+        }
+
+        Map<Integer, Report> userIdReportMap = new HashMap<>();
+
+        for (Report report : reports) {
+            userIdReportMap.put(report.getUser().getReputation(), report);
+        }
+
+        Optional<Integer> maxReputation = userIdReportMap.keySet().stream().max(Integer::compareTo);
+
+        if (maxReputation.isPresent()) {
+            return userIdReportMap.get(maxReputation.get());
+        } else {
+            throw new ReportNotFoundException("Cannot find best report for match.");
+        }
     }
 }
