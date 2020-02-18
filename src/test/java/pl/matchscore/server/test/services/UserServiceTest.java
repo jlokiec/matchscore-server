@@ -28,8 +28,7 @@ import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -79,7 +78,14 @@ public class UserServiceTest {
     public void testRegister_UsernameTaken() {
         User user = new User();
         user.setUsername("jsmith");
-        userDao.save(user);
+
+        UserDao userDao = mock(UserDao.class);
+        when(userDao.findByUsername("jsmith")).thenReturn(user);
+
+        PasswordEncoder bCryptEncoder = new BCryptPasswordEncoder(SecurityConstants.BCRYPT_ROUNDS);
+        EmailService emailService = mock(EmailService.class);
+        doNothing().when(emailService).sendConfirmationEmail(any(User.class));
+        UserService service = new UserService(userDao, roleDao, bCryptEncoder, emailService);
 
         UserRegistrationDto userDto = initUser();
 
