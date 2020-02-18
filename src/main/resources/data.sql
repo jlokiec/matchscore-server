@@ -1,0 +1,2191 @@
+-- users
+insert into users(id,email,username,password_hash,first_name,last_name,enabled,created_at,reputation) values(1,"test1@mail.com","test1","$2a$11$0nQ/LK5J4BkL1jL/8u85Je8HvzH7/sxG1JXh/l2gwHm6x0gcBh4SO","Jan","Testowy",true,1567339200,0);
+insert into users(id,email,username,password_hash,first_name,last_name,enabled,created_at,reputation) values(2,"test2@mail.com","test2","$2a$11$0nQ/LK5J4BkL1jL/8u85Je8HvzH7/sxG1JXh/l2gwHm6x0gcBh4SO","Jakub","Testowy",true,1567339200,0);
+insert into users(id,email,username,password_hash,first_name,last_name,enabled,created_at,reputation) values(3,"test3@mail.com","test3","$2a$11$0nQ/LK5J4BkL1jL/8u85Je8HvzH7/sxG1JXh/l2gwHm6x0gcBh4SO","Maciej","Testowy",true,1567339200,0);
+insert into users(id,email,username,password_hash,first_name,last_name,enabled,created_at,reputation) values(4,"test4@mail.com","test4","$2a$11$0nQ/LK5J4BkL1jL/8u85Je8HvzH7/sxG1JXh/l2gwHm6x0gcBh4SO","Rafał","Testowy",true,1567339200,0);
+
+-- roles
+insert into roles(id,`name`) values(1,"ROLE_USER");
+insert into roles(id,`name`) values(2,"ROLE_ADMIN");
+
+-- user roles
+insert into user_roles(user_id,role_id) values(1,1);
+insert into user_roles(user_id,role_id) values(2,1);
+insert into user_roles(user_id,role_id) values(3,1);
+insert into user_roles(user_id,role_id) values(4,1);
+insert into user_roles(user_id,role_id) values(1,2);
+insert into user_roles(user_id,role_id) values(2,2);
+
+-- league categories
+insert into league_categories(id,`name`) values(1,"ligi centralne");
+insert into league_categories(id,`name`) values(2,"III ligi");
+insert into league_categories(id,`name`) values(3,"dolnośląski ZPN");
+insert into league_categories(id,`name`) values(4,"kujawsko-pomorski ZPN");
+insert into league_categories(id,`name`) values(5,"lubelski ZPN");
+insert into league_categories(id,`name`) values(6,"lubuski ZPN");
+insert into league_categories(id,`name`) values(7,"łódzki ZPN");
+insert into league_categories(id,`name`) values(8,"małopolski ZPN");
+insert into league_categories(id,`name`) values(9,"mazowiecki ZPN");
+insert into league_categories(id,`name`) values(10,"opolski ZPN");
+insert into league_categories(id,`name`) values(11,"podkarpacki ZPN");
+insert into league_categories(id,`name`) values(12,"podlaski ZPN");
+insert into league_categories(id,`name`) values(13,"pomorski ZPN");
+insert into league_categories(id,`name`) values(14,"śląski ZPN");
+insert into league_categories(id,`name`) values(15,"świętokrzyski ZPN");
+insert into league_categories(id,`name`) values(16,"warmińsko-mazurski ZPN");
+insert into league_categories(id,`name`) values(17,"wielkopolski ZPN");
+insert into league_categories(id,`name`) values(18,"zachodniopomorski ZPN");
+
+-- leagues
+-- ligi centralne
+insert into leagues(id,`name`,category_id) values(1,"Ekstraklasa",1);
+insert into leagues(id,`name`,category_id) values(2,"I liga",1);
+insert into leagues(id,`name`,category_id) values(3,"II liga",1);
+-- III ligi
+insert into leagues(id,`name`,category_id) values(4,"III liga grupa I",2);
+insert into leagues(id,`name`,category_id) values(5,"III liga grupa II",2);
+insert into leagues(id,`name`,category_id) values(6,"III liga grupa III",2);
+insert into leagues(id,`name`,category_id) values(7,"III liga grupa IV",2);
+-- dolnośląski ZPN
+insert into leagues(id,`name`,category_id) values(8,"IV liga wschód",3);
+insert into leagues(id,`name`,category_id) values(9,"IV liga zachód",3);
+insert into leagues(id,`name`,category_id) values(10,"Klasa okręgowa Jelenia Góra",3);
+insert into leagues(id,`name`,category_id) values(11,"Klasa okręgowa Legnica",3);
+insert into leagues(id,`name`,category_id) values(12,"Klasa okręgowa Wałbrzych",3);
+insert into leagues(id,`name`,category_id) values(13,"Klasa okręgowa Wrocław",3);
+insert into leagues(id,`name`,category_id) values(14,"Klasa A Jelenia Góra I",3);
+insert into leagues(id,`name`,category_id) values(15,"Klasa A Jelenia Góra II",3);
+insert into leagues(id,`name`,category_id) values(16,"Klasa A Jelenia Góra III",3);
+insert into leagues(id,`name`,category_id) values(17,"Klasa A Legnica I",3);
+insert into leagues(id,`name`,category_id) values(18,"Klasa A Legnica II",3);
+insert into leagues(id,`name`,category_id) values(19,"Klasa A Legnica III",3);
+insert into leagues(id,`name`,category_id) values(20,"Klasa A Wałbrzych I",3);
+insert into leagues(id,`name`,category_id) values(21,"Klasa A Wałbrzych II",3);
+insert into leagues(id,`name`,category_id) values(22,"Klasa A Wałbrzych III",3);
+insert into leagues(id,`name`,category_id) values(23,"Klasa A Wrocław I",3);
+insert into leagues(id,`name`,category_id) values(24,"Klasa A Wrocław II",3);
+insert into leagues(id,`name`,category_id) values(25,"Klasa A Wrocław III",3);
+insert into leagues(id,`name`,category_id) values(26,"Klasa A Wrocław IV",3);
+insert into leagues(id,`name`,category_id) values(27,"Klasa B Jelenia Góra I",3);
+insert into leagues(id,`name`,category_id) values(28,"Klasa B Jelenia Góra II",3);
+insert into leagues(id,`name`,category_id) values(29,"Klasa B Jelenia Góra III",3);
+insert into leagues(id,`name`,category_id) values(30,"Klasa B Jelenia Góra IV",3);
+insert into leagues(id,`name`,category_id) values(31,"Klasa B Legnica I",3);
+insert into leagues(id,`name`,category_id) values(32,"Klasa B Legnica II",3);
+insert into leagues(id,`name`,category_id) values(33,"Klasa B Legnica III",3);
+insert into leagues(id,`name`,category_id) values(34,"Klasa B Legnica IV",3);
+insert into leagues(id,`name`,category_id) values(35,"Klasa B Legnica V",3);
+insert into leagues(id,`name`,category_id) values(36,"Klasa B Wałbrzych I",3);
+insert into leagues(id,`name`,category_id) values(37,"Klasa B Wałbrzych II",3);
+insert into leagues(id,`name`,category_id) values(38,"Klasa B Wałbrzych III",3);
+insert into leagues(id,`name`,category_id) values(39,"Klasa B Wałbrzych IV",3);
+insert into leagues(id,`name`,category_id) values(40,"Klasa B Wrocław I",3);
+insert into leagues(id,`name`,category_id) values(41,"Klasa B Wrocław II",3);
+insert into leagues(id,`name`,category_id) values(42,"Klasa B Wrocław III",3);
+insert into leagues(id,`name`,category_id) values(43,"Klasa B Wrocław IV",3);
+insert into leagues(id,`name`,category_id) values(44,"Klasa B Wrocław V",3);
+insert into leagues(id,`name`,category_id) values(45,"Klasa B Wrocław VI",3);
+insert into leagues(id,`name`,category_id) values(46,"Klasa B Wrocław VII",3);
+insert into leagues(id,`name`,category_id) values(47,"Klasa B Wrocław VIII",3);
+insert into leagues(id,`name`,category_id) values(48,"Klasa B Wrocław IX",3);
+insert into leagues(id,`name`,category_id) values(49,"Klasa C Środa Śląska",3);
+insert into leagues(id,`name`,category_id) values(50,"Klasa C Wrocław",3);
+-- kujawsko-pomorski ZPN
+insert into leagues(id,`name`,category_id) values(51,"IV liga",4);
+insert into leagues(id,`name`,category_id) values(52,"Klasa okręgowa I",4);
+insert into leagues(id,`name`,category_id) values(53,"Klasa okręgowa II",4);
+insert into leagues(id,`name`,category_id) values(54,"Klasa A Bydgoszcz I",4);
+insert into leagues(id,`name`,category_id) values(55,"Klasa A Bydgoszcz II",4);
+insert into leagues(id,`name`,category_id) values(56,"Klasa A Toruń",4);
+insert into leagues(id,`name`,category_id) values(57,"Klasa A Włocławek I",4);
+insert into leagues(id,`name`,category_id) values(58,"Klasa A Włocławek II",4);
+insert into leagues(id,`name`,category_id) values(59,"Klasa B Bydgoszcz I",4);
+insert into leagues(id,`name`,category_id) values(60,"Klasa B Bydgoszcz II",4);
+insert into leagues(id,`name`,category_id) values(61,"Klasa B Bydgoszcz III",4);
+insert into leagues(id,`name`,category_id) values(62,"Klasa B Bydgoszcz IV",4);
+insert into leagues(id,`name`,category_id) values(63,"Klasa B Bydgoszcz V",4);
+insert into leagues(id,`name`,category_id) values(64,"Klasa B Toruń",4);
+-- lubelski ZPN
+insert into leagues(id,`name`,category_id) values(65,"IV liga",5);
+insert into leagues(id,`name`,category_id) values(66,"Klasa okręgowa Biała Podlaska",5);
+insert into leagues(id,`name`,category_id) values(67,"Klasa okręgowa Chełm",5);
+insert into leagues(id,`name`,category_id) values(68,"Klasa okręgowa Lublin",5);
+insert into leagues(id,`name`,category_id) values(69,"Klasa okręgowa Zamość",5);
+insert into leagues(id,`name`,category_id) values(70,"Klasa A Biała Podlaska I",5);
+insert into leagues(id,`name`,category_id) values(71,"Klasa A Biała Podlaska II",5);
+insert into leagues(id,`name`,category_id) values(72,"Klasa A Chełm",5);
+insert into leagues(id,`name`,category_id) values(73,"Klasa A Lublin I",5);
+insert into leagues(id,`name`,category_id) values(74,"Klasa A Lublin II",5);
+insert into leagues(id,`name`,category_id) values(75,"Klasa A Lublin III",5);
+insert into leagues(id,`name`,category_id) values(76,"Klasa A Zamość",5);
+insert into leagues(id,`name`,category_id) values(77,"Klasa B Biała Podlaska I",5);
+insert into leagues(id,`name`,category_id) values(78,"Klasa B Biała Podlaska II",5);
+insert into leagues(id,`name`,category_id) values(79,"Klasa B Lublin I",5);
+insert into leagues(id,`name`,category_id) values(80,"Klasa B Lublin II",5);
+insert into leagues(id,`name`,category_id) values(81,"Klasa B Lublin III",5);
+insert into leagues(id,`name`,category_id) values(82,"Klasa B Lublin IV",5);
+insert into leagues(id,`name`,category_id) values(83,"Klasa B Zamość I",5);
+insert into leagues(id,`name`,category_id) values(84,"Klasa B Zamość II",5);
+-- lubuski ZPN
+insert into leagues(id,`name`,category_id) values(85,"IV liga",6);
+insert into leagues(id,`name`,category_id) values(86,"Klasa okręgowa Gorzów Wielkopolski",6);
+insert into leagues(id,`name`,category_id) values(87,"Klasa okręgowa Zielona Góra",6);
+insert into leagues(id,`name`,category_id) values(88,"Klasa A Gorzów Wielkopolski I",6);
+insert into leagues(id,`name`,category_id) values(89,"Klasa A Gorzów Wielkopolski II",6);
+insert into leagues(id,`name`,category_id) values(90,"Klasa A Gorzów Wielkopolski III",6);
+insert into leagues(id,`name`,category_id) values(91,"Klasa A Zielona Góra I",6);
+insert into leagues(id,`name`,category_id) values(92,"Klasa A Zielona Góra II",6);
+insert into leagues(id,`name`,category_id) values(93,"Klasa A Zielona Góra III",6);
+insert into leagues(id,`name`,category_id) values(94,"Klasa A Zielona Góra IV",6);
+insert into leagues(id,`name`,category_id) values(95,"Klasa B Gorzów Wielkopolski I",6);
+insert into leagues(id,`name`,category_id) values(96,"Klasa B Gorzów Wielkopolski II",6);
+insert into leagues(id,`name`,category_id) values(97,"Klasa B Krosno Odrzańskie",6);
+insert into leagues(id,`name`,category_id) values(98,"Klasa B Nowa Sól",6);
+insert into leagues(id,`name`,category_id) values(99,"Klasa B Świebodzin",6);
+insert into leagues(id,`name`,category_id) values(100,"Klasa B Zielona Góra",6);
+insert into leagues(id,`name`,category_id) values(101,"Klasa B Żagań",6);
+insert into leagues(id,`name`,category_id) values(102,"Klasa B Żary",6);
+-- łódzki ZPN
+insert into leagues(id,`name`,category_id) values(103,"IV liga",7);
+insert into leagues(id,`name`,category_id) values(104,"Klasa okręgowa Łódź",7);
+insert into leagues(id,`name`,category_id) values(105,"Klasa okręgowa Piotrków Trybunalski",7);
+insert into leagues(id,`name`,category_id) values(106,"Klasa okręgowa Sieradz",7);
+insert into leagues(id,`name`,category_id) values(107,"Klasa okręgowa Skierniewice",7);
+insert into leagues(id,`name`,category_id) values(108,"Klasa A Łódź I",7);
+insert into leagues(id,`name`,category_id) values(109,"Klasa A Łódź II",7);
+insert into leagues(id,`name`,category_id) values(110,"Klasa A Łódź III",7);
+insert into leagues(id,`name`,category_id) values(111,"Klasa A Piotrków Trybunalski I",7);
+insert into leagues(id,`name`,category_id) values(112,"Klasa A Piotrków Trybunalski II",7);
+insert into leagues(id,`name`,category_id) values(113,"Klasa A Sieradz I",7);
+insert into leagues(id,`name`,category_id) values(114,"Klasa A Sieradz II",7);
+insert into leagues(id,`name`,category_id) values(115,"Klasa A Skierniewice",7);
+insert into leagues(id,`name`,category_id) values(116,"Klasa B Łódź I",7);
+insert into leagues(id,`name`,category_id) values(117,"Klasa B Łódź II",7);
+insert into leagues(id,`name`,category_id) values(118,"Klasa B Łódź III",7);
+insert into leagues(id,`name`,category_id) values(119,"Klasa B Piotrków Trybunalski I",7);
+insert into leagues(id,`name`,category_id) values(120,"Klasa B Piotrków Trybunalski II",7);
+insert into leagues(id,`name`,category_id) values(121,"Klasa B Sieradz I",7);
+insert into leagues(id,`name`,category_id) values(122,"Klasa B Sieradz II",7);
+insert into leagues(id,`name`,category_id) values(123,"Klasa B Sieradz III",7);
+insert into leagues(id,`name`,category_id) values(124,"Klasa B Sieradz IV",7);
+insert into leagues(id,`name`,category_id) values(125,"Klasa B Skierniewice I",7);
+insert into leagues(id,`name`,category_id) values(126,"Klasa B Skierniewice II",7);
+-- małopolski ZPN
+insert into leagues(id,`name`,category_id) values(127,"IV liga wschód",8);
+insert into leagues(id,`name`,category_id) values(128,"IV liga zachód",8);
+insert into leagues(id,`name`,category_id) values(129,"Klasa okręgowa Kraków I",8);
+insert into leagues(id,`name`,category_id) values(130,"Klasa okręgowa Kraków II",8);
+insert into leagues(id,`name`,category_id) values(131,"Klasa okręgowa Kraków III",8);
+insert into leagues(id,`name`,category_id) values(132,"Klasa okręgowa Nowy Sącz I",8);
+insert into leagues(id,`name`,category_id) values(133,"Klasa okręgowa Nowy Sącz II",8);
+insert into leagues(id,`name`,category_id) values(134,"Klasa okręgowa Tarnów I",8);
+insert into leagues(id,`name`,category_id) values(135,"Klasa okręgowa Tarnów II",8);
+insert into leagues(id,`name`,category_id) values(136,"Klasa okręgowa Wadowice",8);
+insert into leagues(id,`name`,category_id) values(137,"Klasa A Chrzanów",8);
+insert into leagues(id,`name`,category_id) values(138,"Klasa A Kraków I",8);
+insert into leagues(id,`name`,category_id) values(139,"Klasa A Kraków II",8);
+insert into leagues(id,`name`,category_id) values(140,"Klasa A Kraków III",8);
+insert into leagues(id,`name`,category_id) values(141,"Klasa A Limanowa",8);
+insert into leagues(id,`name`,category_id) values(142,"Klasa A Myślenice",8);
+insert into leagues(id,`name`,category_id) values(143,"Klasa A Nowy Sącz",8);
+insert into leagues(id,`name`,category_id) values(144,"Klasa A Nowy Sącz-Gorlice",8);
+insert into leagues(id,`name`,category_id) values(145,"Klasa A Olkusz",8);
+insert into leagues(id,`name`,category_id) values(146,"Klasa A Oświęcim",8);
+insert into leagues(id,`name`,category_id) values(147,"Klasa A Podhale",8);
+insert into leagues(id,`name`,category_id) values(148,"Klasa A Tarnów I",8);
+insert into leagues(id,`name`,category_id) values(149,"Klasa A Tarnów II",8);
+insert into leagues(id,`name`,category_id) values(150,"Klasa A Tarnów III",8);
+insert into leagues(id,`name`,category_id) values(151,"Klasa A Tarnów IV",8);
+insert into leagues(id,`name`,category_id) values(152,"Klasa A Wadowice",8);
+insert into leagues(id,`name`,category_id) values(153,"Klasa A Wieliczka",8);
+insert into leagues(id,`name`,category_id) values(154,"Klasa B Chrzanów",8);
+insert into leagues(id,`name`,category_id) values(155,"Klasa B Kraków I",8);
+insert into leagues(id,`name`,category_id) values(156,"Klasa B Kraków II",8);
+insert into leagues(id,`name`,category_id) values(157,"Klasa B Kraków III",8);
+insert into leagues(id,`name`,category_id) values(158,"Klasa B Kraków IV",8);
+insert into leagues(id,`name`,category_id) values(159,"Klasa B Limanowa",8);
+insert into leagues(id,`name`,category_id) values(160,"Klasa B Myślenice I",8);
+insert into leagues(id,`name`,category_id) values(161,"Klasa B Myślenice II",8);
+insert into leagues(id,`name`,category_id) values(162,"Klasa B Nowy Sącz",8);
+insert into leagues(id,`name`,category_id) values(163,"Klasa B Olkusz I",8);
+insert into leagues(id,`name`,category_id) values(164,"Klasa B Olkusz II",8);
+insert into leagues(id,`name`,category_id) values(165,"Klasa B Oświęcim",8);
+insert into leagues(id,`name`,category_id) values(166,"Klasa B Podhale I",8);
+insert into leagues(id,`name`,category_id) values(167,"Klasa B Podhale II",8);
+insert into leagues(id,`name`,category_id) values(168,"Klasa B Tarnów I",8);
+insert into leagues(id,`name`,category_id) values(169,"Klasa B Tarnów II",8);
+insert into leagues(id,`name`,category_id) values(170,"Klasa B Tarnów III",8);
+insert into leagues(id,`name`,category_id) values(171,"Klasa B Tarnów IV",8);
+insert into leagues(id,`name`,category_id) values(172,"Klasa B Wadowice I",8);
+insert into leagues(id,`name`,category_id) values(173,"Klasa B Wadowice II",8);
+insert into leagues(id,`name`,category_id) values(174,"Klasa B Wieliczka",8);
+insert into leagues(id,`name`,category_id) values(175,"Klasa C Wadowice",8);
+insert into leagues(id,`name`,category_id) values(176,"Klasa C Wieliczka",8);
+-- mazowiecki ZPN
+insert into leagues(id,`name`,category_id) values(177,"IV liga południe",9);
+insert into leagues(id,`name`,category_id) values(178,"IV liga północ",9);
+insert into leagues(id,`name`,category_id) values(179,"Klasa okręgowa Ciechanów-Ostrołęka",9);
+insert into leagues(id,`name`,category_id) values(180,"Klasa okręgowa Płock",9);
+insert into leagues(id,`name`,category_id) values(181,"Klasa okręgowa Radom",9);
+insert into leagues(id,`name`,category_id) values(182,"Klasa okręgowa Siedlce",9);
+insert into leagues(id,`name`,category_id) values(183,"Klasa okręgowa Warszawa I",9);
+insert into leagues(id,`name`,category_id) values(184,"Klasa okręgowa Warszawa II",9);
+insert into leagues(id,`name`,category_id) values(185,"Klasa A Ciechanów-Ostrołęka",9);
+insert into leagues(id,`name`,category_id) values(186,"Klasa A Płock",9);
+insert into leagues(id,`name`,category_id) values(187,"Klasa A Radom I",9);
+insert into leagues(id,`name`,category_id) values(188,"Klasa A Radom II",9);
+insert into leagues(id,`name`,category_id) values(189,"Klasa A Siedlce",9);
+insert into leagues(id,`name`,category_id) values(190,"Klasa A Warszawa I",9);
+insert into leagues(id,`name`,category_id) values(191,"Klasa A Warszawa II",9);
+insert into leagues(id,`name`,category_id) values(192,"Klasa A Warszawa III",9);
+insert into leagues(id,`name`,category_id) values(193,"Klasa A Warszawa IV",9);
+insert into leagues(id,`name`,category_id) values(194,"Klasa B Ciechanów",9);
+insert into leagues(id,`name`,category_id) values(195,"Klasa B Ostrołęka",9);
+insert into leagues(id,`name`,category_id) values(196,"Klasa B Płock",9);
+insert into leagues(id,`name`,category_id) values(197,"Klasa B Radom I",9);
+insert into leagues(id,`name`,category_id) values(198,"Klasa B Radom II",9);
+insert into leagues(id,`name`,category_id) values(199,"Klasa B Siedlce",9);
+insert into leagues(id,`name`,category_id) values(200,"Klasa B Warszawa I",9);
+insert into leagues(id,`name`,category_id) values(201,"Klasa B Warszawa II",9);
+insert into leagues(id,`name`,category_id) values(202,"Klasa B Warszawa III",9);
+insert into leagues(id,`name`,category_id) values(203,"Klasa B Warszawa IV",9);
+-- opolski ZPN
+insert into leagues(id,`name`,category_id) values(204,"IV liga",10);
+insert into leagues(id,`name`,category_id) values(205,"Klasa okręgowa I",10);
+insert into leagues(id,`name`,category_id) values(206,"Klasa okręgowa II",10);
+insert into leagues(id,`name`,category_id) values(207,"Klasa A Opole I",10);
+insert into leagues(id,`name`,category_id) values(208,"Klasa A Opole II",10);
+insert into leagues(id,`name`,category_id) values(209,"Klasa A Opole III",10);
+insert into leagues(id,`name`,category_id) values(210,"Klasa A Opole IV",10);
+insert into leagues(id,`name`,category_id) values(211,"Klasa A Opole V",10);
+insert into leagues(id,`name`,category_id) values(212,"Klasa A Opole VI",10);
+insert into leagues(id,`name`,category_id) values(213,"Klasa B Opole I",10);
+insert into leagues(id,`name`,category_id) values(214,"Klasa B Opole II",10);
+insert into leagues(id,`name`,category_id) values(215,"Klasa B Opole III",10);
+insert into leagues(id,`name`,category_id) values(216,"Klasa B Opole IV",10);
+insert into leagues(id,`name`,category_id) values(217,"Klasa B Opole V",10);
+insert into leagues(id,`name`,category_id) values(218,"Klasa B Opole VI",10);
+insert into leagues(id,`name`,category_id) values(219,"Klasa B Opole VII",10);
+insert into leagues(id,`name`,category_id) values(220,"Klasa B Opole VIII",10);
+insert into leagues(id,`name`,category_id) values(221,"Klasa B Opole IX",10);
+insert into leagues(id,`name`,category_id) values(222,"Klasa B Opole X",10);
+insert into leagues(id,`name`,category_id) values(223,"Klasa B Opole XI",10);
+insert into leagues(id,`name`,category_id) values(224,"Klasa B Opole XII",10);
+-- podkarpacki ZPN
+insert into leagues(id,`name`,category_id) values(225,"IV liga",11);
+insert into leagues(id,`name`,category_id) values(226,"Klasa okręgowa Dębica",11);
+insert into leagues(id,`name`,category_id) values(227,"Klasa okręgowa Jarosław",11);
+insert into leagues(id,`name`,category_id) values(228,"Klasa okręgowa Krosno",11);
+insert into leagues(id,`name`,category_id) values(229,"Klasa okręgowa Rzeszów",11);
+insert into leagues(id,`name`,category_id) values(230,"Klasa okręgowa Stalowa Wola",11);
+insert into leagues(id,`name`,category_id) values(231,"Klasa A Dębica",11);
+insert into leagues(id,`name`,category_id) values(232,"Klasa A Jarosław",11);
+insert into leagues(id,`name`,category_id) values(233,"Klasa A Krosno I",11);
+insert into leagues(id,`name`,category_id) values(234,"Klasa A Krosno II",11);
+insert into leagues(id,`name`,category_id) values(235,"Klasa A Krosno III",11);
+insert into leagues(id,`name`,category_id) values(236,"Klasa A Lubaczów",11);
+insert into leagues(id,`name`,category_id) values(237,"Klasa A Przemyśl",11);
+insert into leagues(id,`name`,category_id) values(238,"Klasa A Przeworsk",11);
+insert into leagues(id,`name`,category_id) values(239,"Klasa A Rzeszów I",11);
+insert into leagues(id,`name`,category_id) values(240,"Klasa A Rzeszów II",11);
+insert into leagues(id,`name`,category_id) values(241,"Klasa A Rzeszów III",11);
+insert into leagues(id,`name`,category_id) values(242,"Klasa A Stalowa Wola I",11);
+insert into leagues(id,`name`,category_id) values(243,"Klasa A Stalowa Wola II",11);
+insert into leagues(id,`name`,category_id) values(244,"Klasa B Dębica I",11);
+insert into leagues(id,`name`,category_id) values(245,"Klasa B Dębica II",11);
+insert into leagues(id,`name`,category_id) values(246,"Klasa B Jarosław",11);
+insert into leagues(id,`name`,category_id) values(247,"Klasa B Krosno I",11);
+insert into leagues(id,`name`,category_id) values(248,"Klasa B Krosno II",11);
+insert into leagues(id,`name`,category_id) values(249,"Klasa B Krosno III",11);
+insert into leagues(id,`name`,category_id) values(250,"Klasa B Krosno IV",11);
+insert into leagues(id,`name`,category_id) values(251,"Klasa B Krosno V",11);
+insert into leagues(id,`name`,category_id) values(252,"Klasa B Krosno VI",11);
+insert into leagues(id,`name`,category_id) values(253,"Klasa B Lubaczów",11);
+insert into leagues(id,`name`,category_id) values(254,"Klasa B Przemyśl",11);
+insert into leagues(id,`name`,category_id) values(255,"Klasa B Przeworsk",11);
+insert into leagues(id,`name`,category_id) values(256,"Klasa B Rzeszów I",11);
+insert into leagues(id,`name`,category_id) values(257,"Klasa B Rzeszów II",11);
+insert into leagues(id,`name`,category_id) values(258,"Klasa B Rzeszów III",11);
+insert into leagues(id,`name`,category_id) values(259,"Klasa B Rzeszów IV",11);
+insert into leagues(id,`name`,category_id) values(260,"Klasa B Rzeszów V",11);
+insert into leagues(id,`name`,category_id) values(261,"Klasa B Rzeszów VI",11);
+insert into leagues(id,`name`,category_id) values(262,"Klasa B Rzeszów VII",11);
+insert into leagues(id,`name`,category_id) values(263,"Klasa B Stalowa Wola I",11);
+insert into leagues(id,`name`,category_id) values(264,"Klasa B Stalowa Wola II",11);
+insert into leagues(id,`name`,category_id) values(265,"Klasa B Stalowa Wola III",11);
+-- podlaski ZPN
+insert into leagues(id,`name`,category_id) values(266,"IV liga",12);
+insert into leagues(id,`name`,category_id) values(267,"Klasa okręgowa",12);
+insert into leagues(id,`name`,category_id) values(268,"Klasa A podlaska I",12);
+insert into leagues(id,`name`,category_id) values(269,"Klasa A podlaska II",12);
+-- pomorski ZPN
+insert into leagues(id,`name`,category_id) values(270,"IV liga",13);
+insert into leagues(id,`name`,category_id) values(271,"Klasa okręgowa Gdańsk I",13);
+insert into leagues(id,`name`,category_id) values(272,"Klasa okręgowa Gdańsk II",13);
+insert into leagues(id,`name`,category_id) values(273,"Klasa okręgowa Słupsk",13);
+insert into leagues(id,`name`,category_id) values(274,"Klasa A Gdańsk I",13);
+insert into leagues(id,`name`,category_id) values(275,"Klasa A Gdańsk II",13);
+insert into leagues(id,`name`,category_id) values(276,"Klasa A Gdańsk III",13);
+insert into leagues(id,`name`,category_id) values(277,"Klasa A Gdańsk IV",13);
+insert into leagues(id,`name`,category_id) values(278,"Klasa A Słupsk I",13);
+insert into leagues(id,`name`,category_id) values(279,"Klasa A Słupsk II",13);
+insert into leagues(id,`name`,category_id) values(280,"Klasa B Gdańsk I",13);
+insert into leagues(id,`name`,category_id) values(281,"Klasa B Gdańsk II",13);
+insert into leagues(id,`name`,category_id) values(282,"Klasa B Gdańsk III",13);
+insert into leagues(id,`name`,category_id) values(283,"Klasa B Gdańsk IV",13);
+insert into leagues(id,`name`,category_id) values(284,"Klasa B Gdańsk V",13);
+insert into leagues(id,`name`,category_id) values(285,"Klasa B Malbork I",13);
+insert into leagues(id,`name`,category_id) values(286,"Klasa B Malbork II",13);
+insert into leagues(id,`name`,category_id) values(287,"Klasa B Słupsk I",13);
+insert into leagues(id,`name`,category_id) values(288,"Klasa B Słupsk II",13);
+-- śląski ZPN
+insert into leagues(id,`name`,category_id) values(289,"IV liga grupa I",14);
+insert into leagues(id,`name`,category_id) values(290,"IV liga grupa II",14);
+insert into leagues(id,`name`,category_id) values(291,"Klasa okręgowa I Bytom-Zabrze",14);
+insert into leagues(id,`name`,category_id) values(292,"Klasa okręgowa II Częstochowa-Lubliniec",14);
+insert into leagues(id,`name`,category_id) values(293,"Klasa okręgowa III Racibórz-Rybnik",14);
+insert into leagues(id,`name`,category_id) values(294,"Klasa okręgowa IV Katowice-Sosnowiec",14);
+insert into leagues(id,`name`,category_id) values(295,"Klasa okręgowa V Bielsko-Biała-Tychy",14);
+insert into leagues(id,`name`,category_id) values(296,"Klasa okręgowa VI Skoczów-Żywiec",14);
+insert into leagues(id,`name`,category_id) values(297,"Klasa A Bielsko-Biała",14);
+insert into leagues(id,`name`,category_id) values(298,"Klasa A Bytom",14);
+insert into leagues(id,`name`,category_id) values(299,"Klasa A Częstochowa I",14);
+insert into leagues(id,`name`,category_id) values(300,"Klasa A Częstochowa II",14);
+insert into leagues(id,`name`,category_id) values(301,"Klasa A Katowice",14);
+insert into leagues(id,`name`,category_id) values(302,"Klasa A Lubliniec",14);
+insert into leagues(id,`name`,category_id) values(303,"Klasa A Racibórz",14);
+insert into leagues(id,`name`,category_id) values(304,"Klasa A Rybnik",14);
+insert into leagues(id,`name`,category_id) values(305,"Klasa A Skoczów",14);
+insert into leagues(id,`name`,category_id) values(306,"Klasa A Sosnowiec",14);
+insert into leagues(id,`name`,category_id) values(307,"Klasa A Tychy",14);
+insert into leagues(id,`name`,category_id) values(308,"Klasa A Zabrze",14);
+insert into leagues(id,`name`,category_id) values(309,"Klasa A Żywiec",14);
+insert into leagues(id,`name`,category_id) values(310,"Klasa B Bielsko-Biała",14);
+insert into leagues(id,`name`,category_id) values(311,"Klasa B Bytom I",14);
+insert into leagues(id,`name`,category_id) values(312,"Klasa B Bytom II",14);
+insert into leagues(id,`name`,category_id) values(313,"Klasa B Częstochowa I",14);
+insert into leagues(id,`name`,category_id) values(314,"Klasa B Częstochowa II",14);
+insert into leagues(id,`name`,category_id) values(315,"Klasa B Katowice",14);
+insert into leagues(id,`name`,category_id) values(316,"Klasa B Lubliniec",14);
+insert into leagues(id,`name`,category_id) values(317,"Klasa B Racibórz",14);
+insert into leagues(id,`name`,category_id) values(318,"Klasa B Rybnik",14);
+insert into leagues(id,`name`,category_id) values(319,"Klasa B Skoczów",14);
+insert into leagues(id,`name`,category_id) values(320,"Klasa B Sosnowiec",14);
+insert into leagues(id,`name`,category_id) values(321,"Klasa B Tychy",14);
+insert into leagues(id,`name`,category_id) values(322,"Klasa B Zabrze",14);
+insert into leagues(id,`name`,category_id) values(323,"Klasa B Żywiec",14);
+insert into leagues(id,`name`,category_id) values(324,"Klasa C Racibórz I",14);
+insert into leagues(id,`name`,category_id) values(325,"Klasa C Racibórz II",14);
+insert into leagues(id,`name`,category_id) values(326,"Klasa C Rybnik",14);
+insert into leagues(id,`name`,category_id) values(327,"Klasa C Zabrze",14);
+-- świętokrzyski ZPN
+insert into leagues(id,`name`,category_id) values(328,"IV liga",15);
+insert into leagues(id,`name`,category_id) values(329,"Klasa okręgowa",15);
+insert into leagues(id,`name`,category_id) values(330,"Klasa A Kielce I",15);
+insert into leagues(id,`name`,category_id) values(331,"Klasa A Kielce II",15);
+insert into leagues(id,`name`,category_id) values(332,"Klasa A Sandomierz",15);
+insert into leagues(id,`name`,category_id) values(333,"Klasa B Kielce I",15);
+insert into leagues(id,`name`,category_id) values(334,"Klasa B Kielce II",15);
+insert into leagues(id,`name`,category_id) values(335,"Klasa B Sandomierz",15);
+-- warmińsko-mazurski ZPN
+insert into leagues(id,`name`,category_id) values(336,"IV liga",16);
+insert into leagues(id,`name`,category_id) values(337,"Klasa okręgowa I",16);
+insert into leagues(id,`name`,category_id) values(338,"Klasa okręgowa II",16);
+insert into leagues(id,`name`,category_id) values(339,"Klasa A I",16);
+insert into leagues(id,`name`,category_id) values(340,"Klasa A II",16);
+insert into leagues(id,`name`,category_id) values(341,"Klasa A III",16);
+insert into leagues(id,`name`,category_id) values(342,"Klasa A IV",16);
+insert into leagues(id,`name`,category_id) values(343,"Klasa B I",16);
+insert into leagues(id,`name`,category_id) values(344,"Klasa B II",16);
+insert into leagues(id,`name`,category_id) values(345,"Klasa B III",16);
+insert into leagues(id,`name`,category_id) values(346,"Klasa B IV",16);
+-- wielkopolski ZPN
+insert into leagues(id,`name`,category_id) values(347,"IV liga",17);
+insert into leagues(id,`name`,category_id) values(348,"V liga I",17);
+insert into leagues(id,`name`,category_id) values(349,"V liga II",17);
+insert into leagues(id,`name`,category_id) values(350,"V liga III",17);
+insert into leagues(id,`name`,category_id) values(351,"Klasa okręgowa I",17);
+insert into leagues(id,`name`,category_id) values(352,"Klasa okręgowa II",17);
+insert into leagues(id,`name`,category_id) values(353,"Klasa okręgowa III",17);
+insert into leagues(id,`name`,category_id) values(354,"Klasa okręgowa IV",17);
+insert into leagues(id,`name`,category_id) values(355,"Klasa okręgowa V",17);
+insert into leagues(id,`name`,category_id) values(356,"Klasa okręgowa VI",17);
+insert into leagues(id,`name`,category_id) values(357,"Klasa A I",17);
+insert into leagues(id,`name`,category_id) values(358,"Klasa A II",17);
+insert into leagues(id,`name`,category_id) values(359,"Klasa A III",17);
+insert into leagues(id,`name`,category_id) values(360,"Klasa A IV",17);
+insert into leagues(id,`name`,category_id) values(361,"Klasa A V",17);
+insert into leagues(id,`name`,category_id) values(362,"Klasa A VI",17);
+insert into leagues(id,`name`,category_id) values(363,"Klasa A VII",17);
+insert into leagues(id,`name`,category_id) values(364,"Klasa A VIII",17);
+insert into leagues(id,`name`,category_id) values(365,"Klasa B I",17);
+insert into leagues(id,`name`,category_id) values(366,"Klasa B II",17);
+insert into leagues(id,`name`,category_id) values(367,"Klasa B III",17);
+insert into leagues(id,`name`,category_id) values(368,"Klasa B IV",17);
+insert into leagues(id,`name`,category_id) values(369,"Klasa B V",17);
+insert into leagues(id,`name`,category_id) values(370,"Klasa B VI",17);
+insert into leagues(id,`name`,category_id) values(371,"Klasa B VII",17);
+insert into leagues(id,`name`,category_id) values(372,"Klasa B VIII",17);
+insert into leagues(id,`name`,category_id) values(373,"Klasa B IX",17);
+insert into leagues(id,`name`,category_id) values(374,"Klasa B X",17);
+insert into leagues(id,`name`,category_id) values(375,"Klasa B XI",17);
+-- zachodniopomorski ZPN
+insert into leagues(id,`name`,category_id) values(376,"IV liga",18);
+insert into leagues(id,`name`,category_id) values(377,"Klasa okręgowa Koszalin III",18);
+insert into leagues(id,`name`,category_id) values(378,"Klasa okręgowa Koszalin IV",18);
+insert into leagues(id,`name`,category_id) values(379,"Klasa okręgowa Szczecin I",18);
+insert into leagues(id,`name`,category_id) values(380,"Klasa okręgowa Szczecin II",18);
+insert into leagues(id,`name`,category_id) values(381,"Klasa A Koszalin VIII",18);
+insert into leagues(id,`name`,category_id) values(382,"Klasa A Koszalin IX",18);
+insert into leagues(id,`name`,category_id) values(383,"Klasa A Koszalin X",18);
+insert into leagues(id,`name`,category_id) values(384,"Klasa A Koszalin XI",18);
+insert into leagues(id,`name`,category_id) values(385,"Klasa A Szczecin I",18);
+insert into leagues(id,`name`,category_id) values(386,"Klasa A Szczecin II",18);
+insert into leagues(id,`name`,category_id) values(387,"Klasa A Szczecin III",18);
+insert into leagues(id,`name`,category_id) values(388,"Klasa A Szczecin IV",18);
+insert into leagues(id,`name`,category_id) values(389,"Klasa A Szczecin V",18);
+insert into leagues(id,`name`,category_id) values(390,"Klasa A Szczecin VI",18);
+insert into leagues(id,`name`,category_id) values(391,"Klasa A Szczecin VII",18);
+insert into leagues(id,`name`,category_id) values(392,"Klasa B Szczecin I",18);
+insert into leagues(id,`name`,category_id) values(393,"Klasa B Szczecin II",18);
+insert into leagues(id,`name`,category_id) values(394,"Klasa B Szczecin III",18);
+insert into leagues(id,`name`,category_id) values(395,"Klasa B Szczecin IV",18);
+
+-- teams
+-- Ekstraklasa
+insert into teams(id,`name`,league_id) values(1,"Śląsk Wrocław",1);
+insert into teams(id,`name`,league_id) values(2,"Jagiellonia Białystok",1);
+insert into teams(id,`name`,league_id) values(3,"Pogoń Szczecin",1);
+insert into teams(id,`name`,league_id) values(4,"Cracovia",1);
+insert into teams(id,`name`,league_id) values(5,"Legia Warszawa",1);
+insert into teams(id,`name`,league_id) values(6,"Lech Poznań",1);
+insert into teams(id,`name`,league_id) values(7,"Piast Gliwice",1);
+insert into teams(id,`name`,league_id) values(8,"Wisła Kraków",1);
+insert into teams(id,`name`,league_id) values(9,"Górnik Zabrze",1);
+insert into teams(id,`name`,league_id) values(10,"Lechia Gdańsk",1);
+insert into teams(id,`name`,league_id) values(11,"Wisła Płock",1);
+insert into teams(id,`name`,league_id) values(12,"Raków Częstochowa",1);
+insert into teams(id,`name`,league_id) values(13,"Zagłębie Lubin",1);
+insert into teams(id,`name`,league_id) values(14,"Arka Gdynia",1);
+insert into teams(id,`name`,league_id) values(15,"ŁKS Łódź",1);
+insert into teams(id,`name`,league_id) values(16,"Korona Kielce",1);
+-- I liga
+insert into teams(id,`name`,league_id) values(17,"Stal Mielec",2);
+insert into teams(id,`name`,league_id) values(18,"Radomiak Radom",2);
+insert into teams(id,`name`,league_id) values(19,"Miedź Legnica",2);
+insert into teams(id,`name`,league_id) values(20,"Warta Poznań",2);
+insert into teams(id,`name`,league_id) values(21,"Puszcza Niepołomice",2);
+insert into teams(id,`name`,league_id) values(22,"Stomil Olsztyn",2);
+insert into teams(id,`name`,league_id) values(23,"Wigry Suwałki",2);
+insert into teams(id,`name`,league_id) values(24,"GKS Bełchatów",2);
+insert into teams(id,`name`,league_id) values(25,"Zagłębie Sosnowiec",2);
+insert into teams(id,`name`,league_id) values(26,"GKS 1962 Jastrzębie",2);
+insert into teams(id,`name`,league_id) values(27,"Podbeskidzie Bielsko-Biała",2);
+insert into teams(id,`name`,league_id) values(28,"Bruk-Bet Termalica Nieciecza",2);
+insert into teams(id,`name`,league_id) values(29,"Sandecja Nowy Sącz",2);
+insert into teams(id,`name`,league_id) values(30,"GKS Tychy",2);
+insert into teams(id,`name`,league_id) values(31,"Olimpia Grudziądz",2);
+insert into teams(id,`name`,league_id) values(32,"Chojniczanka Chojnice",2);
+insert into teams(id,`name`,league_id) values(33,"Chrobry Głogów",2);
+insert into teams(id,`name`,league_id) values(34,"Odra Opole",2);
+-- II liga
+insert into teams(id,`name`,league_id) values(35,"Znicz Pruszków",3);
+insert into teams(id,`name`,league_id) values(36,"Stal Rzeszów",3);
+insert into teams(id,`name`,league_id) values(37,"Górnik Łęczna",3);
+insert into teams(id,`name`,league_id) values(38,"Błękitni Stargard",3);
+insert into teams(id,`name`,league_id) values(39,"Garbarnia Kraków",3);
+insert into teams(id,`name`,league_id) values(40,"Resovia",3);
+insert into teams(id,`name`,league_id) values(41,"Widzew Łódź",3);
+insert into teams(id,`name`,league_id) values(42,"Olimpia Elbląg",3);
+insert into teams(id,`name`,league_id) values(43,"Bytovia Bytów",3);
+insert into teams(id,`name`,league_id) values(44,"GKS Katowice",3);
+insert into teams(id,`name`,league_id) values(45,"Elana Toruń",3);
+insert into teams(id,`name`,league_id) values(46,"Pogoń Siedlce",3);
+insert into teams(id,`name`,league_id) values(47,"Lech II Poznań",3);
+insert into teams(id,`name`,league_id) values(48,"Skra Częstochowa",3);
+insert into teams(id,`name`,league_id) values(49,"Górnik Polkowice",3);
+insert into teams(id,`name`,league_id) values(50,"Stal Stalowa Wola",3);
+insert into teams(id,`name`,league_id) values(51,"Leginovia Legionowo",3);
+insert into teams(id,`name`,league_id) values(52,"Gryf Wejherowo",3);
+-- III liga grupa I
+insert into teams(id,`name`,league_id) values(53,"Sokół Ostróda",4);
+insert into teams(id,`name`,league_id) values(54,"Świt Nowy Dwór Mazowiecki",4);
+insert into teams(id,`name`,league_id) values(55,"Sokół Aleksandrów Łódzki",4);
+insert into teams(id,`name`,league_id) values(56,"Legia II Warszawa",4);
+insert into teams(id,`name`,league_id) values(57,"Pelikan Łowicz",4);
+insert into teams(id,`name`,league_id) values(58,"Huragan Morąg",4);
+insert into teams(id,`name`,league_id) values(59,"Unia Skierniewice",4);
+insert into teams(id,`name`,league_id) values(60,"Broń Radom",4);
+insert into teams(id,`name`,league_id) values(61,"Concordia Elbląg",4);
+insert into teams(id,`name`,league_id) values(62,"Lechia Tomaszów Mazowiecki",4);
+insert into teams(id,`name`,league_id) values(63,"Polonia Warszawa",4);
+insert into teams(id,`name`,league_id) values(64,"Ursus Warszawa",4);
+insert into teams(id,`name`,league_id) values(65,"Olimpia Zambrów",4);
+insert into teams(id,`name`,league_id) values(66,"Znicz Biała Piska",4);
+insert into teams(id,`name`,league_id) values(67,"RKS Radomsko",4);
+insert into teams(id,`name`,league_id) values(68,"Ruch Wysokie Mazowieckie",4);
+insert into teams(id,`name`,league_id) values(69,"Pogoń Grodzisk Mazowiecki",4);
+insert into teams(id,`name`,league_id) values(70,"KS Wasilków",4);
+-- III liga grupa II
+insert into teams(id,`name`,league_id) values(71,"KKS 1925 Kalisz",5);
+insert into teams(id,`name`,league_id) values(72,"Radunia Stężyca",5);
+insert into teams(id,`name`,league_id) values(73,"Kotwica Kołobrzeg",5);
+insert into teams(id,`name`,league_id) values(74,"Mieszko Gniezno",5);
+insert into teams(id,`name`,league_id) values(75,"Świt Skolwin",5);
+insert into teams(id,`name`,league_id) values(76,"Pogoń II Szczecin",5);
+insert into teams(id,`name`,league_id) values(77,"Sokół Kleczew",5);
+insert into teams(id,`name`,league_id) values(78,"KP Starogard Gdański",5);
+insert into teams(id,`name`,league_id) values(79,"Polonia Środa Wielkopolska",5);
+insert into teams(id,`name`,league_id) values(80,"Unia Janikowo",5);
+insert into teams(id,`name`,league_id) values(81,"Jarota Jarocin",5);
+insert into teams(id,`name`,league_id) values(82,"Górnik Konin",5);
+insert into teams(id,`name`,league_id) values(83,"Bałtyk Koszalin",5);
+insert into teams(id,`name`,league_id) values(84,"Grom Nowy Staw",5);
+insert into teams(id,`name`,league_id) values(85,"Chemik Police",5);
+insert into teams(id,`name`,league_id) values(86,"Nielba Wągrowiec",5);
+insert into teams(id,`name`,league_id) values(87,"Bałtyk Gdynia",5);
+insert into teams(id,`name`,league_id) values(88,"Gwardia Koszalin",5);
+-- III liga grupa III
+insert into teams(id,`name`,league_id) values(89,"Śląsk II Wrocław",6);
+insert into teams(id,`name`,league_id) values(90,"Foto-Higiena Gać",6);
+insert into teams(id,`name`,league_id) values(91,"ROW 1964 Rybnik",6);
+insert into teams(id,`name`,league_id) values(92,"Pniówek Pawłowice Śląskie",6);
+insert into teams(id,`name`,league_id) values(93,"Stal Brzeg",6);
+insert into teams(id,`name`,league_id) values(94,"Lechia Zielona Góra",6);
+insert into teams(id,`name`,league_id) values(95,"Ślęza Wrocław",6);
+insert into teams(id,`name`,league_id) values(96,"Rekord Bielsko-Biała",6);
+insert into teams(id,`name`,league_id) values(97,"Polonia Bytom",6);
+insert into teams(id,`name`,league_id) values(98,"Górnik II Zabrze",6);
+insert into teams(id,`name`,league_id) values(99,"Gwarek Tarnowskie Góry",6);
+insert into teams(id,`name`,league_id) values(100,"Ruch Zdzieszowiece",6);
+insert into teams(id,`name`,league_id) values(101,"Piast Żmigród",6);
+insert into teams(id,`name`,league_id) values(102,"Miedź II Legnica",6);
+insert into teams(id,`name`,league_id) values(103,"MKS Kluczbork",6);
+insert into teams(id,`name`,league_id) values(104,"Zagłębie II Lubin",6);
+insert into teams(id,`name`,league_id) values(105,"LZS Starowice Dolne",6);
+insert into teams(id,`name`,league_id) values(106,"Ruch Chorzów",6);
+-- III liga grupa IV
+insert into teams(id,`name`,league_id) values(107,"Korona II Kielce",7);
+insert into teams(id,`name`,league_id) values(108,"Siarka Tarnobrzeg",7);
+insert into teams(id,`name`,league_id) values(109,"Hetman Zamość",7);
+insert into teams(id,`name`,league_id) values(110,"Stal Kraśnik",7);
+insert into teams(id,`name`,league_id) values(111,"Wisła Puławy",7);
+insert into teams(id,`name`,league_id) values(112,"Hutnik Kraków",7);
+insert into teams(id,`name`,league_id) values(113,"KSZO 1929 Ostrowiec Świętokrzyski",7);
+insert into teams(id,`name`,league_id) values(114,"Wólczanka Wólka Pełkińska",7);
+insert into teams(id,`name`,league_id) values(115,"Sokół Sieniawa",7);
+insert into teams(id,`name`,league_id) values(116,"Wisłoka Dębica",7);
+insert into teams(id,`name`,league_id) values(117,"Orlęta Radzyń Podlaski",7);
+insert into teams(id,`name`,league_id) values(118,"Avia Świdnik",7);
+insert into teams(id,`name`,league_id) values(119,"Motor Lublin",7);
+insert into teams(id,`name`,league_id) values(120,"Wisła Sandomierz",7);
+insert into teams(id,`name`,league_id) values(121,"Podhale Nowy Targ",7);
+insert into teams(id,`name`,league_id) values(122,"Chełmianka Chełm",7);
+insert into teams(id,`name`,league_id) values(123,"Jutrzenka Giebułtów",7);
+insert into teams(id,`name`,league_id) values(124,"Podlasie Biała Podlaska",7);
+-- dolnośląski ZPN IV liga wschód
+insert into teams(id,`name`,league_id) values(125,"Sokół Wielka Lipa",8);
+insert into teams(id,`name`,league_id) values(126,"Sokół Marcinkowice",8);
+insert into teams(id,`name`,league_id) values(127,"Piast Nowa Ruda",8);
+insert into teams(id,`name`,league_id) values(128,"Polonia-Stal Świdnica",8);
+insert into teams(id,`name`,league_id) values(129,"Piast Żerniki",8);
+insert into teams(id,`name`,league_id) values(130,"Lechia Dzierżoniów",8);
+insert into teams(id,`name`,league_id) values(131,"Moto Jelcz Oława",8);
+insert into teams(id,`name`,league_id) values(132,"Bielawianka Bielawa",8);
+insert into teams(id,`name`,league_id) values(133,"GKS Mirków/Długołęka",8);
+insert into teams(id,`name`,league_id) values(134,"Orzeł Ząbkowice Śląskie",8);
+insert into teams(id,`name`,league_id) values(135,"Unia Bardo",8);
+insert into teams(id,`name`,league_id) values(136,"Orzeł Prusice",8);
+insert into teams(id,`name`,league_id) values(137,"Pogoń Pieszyce",8);
+insert into teams(id,`name`,league_id) values(138,"Wiwa Goszcz",8);
+insert into teams(id,`name`,league_id) values(139,"LKS Bystrzyca Górna",8);
+insert into teams(id,`name`,league_id) values(140,"Polonia Trzebnica",8);
+-- dolnośląski ZPN IV liga zachód
+insert into teams(id,`name`,league_id) values(141,"Apis Jędrzychowice",9);
+insert into teams(id,`name`,league_id) values(142,"Chrobry II Głogów",9);
+insert into teams(id,`name`,league_id) values(143,"AKS Strzegom",9);
+insert into teams(id,`name`,league_id) values(144,"Karkonosze Jelenia Góra",9);
+insert into teams(id,`name`,league_id) values(145,"Odra Ścinawa",9);
+insert into teams(id,`name`,league_id) values(146,"Sparta Rudna",9);
+insert into teams(id,`name`,league_id) values(147,"Stal Chocianów",9);
+insert into teams(id,`name`,league_id) values(148,"KS Legnickie Pole",9);
+insert into teams(id,`name`,league_id) values(149,"Lotnik Jeżów Sudecki",9);
+insert into teams(id,`name`,league_id) values(150,"Sparta Grębocice",9);
+insert into teams(id,`name`,league_id) values(151,"Orkan Szczedrzykowice",9);
+insert into teams(id,`name`,league_id) values(152,"Gryf Gryfów Śląski",9);
+insert into teams(id,`name`,league_id) values(153,"Górnik Złotoryja",9);
+insert into teams(id,`name`,league_id) values(154,"Kuźnia Jawor",9);
+insert into teams(id,`name`,league_id) values(155,"Orla Wąsosz",9);
+insert into teams(id,`name`,league_id) values(156,"Prochowiczanka Prochowice",9);
+-- kujawsko-pomorski ZPN IV liga
+insert into teams(id,`name`,league_id) values(157,"Pomorzanin Toruń",51);
+insert into teams(id,`name`,league_id) values(158,"Sportis Łochowo",51);
+insert into teams(id,`name`,league_id) values(159,"Cuiavia Inowrocław",51);
+insert into teams(id,`name`,league_id) values(160,"Unia Gniewkowo",51);
+insert into teams(id,`name`,league_id) values(161,"Lech Rypin",51);
+insert into teams(id,`name`,league_id) values(162,"SP Zawisza Bydgoszcz",51);
+insert into teams(id,`name`,league_id) values(163,"Lider Włocławek",51);
+insert into teams(id,`name`,league_id) values(164,"Chemik Bydgoszcz",51);
+insert into teams(id,`name`,league_id) values(165,"Chełminianka Chełmno",51);
+insert into teams(id,`name`,league_id) values(166,"Pogoń Mogilno",51);
+insert into teams(id,`name`,league_id) values(167,"Sparta Brodnica",51);
+insert into teams(id,`name`,league_id) values(168,"Kujawianka Izbica Kujawska",51);
+insert into teams(id,`name`,league_id) values(169,"BKS Bydgoszcz",51);
+insert into teams(id,`name`,league_id) values(170,"Orlęta Aleksandrów Kujawski",51);
+insert into teams(id,`name`,league_id) values(171,"Włocłavia Włocławek",51);
+insert into teams(id,`name`,league_id) values(172,"Notecianka Pakość",51);
+insert into teams(id,`name`,league_id) values(173,"Legia Chełmża",51);
+insert into teams(id,`name`,league_id) values(174,"Piast Złotniki Kujawskie",51);
+-- lubelski ZPN IV liga
+insert into teams(id,`name`,league_id) values(175,"Lewart Lubartów",65);
+insert into teams(id,`name`,league_id) values(176,"Tomasovia Tomaszów Lubelski",65);
+insert into teams(id,`name`,league_id) values(177,"Granit Bychawa",65);
+insert into teams(id,`name`,league_id) values(178,"Włodawianka Włodawa",65);
+insert into teams(id,`name`,league_id) values(179,"Powiślak Końskowola",65);
+insert into teams(id,`name`,league_id) values(180,"Huragan Międzyrzec Podlaski",65);
+insert into teams(id,`name`,league_id) values(181,"Orlęta Łuków",65);
+insert into teams(id,`name`,league_id) values(182,"Lublinianka Lublin",65);
+insert into teams(id,`name`,league_id) values(183,"Huczwa Tyszowce",65);
+insert into teams(id,`name`,league_id) values(184,"Górnik II Łęczna",65);
+insert into teams(id,`name`,league_id) values(185,"Victoria Żmudź",65);
+insert into teams(id,`name`,league_id) values(186,"Sparta Rejowiec Fabryczny",65);
+insert into teams(id,`name`,league_id) values(187,"Unia Hrubieszów",65);
+insert into teams(id,`name`,league_id) values(188,"Łada 1945 Biłgoraj",65);
+insert into teams(id,`name`,league_id) values(189,"Kryształ Werbkowice",65);
+insert into teams(id,`name`,league_id) values(190,"Kłos Gmina Chełm",65);
+-- lubuski ZPN IV liga
+insert into teams(id,`name`,league_id) values(191,"Warta Gorzów Wielkopolski",85);
+insert into teams(id,`name`,league_id) values(192,"Spójnia Ośno Lubuskie",85);
+insert into teams(id,`name`,league_id) values(193,"Carina Gubin",85);
+insert into teams(id,`name`,league_id) values(194,"Polonia Słubice",85);
+insert into teams(id,`name`,league_id) values(195,"Meprozet Stare Kurowo",85);
+insert into teams(id,`name`,league_id) values(196,"Pogoń Skwierzyna",85);
+insert into teams(id,`name`,league_id) values(197,"Korona Kożuchów",85);
+insert into teams(id,`name`,league_id) values(198,"KS Stilon Gorzów Wielkopolski",85);
+insert into teams(id,`name`,league_id) values(199,"Dąb Przybyszów",85);
+insert into teams(id,`name`,league_id) values(200,"Czarni Żagań",85);
+insert into teams(id,`name`,league_id) values(201,"KP Piast Iłowa",85);
+insert into teams(id,`name`,league_id) values(202,"Pogoń Świebodzin",85);
+insert into teams(id,`name`,league_id) values(203,"Ilanka Rzepin",85);
+insert into teams(id,`name`,league_id) values(204,"Syrena Zbąszynek",85);
+insert into teams(id,`name`,league_id) values(205,"TS Przylep",85);
+insert into teams(id,`name`,league_id) values(206,"Tęcza Krosno Odrzańskie",85);
+-- łódzki ZPN IV liga
+insert into teams(id,`name`,league_id) values(207,"KS Kutno",103);
+insert into teams(id,`name`,league_id) values(208,"Orkan Buczek",103);
+insert into teams(id,`name`,league_id) values(209,"Polonia Piotrków Trybunalski",103);
+insert into teams(id,`name`,league_id) values(210,"Warta Sieradz",103);
+insert into teams(id,`name`,league_id) values(211,"Boruta Zgierz",103);
+insert into teams(id,`name`,league_id) values(212,"Jutrzenka Warta",103);
+insert into teams(id,`name`,league_id) values(213,"LKS Kwiatkowice",103);
+insert into teams(id,`name`,league_id) values(214,"Omega Kleszczów",103);
+insert into teams(id,`name`,league_id) values(215,"Zjednoczeni Stryków",103);
+insert into teams(id,`name`,league_id) values(216,"Andrespolia Wiśniowa Góra",103);
+insert into teams(id,`name`,league_id) values(217,"ŁKS II Łódź",103);
+insert into teams(id,`name`,league_id) values(218,"Pogoń Zduńska Wola",103);
+insert into teams(id,`name`,league_id) values(219,"Warta Działoszyn",103);
+insert into teams(id,`name`,league_id) values(220,"Ceramika Opoczno",103);
+insert into teams(id,`name`,league_id) values(221,"Włókniarz Zelów",103);
+insert into teams(id,`name`,league_id) values(222,"Ner Poddębice",103);
+insert into teams(id,`name`,league_id) values(223,"Orzeł Nieborów",103);
+insert into teams(id,`name`,league_id) values(224,"Pelikan II Łowicz",103);
+-- małopolski ZPN IV liga wschód
+insert into teams(id,`name`,league_id) values(225,"Bruk-Bet Termalica II Nieciecza",127);
+insert into teams(id,`name`,league_id) values(226,"Sandecja II Nowy Sącz",127);
+insert into teams(id,`name`,league_id) values(227,"Glinik Gorlice",127);
+insert into teams(id,`name`,league_id) values(228,"Unia Tarnów",127);
+insert into teams(id,`name`,league_id) values(229,"Poprad Muszyna",127);
+insert into teams(id,`name`,league_id) values(230,"Bocheński KS",127);
+insert into teams(id,`name`,league_id) values(231,"Limanovia Limanowa",127);
+insert into teams(id,`name`,league_id) values(232,"Wierchy Rabka Zdrój",127);
+insert into teams(id,`name`,league_id) values(233,"Lubań Maniowy",127);
+insert into teams(id,`name`,league_id) values(234,"Wolania Wola Rzędzińska",127);
+insert into teams(id,`name`,league_id) values(235,"Okocimski KS Brzesko",127);
+insert into teams(id,`name`,league_id) values(236,"Warta Białka Tatrzańska",127);
+insert into teams(id,`name`,league_id) values(237,"Poprad Rytro",127);
+insert into teams(id,`name`,league_id) values(238,"GKS Drwinia",127);
+insert into teams(id,`name`,league_id) values(239,"Orkan Szczyrzyc",127);
+insert into teams(id,`name`,league_id) values(240,"Barciczanka Barcice",127);
+insert into teams(id,`name`,league_id) values(241,"Tarnovia Tarnów",127);
+-- małopolski ZPN IV liga zachód
+insert into teams(id,`name`,league_id) values(242,"Cracovia II",128);
+insert into teams(id,`name`,league_id) values(243,"Wiślanie Jaśkowice",128);
+insert into teams(id,`name`,league_id) values(244,"Beskid Andrychów",128);
+insert into teams(id,`name`,league_id) values(245,"Orzeł Ryczów",128);
+insert into teams(id,`name`,league_id) values(246,"Słomniczanka Słomniki",128);
+insert into teams(id,`name`,league_id) values(247,"Dalin Myślenice",128);
+insert into teams(id,`name`,league_id) values(248,"Pcimianka Pcim",128);
+insert into teams(id,`name`,league_id) values(249,"LKS Jawiszowice",128);
+insert into teams(id,`name`,league_id) values(250,"Wisła II Kraków",128);
+insert into teams(id,`name`,league_id) values(251,"MKS Trzebinia",128);
+insert into teams(id,`name`,league_id) values(252,"Unia Oświęcim",128);
+insert into teams(id,`name`,league_id) values(253,"Orzeł Piaski Wielkie",128);
+insert into teams(id,`name`,league_id) values(254,"Skawinka Skawina",128);
+insert into teams(id,`name`,league_id) values(255,"Węgrzcanka Węgrzce Wielkie",128);
+insert into teams(id,`name`,league_id) values(256,"Czarni Staniątki",128);
+insert into teams(id,`name`,league_id) values(257,"Sokół Kocmyrzów Baranówka",128);
+insert into teams(id,`name`,league_id) values(258,"Strażak Rajsko",128);
+insert into teams(id,`name`,league_id) values(259,"Clepardia Kraków",128);
+-- mazowiecki ZPN IV liga południe
+insert into teams(id,`name`,league_id) values(260,"Błonianka Błonie",177);
+insert into teams(id,`name`,league_id) values(261,"Radomiak II Radom",177);
+insert into teams(id,`name`,league_id) values(262,"MKS Piaseczno",177);
+insert into teams(id,`name`,league_id) values(263,"Znicz II Pruszków",177);
+insert into teams(id,`name`,league_id) values(264,"Pilica Białobrzegi",177);
+insert into teams(id,`name`,league_id) values(265,"Wilga Garwolin",177);
+insert into teams(id,`name`,league_id) values(266,"Oskar Przysucha",177);
+insert into teams(id,`name`,league_id) values(267,"Mazur Karczew",177);
+insert into teams(id,`name`,league_id) values(268,"Victoria Sulejówek",177);
+insert into teams(id,`name`,league_id) values(269,"KS Warka",177);
+insert into teams(id,`name`,league_id) values(270,"KS Raszyn",177);
+insert into teams(id,`name`,league_id) values(271,"Mszczonowianka Mszczonów",177);
+insert into teams(id,`name`,league_id) values(272,"Żyrardowianka Żyrardów",177);
+insert into teams(id,`name`,league_id) values(273,"Proch Pionki",177);
+insert into teams(id,`name`,league_id) values(274,"Józefovia Józefów",177);
+insert into teams(id,`name`,league_id) values(275,"Unia Warszawa",177);
+-- mazowiecki ZPN IV liga północ
+insert into teams(id,`name`,league_id) values(276,"Hutnik Warszawa",178);
+insert into teams(id,`name`,league_id) values(277,"Huragan Wołomin",178);
+insert into teams(id,`name`,league_id) values(278,"Mazovia Mińsk Mazowiecki",178);
+insert into teams(id,`name`,league_id) values(279,"Drukarz Warszawa",178);
+insert into teams(id,`name`,league_id) values(280,"KS Łomianki",178);
+insert into teams(id,`name`,league_id) values(281,"Pogoń II Siedlce",178);
+insert into teams(id,`name`,league_id) values(282,"Wisła II Płock",178);
+insert into teams(id,`name`,league_id) values(283,"Świt Staroźreby",178);
+insert into teams(id,`name`,league_id) values(284,"Makowianka Maków Mazowiecki",178);
+insert into teams(id,`name`,league_id) values(285,"Ząbkovia Ząbki",178);
+insert into teams(id,`name`,league_id) values(286,"Nadnarwianka Pułtusk",178);
+insert into teams(id,`name`,league_id) values(287,"MKS Przasnysz",178);
+insert into teams(id,`name`,league_id) values(288,"Podlasie Sokołów Podlaski",178);
+insert into teams(id,`name`,league_id) values(289,"Ożarowianka Ożarów Mazowiecki",178);
+insert into teams(id,`name`,league_id) values(290,"Korona Ostrołęka",178);
+insert into teams(id,`name`,league_id) values(291,"Wkra Żuromin",178);
+-- opolski ZPN IV liga
+insert into teams(id,`name`,league_id) values(292,"Polonia Nysa",204);
+insert into teams(id,`name`,league_id) values(293,"Agroplon Głuszyna",204);
+insert into teams(id,`name`,league_id) values(294,"Porawie Większyce",204);
+insert into teams(id,`name`,league_id) values(295,"MKS Gogolin",204);
+insert into teams(id,`name`,league_id) values(296,"Unia Krapkowice",204);
+insert into teams(id,`name`,league_id) values(297,"Polonia Głubczyce",204);
+insert into teams(id,`name`,league_id) values(298,"Małapanew Ozimek",204);
+insert into teams(id,`name`,league_id) values(299,"Skalnik Gracze",204);
+insert into teams(id,`name`,league_id) values(300,"Swornica Czarnowąsy",204);
+insert into teams(id,`name`,league_id) values(301,"GKS Głuchołazy",204);
+insert into teams(id,`name`,league_id) values(302,"OKS Olesno",204);
+insert into teams(id,`name`,league_id) values(303,"Pogoń Prudnik",204);
+insert into teams(id,`name`,league_id) values(304,"Chemik Kędzierzyn-Koźle",204);
+insert into teams(id,`name`,league_id) values(305,"Piast Strzelce Opolskie",204);
+insert into teams(id,`name`,league_id) values(306,"LZS Skorogoszcz",204);
+insert into teams(id,`name`,league_id) values(307,"Start Namysłów",204);
+-- podkarpacki ZPN IV liga
+insert into teams(id,`name`,league_id) values(308,"Korona Rzeszów",225);
+insert into teams(id,`name`,league_id) values(309,"KS Wiązownica",225);
+insert into teams(id,`name`,league_id) values(310,"Stal II Mielec",225);
+insert into teams(id,`name`,league_id) values(311,"JKS 1909 Jarosław",225);
+insert into teams(id,`name`,league_id) values(312,"Igloopol Dębica",225);
+insert into teams(id,`name`,league_id) values(313,"Partyzant Targowiska",225);
+insert into teams(id,`name`,league_id) values(314,"Głogovia Głogów Małopolski",225);
+insert into teams(id,`name`,league_id) values(315,"Piast Tuczempy",225);
+insert into teams(id,`name`,league_id) values(316,"Ekoball Sanok",225);
+insert into teams(id,`name`,league_id) values(317,"Izolator Boguchwała",225);
+insert into teams(id,`name`,league_id) values(318,"Wisłok Wiśniowa",225);
+insert into teams(id,`name`,league_id) values(319,"Błękitni Ropczyce",225);
+insert into teams(id,`name`,league_id) values(320,"Sokół Kolbuszowa Dolna",225);
+insert into teams(id,`name`,league_id) values(321,"KS Pilzno",225);
+insert into teams(id,`name`,league_id) values(322,"Polonia Przemyśl",225);
+insert into teams(id,`name`,league_id) values(323,"Stal II Stalowa Wola",225);
+insert into teams(id,`name`,league_id) values(324,"Karpaty Krosno",225);
+insert into teams(id,`name`,league_id) values(325,"Start Pruchnik",225);
+-- podlaski ZPN IV liga
+insert into teams(id,`name`,league_id) values(326,"Jagiellonia II Białystok",266);
+insert into teams(id,`name`,league_id) values(327,"Warmia Grajewo",266);
+insert into teams(id,`name`,league_id) values(328,"Tur Bielsk Podlaski",266);
+insert into teams(id,`name`,league_id) values(329,"Wissa Szczuczyn",266);
+insert into teams(id,`name`,league_id) values(330,"KS Michałowo",266);
+insert into teams(id,`name`,league_id) values(331,"Sokół 1946 Sokółka",266);
+insert into teams(id,`name`,league_id) values(332,"Sparta 1951 Szepietowo",266);
+insert into teams(id,`name`,league_id) values(333,"Sparta Augustów",266);
+insert into teams(id,`name`,league_id) values(334,"Promień Mońki",266);
+insert into teams(id,`name`,league_id) values(335,"Krypnianka Krypno",266);
+insert into teams(id,`name`,league_id) values(336,"ŁKS 1926 Łomża",266);
+insert into teams(id,`name`,league_id) values(337,"Dąb Dąbrowa Białostocka",266);
+insert into teams(id,`name`,league_id) values(338,"Hetman Białystok",266);
+insert into teams(id,`name`,league_id) values(339,"Biebrza Goniądz",266);
+insert into teams(id,`name`,league_id) values(340,"Cresovia Siemiatycze",266);
+insert into teams(id,`name`,league_id) values(341,"MOSP Białystok",266);
+-- pomorski ZPN IV liga
+insert into teams(id,`name`,league_id) values(342,"Arka II Gdynia",270);
+insert into teams(id,`name`,league_id) values(343,"GKS Przodkowo",270);
+insert into teams(id,`name`,league_id) values(344,"Cartusia Kartuzy",270);
+insert into teams(id,`name`,league_id) values(345,"Kaszubia Kościerzyna",270);
+insert into teams(id,`name`,league_id) values(346,"Gryf Słupsk",270);
+insert into teams(id,`name`,league_id) values(347,"Gedania Gdańsk",270);
+insert into teams(id,`name`,league_id) values(348,"Powiśle Dzierzgoń",270);
+insert into teams(id,`name`,league_id) values(349,"Wda Lipusz",270);
+insert into teams(id,`name`,league_id) values(350,"Stolem Gniewino",270);
+insert into teams(id,`name`,league_id) values(351,"Wierzyca Pelplin",270);
+insert into teams(id,`name`,league_id) values(352,"GKS Kowale",270);
+insert into teams(id,`name`,league_id) values(353,"Pogoń Lębork",270);
+insert into teams(id,`name`,league_id) values(354,"GOSRiT Luzino",270);
+insert into teams(id,`name`,league_id) values(355,"Lechia II Gdańsk",270);
+insert into teams(id,`name`,league_id) values(356,"Gwiazda Karsin",270);
+insert into teams(id,`name`,league_id) values(357,"Jaguar Kokoszki",270);
+insert into teams(id,`name`,league_id) values(358,"Jantar Ustka",270);
+insert into teams(id,`name`,league_id) values(359,"Lipniczanka Lipnica",270);
+-- śląski ZPN IV liga grupa I
+insert into teams(id,`name`,league_id) values(360,"Gwarek Ornontowice",289);
+insert into teams(id,`name`,league_id) values(361,"Szombierki Bytom",289);
+insert into teams(id,`name`,league_id) values(362,"Warta Zawiercie",289);
+insert into teams(id,`name`,league_id) values(363,"Unia Kosztowy",289);
+insert into teams(id,`name`,league_id) values(364,"Ruch Radzionków",289);
+insert into teams(id,`name`,league_id) values(365,"Sarmacja Będzin",289);
+insert into teams(id,`name`,league_id) values(366,"Unia Dąbrowa Górnicza",289);
+insert into teams(id,`name`,league_id) values(367,"Śląsk Świętochłowice",289);
+insert into teams(id,`name`,league_id) values(368,"RKS Grodziec",289);
+insert into teams(id,`name`,league_id) values(369,"Znicz Kłobuck",289);
+insert into teams(id,`name`,league_id) values(370,"Slavia Ruda Śląska",289);
+insert into teams(id,`name`,league_id) values(371,"AKS Mikołów",289);
+insert into teams(id,`name`,league_id) values(372,"Przemsza Siewierz",289);
+insert into teams(id,`name`,league_id) values(373,"Polonia Poraj",289);
+insert into teams(id,`name`,league_id) values(374,"Raków II Częstochowa",289);
+insert into teams(id,`name`,league_id) values(375,"Drama Zbrosławice",289);
+-- śląski ZPN IV liga grupa II
+insert into teams(id,`name`,league_id) values(376,"Unia Książenice",290);
+insert into teams(id,`name`,league_id) values(377,"Kuźnia Ustroń",290);
+insert into teams(id,`name`,league_id) values(378,"LKS Czaniec",290);
+insert into teams(id,`name`,league_id) values(379,"Odra Wodzisław Śląski",290);
+insert into teams(id,`name`,league_id) values(380,"LKS Goczałkowice Zdrój",290);
+insert into teams(id,`name`,league_id) values(381,"Podbeskidzie II Bielsko-Biała",290);
+insert into teams(id,`name`,league_id) values(382,"GKS Radziechowy-Wieprz",290);
+insert into teams(id,`name`,league_id) values(383,"Polonia Łaziska Górne",290);
+insert into teams(id,`name`,league_id) values(384,"Drzewiarz Jasienica",290);
+insert into teams(id,`name`,league_id) values(385,"MRKS Czechowice-Dziedzice",290);
+insert into teams(id,`name`,league_id) values(386,"LKS Bełk",290);
+insert into teams(id,`name`,league_id) values(387,"GKS II Tychy",290);
+insert into teams(id,`name`,league_id) values(388,"Spójnia Landek",290);
+insert into teams(id,`name`,league_id) values(389,"Beskid 09 Skoczów",290);
+insert into teams(id,`name`,league_id) values(390,"Wilki Wilcza",290);
+insert into teams(id,`name`,league_id) values(391,"Odra Centrum Wodzisław Śląski",290);
+-- świętokrzyski ZPN IV liga
+insert into teams(id,`name`,league_id) values(392,"ŁKS Łagów",328);
+insert into teams(id,`name`,league_id) values(393,"GKS Nowiny",328);
+insert into teams(id,`name`,league_id) values(394,"Czarni Połaniec",328);
+insert into teams(id,`name`,league_id) values(395,"Granat Skarżysko-Kamienna",328);
+insert into teams(id,`name`,league_id) values(396,"Star Starachowice",328);
+insert into teams(id,`name`,league_id) values(397,"Naprzód Jędrzejów",328);
+insert into teams(id,`name`,league_id) values(398,"Nida Pińczów",328);
+insert into teams(id,`name`,league_id) values(399,"Zdrój Busko Zdrój",328);
+insert into teams(id,`name`,league_id) values(400,"Neptun Końskie",328);
+insert into teams(id,`name`,league_id) values(401,"Pogoń 1945 Staszów",328);
+insert into teams(id,`name`,league_id) values(402,"GKS Rudki",328);
+insert into teams(id,`name`,league_id) values(403,"Wierna Małogoszcz",328);
+insert into teams(id,`name`,league_id) values(404,"Lubrzanka Kajetanów",328);
+insert into teams(id,`name`,league_id) values(405,"Alit Ożarów",328);
+insert into teams(id,`name`,league_id) values(406,"Łysica Bodzentyn",328);
+insert into teams(id,`name`,league_id) values(407,"Partyzant Radoszyce",328);
+insert into teams(id,`name`,league_id) values(408,"Spartakus Daleszyce",328);
+insert into teams(id,`name`,league_id) values(409,"Orlicz Suchedniów",328);
+-- warmińsko-mazurski ZPN IV liga
+insert into teams(id,`name`,league_id) values(410,"GKS Wikielec",336);
+insert into teams(id,`name`,league_id) values(411,"Polonia Lidzbark Warmiński",336);
+insert into teams(id,`name`,league_id) values(412,"ITS Jeziorak Iława",336);
+insert into teams(id,`name`,league_id) values(413,"Stomil II Olsztyn",336);
+insert into teams(id,`name`,league_id) values(414,"Mamry Giżycko",336);
+insert into teams(id,`name`,league_id) values(415,"Błękitni Orneta",336);
+insert into teams(id,`name`,league_id) values(416,"Mrągowia Mrągowo",336);
+insert into teams(id,`name`,league_id) values(417,"Granica Kętrzyn",336);
+insert into teams(id,`name`,league_id) values(418,"Motor Lubawa",336);
+insert into teams(id,`name`,league_id) values(419,"Zatoka Braniewo",336);
+insert into teams(id,`name`,league_id) values(420,"Pisa Barczewo",336);
+insert into teams(id,`name`,league_id) values(421,"Warmia Olsztyn",336);
+insert into teams(id,`name`,league_id) values(422,"MKS Korsze",336);
+insert into teams(id,`name`,league_id) values(423,"Olimpia II Elbląg",336);
+insert into teams(id,`name`,league_id) values(424,"Mazur Ełk",336);
+insert into teams(id,`name`,league_id) values(425,"Tęcza Biskupiec",336);
+-- wielkopolski ZPN IV liga
+insert into teams(id,`name`,league_id) values(426,"LKS Gołuchów",347);
+insert into teams(id,`name`,league_id) values(427,"Centra Ostrów Wielkopolski",347);
+insert into teams(id,`name`,league_id) values(428,"Pogoń Nowe Skalmierzyce",347);
+insert into teams(id,`name`,league_id) values(429,"Victoria Ostrzeszów",347);
+insert into teams(id,`name`,league_id) values(430,"Polonia 1912 Leszno",347);
+insert into teams(id,`name`,league_id) values(431,"Victoria Września",347);
+insert into teams(id,`name`,league_id) values(432,"Unia Swarzędz",347);
+insert into teams(id,`name`,league_id) values(433,"Tarnovia Tarnowo Podgórne",347);
+insert into teams(id,`name`,league_id) values(434,"Pogoń Lwówek",347);
+insert into teams(id,`name`,league_id) values(435,"Lubuszanin Trzcianka",347);
+insert into teams(id,`name`,league_id) values(436,"Warta Międzychód",347);
+insert into teams(id,`name`,league_id) values(437,"Kotwica Kórnik",347);
+insert into teams(id,`name`,league_id) values(438,"TPS Winogrady",347);
+insert into teams(id,`name`,league_id) values(439,"Polonia Kępno",347);
+insert into teams(id,`name`,league_id) values(440,"Obra Kościan",347);
+insert into teams(id,`name`,league_id) values(441,"KS Opatówek",347);
+insert into teams(id,`name`,league_id) values(442,"Ostrovia 1909 Ostrów Wielkopolski",347);
+insert into teams(id,`name`,league_id) values(443,"Olimpia Koło",347);
+-- zachodniopomorski ZPN IV liga
+insert into teams(id,`name`,league_id) values(444,"Flota Świnoujście",376);
+insert into teams(id,`name`,league_id) values(445,"Hutnik Szczecin",376);
+insert into teams(id,`name`,league_id) values(446,"Ina Goleniów",376);
+insert into teams(id,`name`,league_id) values(447,"Orzeł Wałcz",376);
+insert into teams(id,`name`,league_id) values(448,"Darłovia Darłowo",376);
+insert into teams(id,`name`,league_id) values(449,"Kluczevia Stargard",376);
+insert into teams(id,`name`,league_id) values(450,"Błękitni II Stargard",376);
+insert into teams(id,`name`,league_id) values(451,"Rasel Dygowo",376);
+insert into teams(id,`name`,league_id) values(452,"Lech Czaplinek",376);
+insert into teams(id,`name`,league_id) values(453,"MKP Szczecinek",376);
+insert into teams(id,`name`,league_id) values(454,"Gryf Kamień Pomorski",376);
+insert into teams(id,`name`,league_id) values(455,"Leśnik Manowo",376);
+insert into teams(id,`name`,league_id) values(456,"Iskierka Śmierdnica",376);
+insert into teams(id,`name`,league_id) values(457,"Rega Trzebiatów",376);
+insert into teams(id,`name`,league_id) values(458,"Vineta Wolin",376);
+insert into teams(id,`name`,league_id) values(459,"Olimp Gościno",376);
+insert into teams(id,`name`,league_id) values(460,"Sparta Węgorzyno",376);
+insert into teams(id,`name`,league_id) values(461,"Sokół Karlino",376);
+-- dolnośląski ZPN klasa okręgowa Jelenia Góra
+insert into teams(id,`name`,league_id) values(462,"Leśnik Osiecznica",10);
+insert into teams(id,`name`,league_id) values(463,"Włókniarz Leśna",10);
+insert into teams(id,`name`,league_id) values(464,"Hutnik Pieńsk",10);
+insert into teams(id,`name`,league_id) values(465,"Pogoń Świerzawa",10);
+insert into teams(id,`name`,league_id) values(466,"Victoria Ruszów",10);
+insert into teams(id,`name`,league_id) values(467,"BKS Bobrzanie Bolesławiec",10);
+insert into teams(id,`name`,league_id) values(468,"Lechia Piechowice",10);
+insert into teams(id,`name`,league_id) values(469,"Piast Wykroty",10);
+insert into teams(id,`name`,league_id) values(470,"Olimpia Kamienna Góra",10);
+insert into teams(id,`name`,league_id) values(471,"Łużyce Lubań",10);
+insert into teams(id,`name`,league_id) values(472,"Julia Szklarska Poręba",10);
+insert into teams(id,`name`,league_id) values(473,"Nysa Zgorzelec",10);
+insert into teams(id,`name`,league_id) values(474,"Włókniarz Mirsk",10);
+insert into teams(id,`name`,league_id) values(475,"Pogoń Markocice",10);
+insert into teams(id,`name`,league_id) values(476,"GKS Warta Bolesławiecka",10);
+-- dolnośląski ZPN klasa okręgowa Legnica
+insert into teams(id,`name`,league_id) values(477,"Mewa Kunice",11);
+insert into teams(id,`name`,league_id) values(478,"Iskra Kochlice",11);
+insert into teams(id,`name`,league_id) values(479,"Iskra Księginice",11);
+insert into teams(id,`name`,league_id) values(480,"Górnik Lubin",11);
+insert into teams(id,`name`,league_id) values(481,"Zawisza Serby",11);
+insert into teams(id,`name`,league_id) values(482,"Kaczawa Bieniowice",11);
+insert into teams(id,`name`,league_id) values(483,"Zryw Kłębanowice",11);
+insert into teams(id,`name`,league_id) values(484,"Konfeks Legnica",11);
+insert into teams(id,`name`,league_id) values(485,"Gwardia Białołęka",11);
+insert into teams(id,`name`,league_id) values(486,"Przyszłość Prusice",11);
+insert into teams(id,`name`,league_id) values(487,"Płomień Radwanice",11);
+insert into teams(id,`name`,league_id) values(488,"Zamet Przemków",11);
+insert into teams(id,`name`,league_id) values(489,"GKS Męcinka",11);
+insert into teams(id,`name`,league_id) values(490,"Pogoń Góra",11);
+insert into teams(id,`name`,league_id) values(491,"Odra Chobienia",11);
+-- dolnośląski ZPN klasa okręgowa Wałbrzych
+insert into teams(id,`name`,league_id) values(492,"Nysa Kłodzko",12);
+insert into teams(id,`name`,league_id) values(493,"Granit Roztoka",12);
+insert into teams(id,`name`,league_id) values(494,"Zdrój Jedlina Zdrój",12);
+insert into teams(id,`name`,league_id) values(495,"Orzeł Lubawka",12);
+insert into teams(id,`name`,league_id) values(496,"Trojan Lądek Zdrój",12);
+insert into teams(id,`name`,league_id) values(497,"Karolina Jaworzyna Śląska",12);
+insert into teams(id,`name`,league_id) values(498,"Grom Witków",12);
+insert into teams(id,`name`,league_id) values(499,"Zjednoczeni Żarów",12);
+insert into teams(id,`name`,league_id) values(500,"Wenus Nowice",12);
+insert into teams(id,`name`,league_id) values(501,"Sparta Ziębice",12);
+insert into teams(id,`name`,league_id) values(502,"Skałki Stolec",12);
+insert into teams(id,`name`,league_id) values(503,"Zamek Kamieniec Ząbkowicki",12);
+insert into teams(id,`name`,league_id) values(504,"Włókniarz Kudowa Zdrój",12);
+insert into teams(id,`name`,league_id) values(505,"Płomień Makowice",12);
+insert into teams(id,`name`,league_id) values(506,"Victoria Tuszyn",12);
+insert into teams(id,`name`,league_id) values(507,"Kryształ Stronie Śląskie",12);
+-- dolnośląski ZPN klasa okręgowa Wrocław
+insert into teams(id,`name`,league_id) values(508,"Mechanik Brzezina",13);
+insert into teams(id,`name`,league_id) values(509,"MKP Wołów",13);
+insert into teams(id,`name`,league_id) values(510,"WKS Wierzbice",13);
+insert into teams(id,`name`,league_id) values(511,"Orzeł Pawłowice",13);
+insert into teams(id,`name`,league_id) values(512,"Czarni Jelcz-Laskowice",13);
+insert into teams(id,`name`,league_id) values(513,"Pogoń Oleśnica",13);
+insert into teams(id,`name`,league_id) values(514,"Orzeł Marszowice",13);
+insert into teams(id,`name`,league_id) values(515,"Barycz Sułów",13);
+insert into teams(id,`name`,league_id) values(516,"Zachód Sobótka",13);
+insert into teams(id,`name`,league_id) values(517,"Polonia Środa Śląska",13);
+insert into teams(id,`name`,league_id) values(518,"Parasol Wrocław",13);
+insert into teams(id,`name`,league_id) values(519,"Odra Malczyce",13);
+insert into teams(id,`name`,league_id) values(520,"Olimpia Podgaj",13);
+insert into teams(id,`name`,league_id) values(521,"KS Żórawina",13);
+insert into teams(id,`name`,league_id) values(522,"Energetyk Siechnice",13);
+insert into teams(id,`name`,league_id) values(523,"GKS Kobierzyce",13);
+-- kujawsko-pomorski ZPN klasa okręgowa I
+insert into teams(id,`name`,league_id) values(524,"Polonia Bydgoszcz",52);
+insert into teams(id,`name`,league_id) values(525,"Start Pruszcz",52);
+insert into teams(id,`name`,league_id) values(526,"Wda Świecie",52);
+insert into teams(id,`name`,league_id) values(527,"Elana II Toruń",52);
+insert into teams(id,`name`,league_id) values(528,"Krajna Sępólno Krajeńskie",52);
+insert into teams(id,`name`,league_id) values(529,"Olimpia II Grudziądz",52);
+insert into teams(id,`name`,league_id) values(530,"Unia Solec Kujawski",52);
+insert into teams(id,`name`,league_id) values(531,"Pomorzanin Serock",52);
+insert into teams(id,`name`,league_id) values(532,"Mustang Ostaszewo",52);
+insert into teams(id,`name`,league_id) values(533,"Naprzód Jabłonowo Pomorskie",52);
+insert into teams(id,`name`,league_id) values(534,"Cyklon Kończewice",52);
+insert into teams(id,`name`,league_id) values(535,"Radzynianka Radzyń Chełmiński",52);
+insert into teams(id,`name`,league_id) values(536,"Promień Kowalewo Pomorskie",52);
+insert into teams(id,`name`,league_id) values(537,"Flisak Złotoria",52);
+insert into teams(id,`name`,league_id) values(538,"Unia Wąbrzeźno",52);
+insert into teams(id,`name`,league_id) values(539,"Sokół Radomin",52);
+-- kujawsko-pomorski ZPN klasa okręgowa II
+insert into teams(id,`name`,league_id) values(540,"Gopło Kruszwica",53);
+insert into teams(id,`name`,league_id) values(541,"KS Brzoza",53);
+insert into teams(id,`name`,league_id) values(542,"Kujawiak Kowal",53);
+insert into teams(id,`name`,league_id) values(543,"Łokietek Brześć Kujawski",53);
+insert into teams(id,`name`,league_id) values(544,"LTP Lubanie",53);
+insert into teams(id,`name`,league_id) values(545,"BOSiR Barcin",53);
+insert into teams(id,`name`,league_id) values(546,"Goplania Inowrocław",53);
+insert into teams(id,`name`,league_id) values(547,"Lubienianka Lubień Kujawski",53);
+insert into teams(id,`name`,league_id) values(548,"Noteć Łabiszyn",53);
+insert into teams(id,`name`,league_id) values(549,"GKS Baruchowo",53);
+insert into teams(id,`name`,league_id) values(550,"Zdrój Ciechocinek",53);
+insert into teams(id,`name`,league_id) values(551,"Kujawianka Strzelno",53);
+insert into teams(id,`name`,league_id) values(552,"Wisła Dobrzyń",53);
+insert into teams(id,`name`,league_id) values(553,"Mień Lipno",53);
+insert into teams(id,`name`,league_id) values(554,"Szubinianka Szubin",53);
+insert into teams(id,`name`,league_id) values(555,"Ziemowit Osięciny",53);
+-- lubelski ZPN klasa okręgowa Biała Podlaska
+insert into teams(id,`name`,league_id) values(556,"Lutnia Piszczac",66);
+insert into teams(id,`name`,league_id) values(557,"Grom Kąkolewnica",66);
+insert into teams(id,`name`,league_id) values(558,"Bizon Jeleniec",66);
+insert into teams(id,`name`,league_id) values(559,"Sokół Adamów",66);
+insert into teams(id,`name`,league_id) values(560,"Unia Żabików",66);
+insert into teams(id,`name`,league_id) values(561,"Tytan Wisznice",66);
+insert into teams(id,`name`,league_id) values(562,"Bór Dąbie",66);
+insert into teams(id,`name`,league_id) values(563,"Bad Boys Zastawie",66);
+insert into teams(id,`name`,league_id) values(564,"Orzeł Czemierniki",66);
+insert into teams(id,`name`,league_id) values(565,"Granica Terespol",66);
+insert into teams(id,`name`,league_id) values(566,"ŁKS Łazy",66);
+insert into teams(id,`name`,league_id) values(567,"LKS Milanów",66);
+insert into teams(id,`name`,league_id) values(568,"Kujawiak Stanin",66);
+insert into teams(id,`name`,league_id) values(569,"Unia Krzywda",66);
+-- lubelski ZPN klasa okręgowa Chełm
+insert into teams(id,`name`,league_id) values(570,"Unia Białopole",67);
+insert into teams(id,`name`,league_id) values(571,"Start Krasnystaw",67);
+insert into teams(id,`name`,league_id) values(572,"Agros Suchawa",67);
+insert into teams(id,`name`,league_id) values(573,"Ogniwo Wierzbica",67);
+insert into teams(id,`name`,league_id) values(574,"Granica Dorohusk",67);
+insert into teams(id,`name`,league_id) values(575,"Spółdzielca Siedliszcze",67);
+insert into teams(id,`name`,league_id) values(576,"Unia Rejowiec",67);
+insert into teams(id,`name`,league_id) values(577,"Ruch Izbica",67);
+insert into teams(id,`name`,league_id) values(578,"Start Pawłów",67);
+insert into teams(id,`name`,league_id) values(579,"Brat Siennica Nadolna",67);
+insert into teams(id,`name`,league_id) values(580,"Orzeł Srebrzyszcze",67);
+insert into teams(id,`name`,league_id) values(581,"Hetman Żółkiewka",67);
+insert into teams(id,`name`,league_id) values(582,"Bug Hanna",67);
+insert into teams(id,`name`,league_id) values(583,"Frassati Fajsławice",67);
+-- lubelski ZPN klasa okręgowa Lublin
+insert into teams(id,`name`,league_id) values(584,"Świdniczanka Świdnik Mały",68);
+insert into teams(id,`name`,league_id) values(585,"POM Iskra Piotrowice",68);
+insert into teams(id,`name`,league_id) values(586,"Opolanin Opole Lubelskie",68);
+insert into teams(id,`name`,league_id) values(587,"Tęcza Bełżyce",68);
+insert into teams(id,`name`,league_id) values(588,"Polesie Kock",68);
+insert into teams(id,`name`,league_id) values(589,"Stal Poniatowa",68);
+insert into teams(id,`name`,league_id) values(590,"Orion Niedrzwica Duża",68);
+insert into teams(id,`name`,league_id) values(591,"Janowianka Janów Lubelski",68);
+insert into teams(id,`name`,league_id) values(592,"Wisła II Puławy",68);
+insert into teams(id,`name`,league_id) values(593,"MKS Ryki",68);
+insert into teams(id,`name`,league_id) values(594,"Sokół Konopnica",68);
+insert into teams(id,`name`,league_id) values(595,"Garbarnia Kurów",68);
+insert into teams(id,`name`,league_id) values(596,"GKS Niemce",68);
+insert into teams(id,`name`,league_id) values(597,"Avia II Świdnik",68);
+insert into teams(id,`name`,league_id) values(598,"Mazowsze Stężyca",68);
+insert into teams(id,`name`,league_id) values(599,"LKS Stróża",68);
+-- lubelski ZPN klasa okręgowa Zamość
+insert into teams(id,`name`,league_id) values(600,"Grom Różaniec",69);
+insert into teams(id,`name`,league_id) values(601,"Tanew Majdan Stary",69);
+insert into teams(id,`name`,league_id) values(602,"Omega Stary Zamość",69);
+insert into teams(id,`name`,league_id) values(603,"Gryf Gmina Zamość",69);
+insert into teams(id,`name`,league_id) values(604,"Roztocze Szczebrzeszyn",69);
+insert into teams(id,`name`,league_id) values(605,"Błękitni Obsza",69);
+insert into teams(id,`name`,league_id) values(606,"Igros Krasnobród",69);
+insert into teams(id,`name`,league_id) values(607,"Pogoń 96 Łaszczówka",69);
+insert into teams(id,`name`,league_id) values(608,"Metalowiec Goraj",69);
+insert into teams(id,`name`,league_id) values(609,"Olimpia Miączyn",69);
+insert into teams(id,`name`,league_id) values(610,"Victoria Łukowa",69);
+insert into teams(id,`name`,league_id) values(611,"Olimpiakos Tarnogród",69);
+insert into teams(id,`name`,league_id) values(612,"Cosmos Józefów",69);
+insert into teams(id,`name`,league_id) values(613,"Korona Łaszczów",69);
+insert into teams(id,`name`,league_id) values(614,"Potok Sitno",69);
+-- lubuski ZPN klasa okręgowa Gorzów Wielkopolski
+insert into teams(id,`name`,league_id) values(615,"Czarni Witnica",86);
+insert into teams(id,`name`,league_id) values(616,"Lubuszanin Drezdenko",86);
+insert into teams(id,`name`,league_id) values(617,"Róża Różanki",86);
+insert into teams(id,`name`,league_id) values(618,"Łucznik Strzelce Krajeńskie",86);
+insert into teams(id,`name`,league_id) values(619,"Piast Karnin",86);
+insert into teams(id,`name`,league_id) values(620,"Polonia Lipki Wielkie",86);
+insert into teams(id,`name`,league_id) values(621,"Stal Sulęcin",86);
+insert into teams(id,`name`,league_id) values(622,"Orzeł Międzyrzecz",86);
+insert into teams(id,`name`,league_id) values(623,"Zjednoczeni Przytoczna",86);
+insert into teams(id,`name`,league_id) values(624,"Toroma Torzym",86);
+insert into teams(id,`name`,league_id) values(625,"Warta Słońsk",86);
+insert into teams(id,`name`,league_id) values(626,"Spartak Deszczno",86);
+insert into teams(id,`name`,league_id) values(627,"Budowlani Murzynowo",86);
+insert into teams(id,`name`,league_id) values(628,"Kasztelania Santok",86);
+insert into teams(id,`name`,league_id) values(629,"Radowiak Drezdenko",86);
+insert into teams(id,`name`,league_id) values(630,"Błękitni Lubno",86);
+-- lubuski ZPN klasa okręgowa Zielona Góra
+insert into teams(id,`name`,league_id) values(631,"Promień Żary",87);
+insert into teams(id,`name`,league_id) values(632,"Arka Nowa Sól",87);
+insert into teams(id,`name`,league_id) values(633,"Odra Nietków",87);
+insert into teams(id,`name`,league_id) values(634,"Odra Bytom Odrzański",87);
+insert into teams(id,`name`,league_id) values(635,"Alfa Jaromirowice",87);
+insert into teams(id,`name`,league_id) values(636,"Drzonkowianka Racula",87);
+insert into teams(id,`name`,league_id) values(637,"Piast Czerwieńsk",87);
+insert into teams(id,`name`,league_id) values(638,"Hamar Górzyn",87);
+insert into teams(id,`name`,league_id) values(639,"Budowlani Lubsko",87);
+insert into teams(id,`name`,league_id) values(640,"Sprotavia Szprotawa",87);
+insert into teams(id,`name`,league_id) values(641,"Pogoń Przyborów",87);
+insert into teams(id,`name`,league_id) values(642,"Delta Sieniawa Żarska",87);
+insert into teams(id,`name`,league_id) values(643,"Unia Kunice",87);
+insert into teams(id,`name`,league_id) values(644,"Zorza Ochla",87);
+insert into teams(id,`name`,league_id) values(645,"Mieszko Konotop",87);
+insert into teams(id,`name`,league_id) values(646,"Sparta Grabik",87);
+-- łódzki ZPN klasa okręgowa Łódź
+insert into teams(id,`name`,league_id) values(647,"Stal Głowno",104);
+insert into teams(id,`name`,league_id) values(648,"Widzew II Łódź",104);
+insert into teams(id,`name`,league_id) values(649,"GKS Ksawerów",104);
+insert into teams(id,`name`,league_id) values(650,"Zawisza Rzgów",104);
+insert into teams(id,`name`,league_id) values(651,"Włókniarz Pabianice",104);
+insert into teams(id,`name`,league_id) values(652,"Start Brzeziny",104);
+insert into teams(id,`name`,league_id) values(653,"KKS Koluszki",104);
+insert into teams(id,`name`,league_id) values(654,"UKS SMS Łódź",104);
+insert into teams(id,`name`,league_id) values(655,"Orzeł Parzęczew",104);
+insert into teams(id,`name`,league_id) values(656,"LKS Sarnów",104);
+insert into teams(id,`name`,league_id) values(657,"Termy Uniejów",104);
+insert into teams(id,`name`,league_id) values(658,"GLKS Dłutów",104);
+insert into teams(id,`name`,league_id) values(659,"LKS Rosanów",104);
+insert into teams(id,`name`,league_id) values(660,"KS II Kutno",104);
+insert into teams(id,`name`,league_id) values(661,"Sokół II Aleksandrów Łódzki",104);
+insert into teams(id,`name`,league_id) values(662,"PTC Pabianice",104);
+-- łódzki ZPN klasa okręgowa Piotrków Trybunalski
+insert into teams(id,`name`,league_id) values(663,"Szczerbiec Wolbórz",105);
+insert into teams(id,`name`,league_id) values(664,"Gerlach Drzewica",105);
+insert into teams(id,`name`,league_id) values(665,"KS Niedośpielin",105);
+insert into teams(id,`name`,league_id) values(666,"Pilica Przedbórz",105);
+insert into teams(id,`name`,league_id) values(667,"Olimpia Wola Załężna",105);
+insert into teams(id,`name`,league_id) values(668,"Skalnik Sulejów",105);
+insert into teams(id,`name`,league_id) values(669,"Start Lgota Wielka",105);
+insert into teams(id,`name`,league_id) values(670,"Stal Niewiadów",105);
+insert into teams(id,`name`,league_id) values(671,"KS Paradyż",105);
+insert into teams(id,`name`,league_id) values(672,"Świt Kamieńsk",105);
+insert into teams(id,`name`,league_id) values(673,"Astoria Szczerców",105);
+insert into teams(id,`name`,league_id) values(674,"Włókniarz Moszczenica",105);
+insert into teams(id,`name`,league_id) values(675,"Omega II Kleszczów",105);
+insert into teams(id,`name`,league_id) values(676,"LUKS Gomunice",105);
+-- łódzki ZPN klasa okręgowa Sieradz
+insert into teams(id,`name`,league_id) values(677,"TS Janiszewice",106);
+insert into teams(id,`name`,league_id) values(678,"Czarni Rząśnia",106);
+insert into teams(id,`name`,league_id) values(679,"LZS Brąszewice",106);
+insert into teams(id,`name`,league_id) values(680,"Sommer Zapole",106);
+insert into teams(id,`name`,league_id) values(681,"MLKS Konopnica",106);
+insert into teams(id,`name`,league_id) values(682,"Tęcza Brodnia",106);
+insert into teams(id,`name`,league_id) values(683,"KS Karsznice",106);
+insert into teams(id,`name`,league_id) values(684,"Hetman Rusiec",106);
+insert into teams(id,`name`,league_id) values(685,"MKS MOS Zduńska Wola",106);
+insert into teams(id,`name`,league_id) values(686,"Piast Błaszki",106);
+insert into teams(id,`name`,league_id) values(687,"LZS Masłowice",106);
+insert into teams(id,`name`,league_id) values(688,"LKS Chojne",106);
+insert into teams(id,`name`,league_id) values(689,"Prosna Wieruszów",106);
+insert into teams(id,`name`,league_id) values(690,"Słowian Dworszowice",106);
+insert into teams(id,`name`,league_id) values(691,"GLKS Strzelce Wielkie",106);
+insert into teams(id,`name`,league_id) values(692,"GKS Sędziejowice",106);
+-- łódzki ZPN klasa okręgowa Skierniewice
+insert into teams(id,`name`,league_id) values(693,"Zryw Wygoda",107);
+insert into teams(id,`name`,league_id) values(694,"GLKS Wołucza",107);
+insert into teams(id,`name`,league_id) values(695,"Jutrzenka Drzewce",107);
+insert into teams(id,`name`,league_id) values(696,"Manchatan Nowy Kawęczyn",107);
+insert into teams(id,`name`,league_id) values(697,"Orlęta Cielądz",107);
+insert into teams(id,`name`,league_id) values(698,"Olimpia Chąśno",107);
+insert into teams(id,`name`,league_id) values(699,"Olympic Słupia",107);
+insert into teams(id,`name`,league_id) values(700,"Juvenia Wysokienice",107);
+insert into teams(id,`name`,league_id) values(701,"GLKS RZD Żelazna",107);
+insert into teams(id,`name`,league_id) values(702,"Widok Skierniewice",107);
+insert into teams(id,`name`,league_id) values(703,"Olimpia Jeżów",107);
+insert into teams(id,`name`,league_id) values(704,"Unia II Skierniewice",107);
+insert into teams(id,`name`,league_id) values(705,"Pogoń Bełchów",107);
+insert into teams(id,`name`,league_id) values(706,"Pogoń Godzianów",107);
+insert into teams(id,`name`,league_id) values(707,"Macovia Maków",107);
+insert into teams(id,`name`,league_id) values(708,"Victoria Bielawy",107);
+-- małopolski ZPN klasa okręgowa Kraków I
+insert into teams(id,`name`,league_id) values(709,"Proszowianka Proszowice",129);
+insert into teams(id,`name`,league_id) values(710,"Przemsza Klucze",129);
+insert into teams(id,`name`,league_id) values(711,"Bolesław Bukowno",129);
+insert into teams(id,`name`,league_id) values(712,"Zieleńczanka Zielonki",129);
+insert into teams(id,`name`,league_id) values(713,"Spójnia Osiek-Zimnodół",129);
+insert into teams(id,`name`,league_id) values(714,"Przebój Wolbrom",129);
+insert into teams(id,`name`,league_id) values(715,"Prądniczanka Kraków",129);
+insert into teams(id,`name`,league_id) values(716,"LKS Niedźwiedź",129);
+insert into teams(id,`name`,league_id) values(717,"Piliczanka Pilica",129);
+insert into teams(id,`name`,league_id) values(718,"Pogoń Miechów",129);
+insert into teams(id,`name`,league_id) values(719,"Grębałowianka Kraków",129);
+insert into teams(id,`name`,league_id) values(720,"Orzeł Iwanowice",129);
+insert into teams(id,`name`,league_id) values(721,"KS Olkusz",129);
+insert into teams(id,`name`,league_id) values(722,"Lot Balice",129);
+-- małopolski ZPN klasa okręgowa Kraków II
+insert into teams(id,`name`,league_id) values(723,"Wieczysta Kraków",130);
+insert into teams(id,`name`,league_id) values(724,"Garbarnia II Kraków",130);
+insert into teams(id,`name`,league_id) values(725,"Bronowianka Kraków",130);
+insert into teams(id,`name`,league_id) values(726,"Błękitni Modlnica",130);
+insert into teams(id,`name`,league_id) values(727,"Prokocim Kraków",130);
+insert into teams(id,`name`,league_id) values(728,"Piast Wołowice",130);
+insert into teams(id,`name`,league_id) values(729,"Kmita Zabierzów",130);
+insert into teams(id,`name`,league_id) values(730,"KS Borek",130);
+insert into teams(id,`name`,league_id) values(731,"TS Węgrzce",130);
+insert into teams(id,`name`,league_id) values(732,"Hutnik II Kraków",130);
+insert into teams(id,`name`,league_id) values(733,"Kaszowianka Kaszów",130);
+insert into teams(id,`name`,league_id) values(734,"Wiślanie II Jaśkowice",130);
+insert into teams(id,`name`,league_id) values(735,"Dąbski KS Kraków",130);
+insert into teams(id,`name`,league_id) values(736,"Nadwiślan Kraków",130);
+-- małopolski ZPN klasa okręgowa Kraków III
+insert into teams(id,`name`,league_id) values(737,"Wiślanka Grabie",131);
+insert into teams(id,`name`,league_id) values(738,"LKS Śledziejowice",131);
+insert into teams(id,`name`,league_id) values(739,"Targowianka Targowisko",131);
+insert into teams(id,`name`,league_id) values(740,"Orzeł Myślenice",131);
+insert into teams(id,`name`,league_id) values(741,"Wiarusy Igołomia",131);
+insert into teams(id,`name`,league_id) values(742,"Gdovia Gdów",131);
+insert into teams(id,`name`,league_id) values(743,"Raba Dobczyce",131);
+insert into teams(id,`name`,league_id) values(744,"Jordan Sum Zakliczyn",131);
+insert into teams(id,`name`,league_id) values(745,"Radziszowianka Radziszów",131);
+insert into teams(id,`name`,league_id) values(746,"Błękitni Bodzanów",131);
+insert into teams(id,`name`,league_id) values(747,"Tempo Rzeszotary",131);
+insert into teams(id,`name`,league_id) values(748,"Górnik Wieliczka",131);
+insert into teams(id,`name`,league_id) values(749,"Pasternik Ochojno",131);
+insert into teams(id,`name`,league_id) values(750,"Dziecanovia Dziekanowice",131);
+-- małopolski ZPN klasa okręgowa Nowy Sącz I
+insert into teams(id,`name`,league_id) values(751,"Dunajec Nowy Sącz",132);
+insert into teams(id,`name`,league_id) values(752,"Skalnik Kamionka Wielka",132);
+insert into teams(id,`name`,league_id) values(753,"Hart Tęgoborze",132);
+insert into teams(id,`name`,league_id) values(754,"LKS Kobylanka",132);
+insert into teams(id,`name`,league_id) values(755,"ULKS Korzenna",132);
+insert into teams(id,`name`,league_id) values(756,"Kolejarz Stróże",132);
+insert into teams(id,`name`,league_id) values(757,"Orzeł Wojnarowa",132);
+insert into teams(id,`name`,league_id) values(758,"Łosoś Łososina Dolna",132);
+insert into teams(id,`name`,league_id) values(759,"Gród Podegrodzie",132);
+insert into teams(id,`name`,league_id) values(760,"Zyndram Łącko",132);
+insert into teams(id,`name`,league_id) values(761,"Grybovia Grybów",132);
+insert into teams(id,`name`,league_id) values(762,"Sokół Stary Sącz",132);
+insert into teams(id,`name`,league_id) values(763,"Zawisza Rożnów",132);
+insert into teams(id,`name`,league_id) values(764,"LKS Zagórzany",132);
+insert into teams(id,`name`,league_id) values(765,"LKS Uście Gorlickie",132);
+insert into teams(id,`name`,league_id) values(766,"LKS Łużna",132);
+-- małopolski ZPN klasa okręgowa Nowy Sącz II
+insert into teams(id,`name`,league_id) values(767,"Jarmuta Szczawnica",133);
+insert into teams(id,`name`,league_id) values(768,"Turbacz Mszana Dolna",133);
+insert into teams(id,`name`,league_id) values(769,"Sokół Słopnice",133);
+insert into teams(id,`name`,league_id) values(770,"Czarni Czarny Dunajec",133);
+insert into teams(id,`name`,league_id) values(771,"Krokus Przyszowa",133);
+insert into teams(id,`name`,league_id) values(772,"LKS Szaflary",133);
+insert into teams(id,`name`,league_id) values(773,"Babia Góra Lipnica Wielka",133);
+insert into teams(id,`name`,league_id) values(774,"Zalesianka Zalesie",133);
+insert into teams(id,`name`,league_id) values(775,"AKS Ujanowice",133);
+insert into teams(id,`name`,league_id) values(776,"Granit Czarna Góra",133);
+insert into teams(id,`name`,league_id) values(777,"Jordan Jordanów",133);
+insert into teams(id,`name`,league_id) values(778,"Laskovia Laskowa",133);
+insert into teams(id,`name`,league_id) values(779,"LKS Rupniów",133);
+insert into teams(id,`name`,league_id) values(780,"Huragan Waksmund",133);
+-- małopolski ZPN klasa okręgowa Tarnów I
+insert into teams(id,`name`,league_id) values(781,"Sokół Maszkienice",134);
+insert into teams(id,`name`,league_id) values(782,"Rylovia Rylowa",134);
+insert into teams(id,`name`,league_id) values(783,"Raba Książnice",134);
+insert into teams(id,`name`,league_id) values(784,"Strażak Mokrzyska",134);
+insert into teams(id,`name`,league_id) values(785,"Radłovia Radłów",134);
+insert into teams(id,`name`,league_id) values(786,"Olimpia Bucze",134);
+insert into teams(id,`name`,league_id) values(787,"Orzeł Dębno",134);
+insert into teams(id,`name`,league_id) values(788,"Naprzód Sobolów",134);
+insert into teams(id,`name`,league_id) values(789,"Olimpia Kąty",134);
+insert into teams(id,`name`,league_id) values(790,"Sokół Borzęcin Górny",134);
+insert into teams(id,`name`,league_id) values(791,"LKS Gnojnik",134);
+insert into teams(id,`name`,league_id) values(792,"Szreniawa Nowy Wiśnicz",134);
+insert into teams(id,`name`,league_id) values(793,"Arkadia Olszyny",134);
+insert into teams(id,`name`,league_id) values(794,"Jadowniczanka Jadowniki",134);
+-- małopolski ZPN klasa okręgowa Tarnów II
+insert into teams(id,`name`,league_id) values(795,"Metal Tarnów",135);
+insert into teams(id,`name`,league_id) values(796,"Olimpia Wojnicz",135);
+insert into teams(id,`name`,league_id) values(797,"GLKS Gromnik",135);
+insert into teams(id,`name`,league_id) values(798,"Dunajec Zakliczyn",135);
+insert into teams(id,`name`,league_id) values(799,"Ikar Odporyszów",135);
+insert into teams(id,`name`,league_id) values(800,"Ciężkowianka Ciężkowice",135);
+insert into teams(id,`name`,league_id) values(801,"Zorza Zaczarnie",135);
+insert into teams(id,`name`,league_id) values(802,"Dąbrovia Dąbrowa Tarnowska",135);
+insert into teams(id,`name`,league_id) values(803,"Wisła Szczucin",135);
+insert into teams(id,`name`,league_id) values(804,"LKS Szynwałd",135);
+insert into teams(id,`name`,league_id) values(805,"Dunajec Zbylitowska Góra",135);
+insert into teams(id,`name`,league_id) values(806,"Tuchovia Tuchów",135);
+insert into teams(id,`name`,league_id) values(807,"MLKS Żabno",135);
+insert into teams(id,`name`,league_id) values(808,"Podgórze Pleśna",135);
+insert into teams(id,`name`,league_id) values(809,"Unia Niedomice",135);
+insert into teams(id,`name`,league_id) values(810,"LKS Ładna",135);
+-- małopolski ZPN klasa okręgowa Wadowice
+insert into teams(id,`name`,league_id) values(811,"Tempo Białka",136);
+insert into teams(id,`name`,league_id) values(812,"KS Chełmek",136);
+insert into teams(id,`name`,league_id) values(813,"Zatorzanka Zator",136);
+insert into teams(id,`name`,league_id) values(814,"Brzezina Osiek",136);
+insert into teams(id,`name`,league_id) values(815,"Niwa Nowa Wieś",136);
+insert into teams(id,`name`,league_id) values(816,"Nadwiślanin Gromiec",136);
+insert into teams(id,`name`,league_id) values(817,"Victoria 1918 Jaworzno",136);
+insert into teams(id,`name`,league_id) values(818,"Garbarz Zembrzyce",136);
+insert into teams(id,`name`,league_id) values(819,"Kalwarianka Kalwaria Zebrzydowska",136);
+insert into teams(id,`name`,league_id) values(820,"Babia Góra Sucha Beskidzka",136);
+insert into teams(id,`name`,league_id) values(821,"MKS Libiąż",136);
+insert into teams(id,`name`,league_id) values(822,"LKS Żarki",136);
+insert into teams(id,`name`,league_id) values(823,"Arka Babice",136);
+insert into teams(id,`name`,league_id) values(824,"LKS Gorzów",136);
+insert into teams(id,`name`,league_id) values(825,"Halniak Maków Podhalański",136);
+insert into teams(id,`name`,league_id) values(826,"Sosnowianka Stanisław Dolny",136);
+-- mazowiecki ZPN klasa okręgowa Ciechanów-Ostrołęka
+insert into teams(id,`name`,league_id) values(827,"Wkra Bieżuń",179);
+insert into teams(id,`name`,league_id) values(828,"Narew 1962 Ostrołęka",179);
+insert into teams(id,`name`,league_id) values(829,"Mławianka Mława",179);
+insert into teams(id,`name`,league_id) values(830,"Żbik Nasielsk",179);
+insert into teams(id,`name`,league_id) values(831,"Kryształ Glinojeck",179);
+insert into teams(id,`name`,league_id) values(832,"KS CK Troszyn",179);
+insert into teams(id,`name`,league_id) values(833,"Korona Szydłowo",179);
+insert into teams(id,`name`,league_id) values(834,"GKS Pokrzywnica",179);
+insert into teams(id,`name`,league_id) values(835,"Ostrovia Ostrów Mazowiecka",179);
+insert into teams(id,`name`,league_id) values(836,"Iska Krasne",179);
+insert into teams(id,`name`,league_id) values(837,"PAF Płońsk",179);
+insert into teams(id,`name`,league_id) values(838,"Mazowsze Jednorożec",179);
+insert into teams(id,`name`,league_id) values(839,"Tęcza Ojrzeń",179);
+insert into teams(id,`name`,league_id) values(840,"MKS Ciechanów",179);
+insert into teams(id,`name`,league_id) values(841,"Sona Nowe Miasto",179);
+insert into teams(id,`name`,league_id) values(842,"GKS Strzegowo",179);
+-- mazowiecki ZPN klasa okręgowa Płock
+insert into teams(id,`name`,league_id) values(843,"Stoczniowiec Płock",180);
+insert into teams(id,`name`,league_id) values(844,"Orzeł Goleszyn",180);
+insert into teams(id,`name`,league_id) values(845,"Skra Drobin",180);
+insert into teams(id,`name`,league_id) values(846,"Bzura Chodaków",180);
+insert into teams(id,`name`,league_id) values(847,"Kasztelan Sierpc",180);
+insert into teams(id,`name`,league_id) values(848,"Zryw Bielsk",180);
+insert into teams(id,`name`,league_id) values(849,"Błękitni Gąbin",180);
+insert into teams(id,`name`,league_id) values(850,"Delta Słupno",180);
+insert into teams(id,`name`,league_id) values(851,"Mazur Gostynin",180);
+insert into teams(id,`name`,league_id) values(852,"Amator Maszewo",180);
+insert into teams(id,`name`,league_id) values(853,"Skrwa Łukomie",180);
+insert into teams(id,`name`,league_id) values(854,"Unia Iłów",180);
+insert into teams(id,`name`,league_id) values(855,"Unia Czermno",180);
+insert into teams(id,`name`,league_id) values(856,"Pogoń Słupia",180);
+-- mazowiecki ZPN klasa okręgowa Radom
+insert into teams(id,`name`,league_id) values(857,"Powiślanka Lipsko",181);
+insert into teams(id,`name`,league_id) values(858,"Orzeł Wierzbica",181);
+insert into teams(id,`name`,league_id) values(859,"LKS Jedlińsk",181);
+insert into teams(id,`name`,league_id) values(860,"Jodła Jedlnia-Letnisko",181);
+insert into teams(id,`name`,league_id) values(861,"Energia Kozienice",181);
+insert into teams(id,`name`,league_id) values(862,"Mazowsze Grójec",181);
+insert into teams(id,`name`,league_id) values(863,"Zamłynie Radom",181);
+insert into teams(id,`name`,league_id) values(864,"Gryf Policzna",181);
+insert into teams(id,`name`,league_id) values(865,"Królewscy Jedlnia",181);
+insert into teams(id,`name`,league_id) values(866,"LKS Promna",181);
+insert into teams(id,`name`,league_id) values(867,"Zawisza Sienno",181);
+insert into teams(id,`name`,league_id) values(868,"Centrum Radom",181);
+insert into teams(id,`name`,league_id) values(869,"Pilica Nowe Miasto nad Pilicą",181);
+insert into teams(id,`name`,league_id) values(870,"Szydłowianka Szydłowiec",181);
+insert into teams(id,`name`,league_id) values(871,"Iłżanka Kazanów",181);
+insert into teams(id,`name`,league_id) values(872,"Zwolenianka Zwoleń",181);
+-- mazowiecki ZPN klasa okręgowa Siedlce
+insert into teams(id,`name`,league_id) values(873,"Hutnik Huta Czechy",182);
+insert into teams(id,`name`,league_id) values(874,"Tygrys Huta Mińska",182);
+insert into teams(id,`name`,league_id) values(875,"Zryw Sobolew",182);
+insert into teams(id,`name`,league_id) values(876,"Naprzód Skórzec",182);
+insert into teams(id,`name`,league_id) values(877,"Orzeł Unin",182);
+insert into teams(id,`name`,league_id) values(878,"Czarni Węgrów",182);
+insert into teams(id,`name`,league_id) values(879,"Fenix Siennica",182);
+insert into teams(id,`name`,league_id) values(880,"Wektra Zbuczyn",182);
+insert into teams(id,`name`,league_id) values(881,"MKS Małkinia",182);
+insert into teams(id,`name`,league_id) values(882,"Mazovia II Mińsk Mazowiecki",182);
+insert into teams(id,`name`,league_id) values(883,"Jastrząb Żeliszew",182);
+insert into teams(id,`name`,league_id) values(884,"Płomień Dębe Wielkie",182);
+insert into teams(id,`name`,league_id) values(885,"Miedzanka Miedzna",182);
+insert into teams(id,`name`,league_id) values(886,"Jabłonianka Jabłonna Lacka",182);
+insert into teams(id,`name`,league_id) values(887,"Wilga Miastków Kościelny",182);
+insert into teams(id,`name`,league_id) values(888,"Victoria Kałuszyn",182);
+-- mazowiecki ZPN klasa okręgowa Warszawa I
+insert into teams(id,`name`,league_id) values(889,"Legionovia II Legionowo",183);
+insert into teams(id,`name`,league_id) values(890,"Bug Wyszków",183);
+insert into teams(id,`name`,league_id) values(891,"AP Marcovia Marki",183);
+insert into teams(id,`name`,league_id) values(892,"Dąb Wieliszew",183);
+insert into teams(id,`name`,league_id) values(893,"Escola Varsovia Warszawa",183);
+insert into teams(id,`name`,league_id) values(894,"Agape Białołęka",183);
+insert into teams(id,`name`,league_id) values(895,"Mazur II Karczew",183);
+insert into teams(id,`name`,league_id) values(896,"Świt II Nowy Dwór Mazowiecki",183);
+insert into teams(id,`name`,league_id) values(897,"Mazur Radzymin",183);
+insert into teams(id,`name`,league_id) values(898,"Olimpia Warszawa",183);
+insert into teams(id,`name`,league_id) values(899,"Polonia II Warszawa",183);
+insert into teams(id,`name`,league_id) values(900,"Wicher Kobyłka",183);
+insert into teams(id,`name`,league_id) values(901,"Wisła Dziecinów",183);
+insert into teams(id,`name`,league_id) values(902,"Sokół Serock",183);
+insert into teams(id,`name`,league_id) values(903,"Wisła Jabłonna",183);
+insert into teams(id,`name`,league_id) values(904,"Victoria II Sulejówek",183);
+-- mazowiecki ZPN klasa okręgowa Warszawa II
+insert into teams(id,`name`,league_id) values(905,"Laura Chylice",184);
+insert into teams(id,`name`,league_id) values(906,"Sparta Jazgarzew",184);
+insert into teams(id,`name`,league_id) values(907,"Pogoń II Grodzisk Mazowiecki",184);
+insert into teams(id,`name`,league_id) values(908,"Milan Milanówek",184);
+insert into teams(id,`name`,league_id) values(909,"Okęcie Warszawa",184);
+insert into teams(id,`name`,league_id) values(910,"Ursus II Warszawa",184);
+insert into teams(id,`name`,league_id) values(911,"Grom Warszawa",184);
+insert into teams(id,`name`,league_id) values(912,"Ryś Laski",184);
+insert into teams(id,`name`,league_id) values(913,"Przyszłość Włochy",184);
+insert into teams(id,`name`,league_id) values(914,"LKS Chlebnia",184);
+insert into teams(id,`name`,league_id) values(915,"GLKS Nadarzyn",184);
+insert into teams(id,`name`,league_id) values(916,"Perła Złotokłos",184);
+insert into teams(id,`name`,league_id) values(917,"KS Teresin",184);
+insert into teams(id,`name`,league_id) values(918,"Piast Piastów",184);
+insert into teams(id,`name`,league_id) values(919,"SEMP Ursynów",184);
+insert into teams(id,`name`,league_id) values(920,"Błonianka II Błonie",184);
+-- opolski ZPN klasa okręgowa I
+insert into teams(id,`name`,league_id) values(921,"Olimpia Lewin Brzeski",205);
+insert into teams(id,`name`,league_id) values(922,"Unia Kolonowskie",205);
+insert into teams(id,`name`,league_id) values(923,"KS Krasiejów",205);
+insert into teams(id,`name`,league_id) values(924,"LZS Ligota Turawska",205);
+insert into teams(id,`name`,league_id) values(925,"Victoria Chróścice",205);
+insert into teams(id,`name`,league_id) values(926,"TOR Dobrzeń Wielki",205);
+insert into teams(id,`name`,league_id) values(927,"Start Jełowa",205);
+insert into teams(id,`name`,league_id) values(928,"Motor Praszka",205);
+insert into teams(id,`name`,league_id) values(929,"Orzeł Źlinice",205);
+insert into teams(id,`name`,league_id) values(930,"Żubry Smarchowice Śląskie",205);
+insert into teams(id,`name`,league_id) values(931,"Śląsk Łubniany",205);
+insert into teams(id,`name`,league_id) values(932,"LZS Przywory",205);
+insert into teams(id,`name`,league_id) values(933,"Rodło Opole",205);
+insert into teams(id,`name`,league_id) values(934,"LZS Mechnice",205);
+insert into teams(id,`name`,league_id) values(935,"MKS Wołczyn",205);
+insert into teams(id,`name`,league_id) values(936,"Hetman Byczyna",205);
+-- opolski ZPN klasa okręgowa II
+insert into teams(id,`name`,league_id) values(937,"LZS Chrząstowice",206);
+insert into teams(id,`name`,league_id) values(938,"Korona Krępna",206);
+insert into teams(id,`name`,league_id) values(939,"LZS Stary Ujazd",206);
+insert into teams(id,`name`,league_id) values(940,"LZS Walce",206);
+insert into teams(id,`name`,league_id) values(941,"Fortuna Głogówek",206);
+insert into teams(id,`name`,league_id) values(942,"Start Bogdanowice",206);
+insert into teams(id,`name`,league_id) values(943,"Naprzód Ujazd Niedrowice",206);
+insert into teams(id,`name`,league_id) values(944,"KS Twardawa",206);
+insert into teams(id,`name`,league_id) values(945,"Naprzód Jemielnica",206);
+insert into teams(id,`name`,league_id) values(946,"GLKS Kietrz",206);
+insert into teams(id,`name`,league_id) values(947,"Czarni Otmuchów",206);
+insert into teams(id,`name`,league_id) values(948,"Sokół Niemodlin",206);
+insert into teams(id,`name`,league_id) values(949,"LZS Racławiczki",206);
+insert into teams(id,`name`,league_id) values(950,"Sparta Paczków",206);
+insert into teams(id,`name`,league_id) values(951,"LZS Piotrówka",206);
+insert into teams(id,`name`,league_id) values(952,"Victoria Cisek",206);
+-- podkarpacki ZPN klasa okręgowa Dębica
+insert into teams(id,`name`,league_id) values(953,"Lechia Sędziszów Małopolski",226);
+insert into teams(id,`name`,league_id) values(954,"Victoria Czermin",226);
+insert into teams(id,`name`,league_id) values(955,"Radomyślanka Radomyśl Wielki",226);
+insert into teams(id,`name`,league_id) values(956,"Kamieniarz Golemki",226);
+insert into teams(id,`name`,league_id) values(957,"Smoczanka Mielec",226);
+insert into teams(id,`name`,league_id) values(958,"LKS Głowaczowa",226);
+insert into teams(id,`name`,league_id) values(959,"Kolorado Wola Chorzelowska",226);
+insert into teams(id,`name`,league_id) values(960,"Victoria Ocieka",226);
+insert into teams(id,`name`,league_id) values(961,"Czarnovia Czarna",226);
+insert into teams(id,`name`,league_id) values(962,"Olchovia Olchowa",226);
+insert into teams(id,`name`,league_id) values(963,"Piłkarskie Nadzieje Mielec",226);
+insert into teams(id,`name`,league_id) values(964,"Chemik Pustków",226);
+insert into teams(id,`name`,league_id) values(965,"Strzelec Frysztak",226);
+insert into teams(id,`name`,league_id) values(966,"Sokis Chorzelów",226);
+insert into teams(id,`name`,league_id) values(967,"Korona Majdan Królewski",226);
+insert into teams(id,`name`,league_id) values(968,"LKS Wiewiórka",226);
+-- podkarpacki ZPN klasa okręgowa Jarosław
+insert into teams(id,`name`,league_id) values(969,"Orzeł Przeworsk",227);
+insert into teams(id,`name`,league_id) values(970,"Płomień Morawsko",227);
+insert into teams(id,`name`,league_id) values(971,"MKS Kańczuga",227);
+insert into teams(id,`name`,league_id) values(972,"LKS Skołoszów",227);
+insert into teams(id,`name`,league_id) values(973,"Roztocze Narol",227);
+insert into teams(id,`name`,league_id) values(974,"Biało-Czerwoni Kaszyce",227);
+insert into teams(id,`name`,league_id) values(975,"GKS Orły",227);
+insert into teams(id,`name`,league_id) values(976,"Granica Stubno",227);
+insert into teams(id,`name`,league_id) values(977,"Sanoczanka Święte",227);
+insert into teams(id,`name`,league_id) values(978,"Motor Grochowce",227);
+insert into teams(id,`name`,league_id) values(979,"Czuwaj Przemyśl",227);
+insert into teams(id,`name`,league_id) values(980,"Zorza Zarzecze",227);
+insert into teams(id,`name`,league_id) values(981,"Czarni Pawłosiów",227);
+insert into teams(id,`name`,league_id) values(982,"Pogoń-Sokół Lubaczów",227);
+insert into teams(id,`name`,league_id) values(983,"Łęk Ostrów",227);
+insert into teams(id,`name`,league_id) values(984,"MKS Radymno",227);
+-- podkarpacki ZPN klasa okręgowa Krosno
+insert into teams(id,`name`,league_id) values(985,"Przełom Besko",228);
+insert into teams(id,`name`,league_id) values(986,"Czarni 1910 Jasło",228);
+insert into teams(id,`name`,league_id) values(987,"Bieszczady Ustrzyki Dolne",228);
+insert into teams(id,`name`,league_id) values(988,"Start Rymanów",228);
+insert into teams(id,`name`,league_id) values(989,"Przełęcz Dukla",228);
+insert into teams(id,`name`,league_id) values(990,"Zamczysko Odrzykoń",228);
+insert into teams(id,`name`,league_id) values(991,"Markiewicza Krosno",228);
+insert into teams(id,`name`,league_id) values(992,"Iskra Przysietnica",228);
+insert into teams(id,`name`,league_id) values(993,"Nafta Jedlicze",228);
+insert into teams(id,`name`,league_id) values(994,"Cosmos Nowotaniec",228);
+insert into teams(id,`name`,league_id) values(995,"Tempo Nienaszów",228);
+insert into teams(id,`name`,league_id) values(996,"Wisłok Sieniawa",228);
+insert into teams(id,`name`,league_id) values(997,"LKS Skołyszyn",228);
+insert into teams(id,`name`,league_id) values(998,"Kotwica Korczyna",228);
+insert into teams(id,`name`,league_id) values(999,"LKS Czeluśnica",228);
+insert into teams(id,`name`,league_id) values(1000,"Brzozovia Brzozów",228);
+-- podkarpacki ZPN klasa okręgowa Rzeszów
+insert into teams(id,`name`,league_id) values(1001,"Sawa Sonina",229);
+insert into teams(id,`name`,league_id) values(1002,"Crasnovia Krasne",229);
+insert into teams(id,`name`,league_id) values(1003,"Stal II Rzeszów",229);
+insert into teams(id,`name`,league_id) values(1004,"KS Stobierna",229);
+insert into teams(id,`name`,league_id) values(1005,"Resovia II",229);
+insert into teams(id,`name`,league_id) values(1006,"Błękit Żołynia",229);
+insert into teams(id,`name`,league_id) values(1007,"Sokół Sokołów Małopolski",229);
+insert into teams(id,`name`,league_id) values(1008,"Strumyk Malawa",229);
+insert into teams(id,`name`,league_id) values(1009,"Jedność Niechobrz",229);
+insert into teams(id,`name`,league_id) values(1010,"Wisłok Czarna",229);
+insert into teams(id,`name`,league_id) values(1011,"Strug Tyczyn",229);
+insert into teams(id,`name`,league_id) values(1012,"Stal Łańcut",229);
+insert into teams(id,`name`,league_id) values(1013,"KS Zaczernie",229);
+insert into teams(id,`name`,league_id) values(1014,"GKS Niebylec",229);
+insert into teams(id,`name`,league_id) values(1015,"Bratek Bratkowice",229);
+insert into teams(id,`name`,league_id) values(1016,"Błażowianka Błażowa",229);
+insert into teams(id,`name`,league_id) values(1017,"Orzeł Wólka Niedźwiedzka",229);
+-- podkarpacki ZPN klasa okręgowa Stalowa Wola
+insert into teams(id,`name`,league_id) values(1018,"Sokół Nisko",230);
+insert into teams(id,`name`,league_id) values(1019,"Sokół Sokolniki",230);
+insert into teams(id,`name`,league_id) values(1020,"Olimpia Pysznica",230);
+insert into teams(id,`name`,league_id) values(1021,"LKS Brzyska Wola",230);
+insert into teams(id,`name`,league_id) values(1022,"Bukowa Jastkowice",230);
+insert into teams(id,`name`,league_id) values(1023,"Unia Nowa Sarzyna",230);
+insert into teams(id,`name`,league_id) values(1024,"Sokół Kamień",230);
+insert into teams(id,`name`,league_id) values(1025,"LZS Ździary",230);
+insert into teams(id,`name`,league_id) values(1026,"Transdźwig Stale",230);
+insert into teams(id,`name`,league_id) values(1027,"Pogoń Leżajsk",230);
+insert into teams(id,`name`,league_id) values(1028,"Stal Gorzyce",230);
+insert into teams(id,`name`,league_id) values(1029,"Stal Nowa Dęba",230);
+insert into teams(id,`name`,league_id) values(1030,"ŁKS Łowisko",230);
+insert into teams(id,`name`,league_id) values(1031,"Siarka II Tarnobrzeg",230);
+insert into teams(id,`name`,league_id) values(1032,"Słowianin Grębów",230);
+insert into teams(id,`name`,league_id) values(1033,"PUKS Francesco Jelna",230);
+-- podlaski ZPN klasa okręgowa
+insert into teams(id,`name`,league_id) values(1034,"Puszcza Hajnówka",267);
+insert into teams(id,`name`,league_id) values(1035,"Kora Korycin",267);
+insert into teams(id,`name`,league_id) values(1036,"Rudnia Zabłudów",267);
+insert into teams(id,`name`,league_id) values(1037,"Orzeł Kolno",267);
+insert into teams(id,`name`,league_id) values(1038,"Pomorzanka Sejny",267);
+insert into teams(id,`name`,league_id) values(1039,"UM Krynki",267);
+insert into teams(id,`name`,league_id) values(1040,"MKS Mielnik",267);
+insert into teams(id,`name`,league_id) values(1041,"KS Grabówka",267);
+insert into teams(id,`name`,league_id) values(1042,"Piast Białystok",267);
+insert into teams(id,`name`,league_id) values(1043,"Czarni Czarna Białostocka",267);
+insert into teams(id,`name`,league_id) values(1044,"Orlęta Czyżew",267);
+insert into teams(id,`name`,league_id) values(1045,"Narew Choroszcz",267);
+insert into teams(id,`name`,league_id) values(1046,"KS Śniadowo",267);
+insert into teams(id,`name`,league_id) values(1047,"Hetman Tykocin",267);
+insert into teams(id,`name`,league_id) values(1048,"Unia Ciechanowiec",267);
+insert into teams(id,`name`,league_id) values(1049,"Magnat Juchnowiec Kościelny",267);
+-- pomorski ZPN klasa okręgowa Gdańsk I
+insert into teams(id,`name`,league_id) values(1050,"MKS Władysławowo",271);
+insert into teams(id,`name`,league_id) values(1051,"Wietcisa Skarszewy",271);
+insert into teams(id,`name`,league_id) values(1052,"AP Sopot",271);
+insert into teams(id,`name`,league_id) values(1053,"Orzeł Trąbki Wielkie",271);
+insert into teams(id,`name`,league_id) values(1054,"Błyskawica Reda-Rekowo Dolne",271);
+insert into teams(id,`name`,league_id) values(1055,"Czarni Pruszcz Gdański",271);
+insert into teams(id,`name`,league_id) values(1056,"Sporting Leźno",271);
+insert into teams(id,`name`,league_id) values(1057,"GKS Kolbudy",271);
+insert into teams(id,`name`,league_id) values(1058,"GLKS Różyny",271);
+insert into teams(id,`name`,league_id) values(1059,"Orkan Rumia",271);
+insert into teams(id,`name`,league_id) values(1060,"Potok Pszczółki",271);
+insert into teams(id,`name`,league_id) values(1061,"Sztorm Kosakowo",271);
+insert into teams(id,`name`,league_id) values(1062,"Orlęta Reda",271);
+insert into teams(id,`name`,league_id) values(1063,"GTS Mokry Dwór",271);
+insert into teams(id,`name`,league_id) values(1064,"Bałtyk II Gdynia",271);
+insert into teams(id,`name`,league_id) values(1065,"Zenit Łęczyce",271);
+-- pomorski ZPN klasa okręgowa Gdańsk II
+insert into teams(id,`name`,league_id) values(1066,"Sokół Zblewo",272);
+insert into teams(id,`name`,league_id) values(1067,"Chojniczanka II Chojnice",272);
+insert into teams(id,`name`,league_id) values(1068,"Pomezania Malbork",272);
+insert into teams(id,`name`,league_id) values(1069,"GDKiS Ostaszewo",272);
+insert into teams(id,`name`,league_id) values(1070,"Powiśle II Dzierzgoń",272);
+insert into teams(id,`name`,league_id) values(1071,"Tęcza Brusy",272);
+insert into teams(id,`name`,league_id) values(1072,"Orzeł Subkowy",272);
+insert into teams(id,`name`,league_id) values(1073,"Meteor Pinczyn",272);
+insert into teams(id,`name`,league_id) values(1074,"Victoria Kaliska",272);
+insert into teams(id,`name`,league_id) values(1075,"Spójnia Sadlinki",272);
+insert into teams(id,`name`,league_id) values(1076,"Beniaminek 03 Starogard Gdański",272);
+insert into teams(id,`name`,league_id) values(1077,"Relax Ryjewo",272);
+insert into teams(id,`name`,league_id) values(1078,"Wisła Tczew",272);
+insert into teams(id,`name`,league_id) values(1079,"Żuławy Nowy Dwór Gdański",272);
+insert into teams(id,`name`,league_id) values(1080,"Czarni Przemysław",272);
+insert into teams(id,`name`,league_id) values(1081,"Okland Szprudowo",272);
+-- pomorski ZPN klasa okręgowa Słupsk
+insert into teams(id,`name`,league_id) values(1082,"Sokół Wyczechy",273);
+insert into teams(id,`name`,league_id) values(1083,"Sparta Sycewice",273);
+insert into teams(id,`name`,league_id) values(1084,"Anioły Garczegorze",273);
+insert into teams(id,`name`,league_id) values(1085,"MKS Debrzno",273);
+insert into teams(id,`name`,league_id) values(1086,"Jantaria Pobłocie",273);
+insert into teams(id,`name`,league_id) values(1087,"Piast Człuchów",273);
+insert into teams(id,`name`,league_id) values(1088,"Zawisza Borzytuchom",273);
+insert into teams(id,`name`,league_id) values(1089,"Barton Barcino",273);
+insert into teams(id,`name`,league_id) values(1090,"Start Miastko",273);
+insert into teams(id,`name`,league_id) values(1091,"Bytovia II Bytów",273);
+insert into teams(id,`name`,league_id) values(1092,"Chrobry Charbrowo",273);
+insert into teams(id,`name`,league_id) values(1093,"Kaszubia Studzienice",273);
+insert into teams(id,`name`,league_id) values(1094,"Echo Biesowice",273);
+insert into teams(id,`name`,league_id) values(1095,"GTS Czarna Dąbrówka",273);
+insert into teams(id,`name`,league_id) values(1096,"Myśliwiec Tuchomie",273);
+insert into teams(id,`name`,league_id) values(1097,"GKS Pęplino",273);
+-- śląski ZPN klasa okręgowa I Bytom-Zabrze
+insert into teams(id,`name`,league_id) values(1098,"Piast II Gliwice",291);
+insert into teams(id,`name`,league_id) values(1099,"Unia Strzybnica",291);
+insert into teams(id,`name`,league_id) values(1100,"Jedność 32 Przyszowice",291);
+insert into teams(id,`name`,league_id) values(1101,"Odra Miasteczko Śląskie",291);
+insert into teams(id,`name`,league_id) values(1102,"Orzeł Miedary",291);
+insert into teams(id,`name`,league_id) values(1103,"Przyszłość Ciochowice",291);
+insert into teams(id,`name`,league_id) values(1104,"Czarni Kozłowa Góra",291);
+insert into teams(id,`name`,league_id) values(1105,"ŁTS Łabędy",291);
+insert into teams(id,`name`,league_id) values(1106,"Sośnica Gliwice",291);
+insert into teams(id,`name`,league_id) values(1107,"Sokół Orzech",291);
+insert into teams(id,`name`,league_id) values(1108,"Tęcza Wielowieś",291);
+insert into teams(id,`name`,league_id) values(1109,"Silesia Miechowice",291);
+insert into teams(id,`name`,league_id) values(1110,"Concordia Knurów",291);
+insert into teams(id,`name`,league_id) values(1111,"Górnik Bobrowniki Śląskie",291);
+insert into teams(id,`name`,league_id) values(1112,"Czarni Pyskowice",291);
+insert into teams(id,`name`,league_id) values(1113,"KS 94 Rachowice",291);
+-- śląski ZPN klasa okręgowa II Częstochowa-Lubliniec
+insert into teams(id,`name`,league_id) values(1114,"MKS Myszków",292);
+insert into teams(id,`name`,league_id) values(1115,"Jedność Boronów",292);
+insert into teams(id,`name`,league_id) values(1116,"Zieloni Żarki",292);
+insert into teams(id,`name`,league_id) values(1117,"Piast Przyrów",292);
+insert into teams(id,`name`,league_id) values(1118,"Amator Golce",292);
+insert into teams(id,`name`,league_id) values(1119,"Olimpia Truskolasy",292);
+insert into teams(id,`name`,league_id) values(1120,"Unia Rędziny",292);
+insert into teams(id,`name`,league_id) values(1121,"KS Panki",292);
+insert into teams(id,`name`,league_id) values(1122,"Stradom Częstochowa",292);
+insert into teams(id,`name`,league_id) values(1123,"Liswarta Krzepice",292);
+insert into teams(id,`name`,league_id) values(1124,"Grom Cykarzew",292);
+insert into teams(id,`name`,league_id) values(1125,"Pogoń Kamyk",292);
+insert into teams(id,`name`,league_id) values(1126,"Gmina Kłomnice",292);
+insert into teams(id,`name`,league_id) values(1127,"Unia Kalety",292);
+insert into teams(id,`name`,league_id) values(1128,"Warta Mstów",292);
+insert into teams(id,`name`,league_id) values(1129,"MLKS Woźniki",292);
+-- śląski ZPN klasa okręgowa III Racibórz-Rybnik
+insert into teams(id,`name`,league_id) values(1130,"Unia Turza Śląska",293);
+insert into teams(id,`name`,league_id) values(1131,"Forteca Świerklany",293);
+insert into teams(id,`name`,league_id) values(1132,"LKS Krzyżanowice",293);
+insert into teams(id,`name`,league_id) values(1133,"Polonia Marklowice",293);
+insert into teams(id,`name`,league_id) values(1134,"Naprzód Borucin",293);
+insert into teams(id,`name`,league_id) values(1135,"Płomień Połomia",293);
+insert into teams(id,`name`,league_id) values(1136,"LKS 1908 Nędza",293);
+insert into teams(id,`name`,league_id) values(1137,"Unia Racibórz",293);
+insert into teams(id,`name`,league_id) values(1138,"Polonia Łaziska Rybnickie",293);
+insert into teams(id,`name`,league_id) values(1139,"ROW 1964 II Rybnik",293);
+insert into teams(id,`name`,league_id) values(1140,"Silesia Lubomia",293);
+insert into teams(id,`name`,league_id) values(1141,"Czarni Gorzyce",293);
+insert into teams(id,`name`,league_id) values(1142,"LKS Tworków",293);
+insert into teams(id,`name`,league_id) values(1143,"Dąb Gaszowice",293);
+insert into teams(id,`name`,league_id) values(1144,"Pierwszy Chwałowice",293);
+insert into teams(id,`name`,league_id) values(1145,"Granica Ruptawa",293);
+insert into teams(id,`name`,league_id) values(1146,"MKS Czerwionka",293);
+insert into teams(id,`name`,league_id) values(1147,"Rymer Rybnik",293);
+-- śląski ZPN klasa okręgowa IV Katowice-Sosnowiec
+insert into teams(id,`name`,league_id) values(1148,"Szczakowianka Jaworzno",294);
+insert into teams(id,`name`,league_id) values(1149,"Tęcza Błędów",294);
+insert into teams(id,`name`,league_id) values(1150,"Górnik Wojkowice",294);
+insert into teams(id,`name`,league_id) values(1151,"Podlesianka Katowice",294);
+insert into teams(id,`name`,league_id) values(1152,"Cyklon Rogoźnik",294);
+insert into teams(id,`name`,league_id) values(1153,"Sparta Katowice",294);
+insert into teams(id,`name`,league_id) values(1154,"AKS Górnik Niwka Sosnowiec",294);
+insert into teams(id,`name`,league_id) values(1155,"MK Górnik Katowice",294);
+insert into teams(id,`name`,league_id) values(1156,"Urania Ruda Śląska",294);
+insert into teams(id,`name`,league_id) values(1157,"Niwy Brudzowice",294);
+insert into teams(id,`name`,league_id) values(1158,"Wawel Wirek",294);
+insert into teams(id,`name`,league_id) values(1159,"Naprzód Lipiny",294);
+insert into teams(id,`name`,league_id) values(1160,"Pogoń Imielin",294);
+insert into teams(id,`name`,league_id) values(1161,"Zagłębie II Sosnowiec",294);
+insert into teams(id,`name`,league_id) values(1162,"Siemianowiczanka Siemianowice Śląskie",294);
+insert into teams(id,`name`,league_id) values(1163,"Źródło Kromołów",294);
+insert into teams(id,`name`,league_id) values(1164,"Orzeł Mokre",294);
+insert into teams(id,`name`,league_id) values(1165,"Górnik Piaski",294);
+-- śląski ZPN klasa okręgowa V Bielsko-Biała-Tychy
+insert into teams(id,`name`,league_id) values(1166,"MKS Lędziny",295);
+insert into teams(id,`name`,league_id) values(1167,"LKS Wisła Wielka",295);
+insert into teams(id,`name`,league_id) values(1168,"Iskra Pszczyna",295);
+insert into teams(id,`name`,league_id) values(1169,"Sokół Wola",295);
+insert into teams(id,`name`,league_id) values(1170,"Pasjonat Dankowice",295);
+insert into teams(id,`name`,league_id) values(1171,"LKS Łąka",295);
+insert into teams(id,`name`,league_id) values(1172,"KS Bestwinka",295);
+insert into teams(id,`name`,league_id) values(1173,"LKS Studzienice",295);
+insert into teams(id,`name`,league_id) values(1174,"BKS Stal Bielsko-Biała",295);
+insert into teams(id,`name`,league_id) values(1175,"Czarni Jaworze",295);
+insert into teams(id,`name`,league_id) values(1176,"LKS Bestwina",295);
+insert into teams(id,`name`,league_id) values(1177,"Ogrodnik Cielmice",295);
+insert into teams(id,`name`,league_id) values(1178,"MRKS II Czechowice-Dziedzice",295);
+insert into teams(id,`name`,league_id) values(1179,"Piast Bieruń Nowy",295);
+insert into teams(id,`name`,league_id) values(1180,"Rekord II Bielsko-Biała",295);
+insert into teams(id,`name`,league_id) values(1181,"LKS Rudołtowice-Ćwiklice",295);
+-- śląski ZPN klasa okręgowa VI Skoczów-Żywiec
+insert into teams(id,`name`,league_id) values(1182,"Orzeł Łękawica",296);
+insert into teams(id,`name`,league_id) values(1183,"Soła Rajcza",296);
+insert into teams(id,`name`,league_id) values(1184,"Koszarawa Żywiec",296);
+insert into teams(id,`name`,league_id) values(1185,"Błyskawica Drogomyśl",296);
+insert into teams(id,`name`,league_id) values(1186,"Piast Cieszyn",296);
+insert into teams(id,`name`,league_id) values(1187,"Tempo Puńców",296);
+insert into teams(id,`name`,league_id) values(1188,"Spójnia Zebrzydowice",296);
+insert into teams(id,`name`,league_id) values(1189,"WSS Wisła",296);
+insert into teams(id,`name`,league_id) values(1190,"Czarni-Góral Żywiec",296);
+insert into teams(id,`name`,league_id) values(1191,"Bory Pietrzykowice",296);
+insert into teams(id,`name`,league_id) values(1192,"Skałka Żabnica",296);
+insert into teams(id,`name`,league_id) values(1193,"LKS 99 Pruchna",296);
+insert into teams(id,`name`,league_id) values(1194,"Cukrownik Chybie",296);
+insert into teams(id,`name`,league_id) values(1195,"Podhalanka Milówka",296);
+insert into teams(id,`name`,league_id) values(1196,"Olimpia Goleszów",296);
+insert into teams(id,`name`,league_id) values(1197,"Wisła Strumień",296);
+-- świętokrzyski ZPN klasa okręgowa
+insert into teams(id,`name`,league_id) values(1198,"Stal Kunów",329);
+insert into teams(id,`name`,league_id) values(1199,"Piaskowianka Piaski",329);
+insert into teams(id,`name`,league_id) values(1200,"Sparta Kazimierza Wielka",329);
+insert into teams(id,`name`,league_id) values(1201,"Kamienna Brody",329);
+insert into teams(id,`name`,league_id) values(1202,"Moravia Morawica",329);
+insert into teams(id,`name`,league_id) values(1203,"Piast Stopnica",329);
+insert into teams(id,`name`,league_id) values(1204,"Hetman Włoszczowa",329);
+insert into teams(id,`name`,league_id) values(1205,"Klimontowianka Klimontów",329);
+insert into teams(id,`name`,league_id) values(1206,"Zenit Chmielnik",329);
+insert into teams(id,`name`,league_id) values(1207,"Wicher Miedziana Góra",329);
+insert into teams(id,`name`,league_id) values(1208,"Unia Sędziszów",329);
+insert into teams(id,`name`,league_id) values(1209,"Zorza Tempo Pacanów",329);
+insert into teams(id,`name`,league_id) values(1210,"OKS Opatów",329);
+insert into teams(id,`name`,league_id) values(1211,"Sparta Dwikozy",329);
+insert into teams(id,`name`,league_id) values(1212,"Victoria Skalbmierz",329);
+insert into teams(id,`name`,league_id) values(1213,"Świt Ćmielów",329);
+-- warmińsko-mazurski ZPN klasa okręgowa I
+insert into teams(id,`name`,league_id) values(1214,"Rominta Gołdap",337);
+insert into teams(id,`name`,league_id) values(1215,"Błękitni Pasym",337);
+insert into teams(id,`name`,league_id) values(1216,"Łyna Sępopol",337);
+insert into teams(id,`name`,league_id) values(1217,"Orlęta Reszel",337);
+insert into teams(id,`name`,league_id) values(1218,"Omulew Wielbark",337);
+insert into teams(id,`name`,league_id) values(1219,"Śniardwy Orzysz",337);
+insert into teams(id,`name`,league_id) values(1220,"Żagiel Piecki",337);
+insert into teams(id,`name`,league_id) values(1221,"DKS Dobre Miasto",337);
+insert into teams(id,`name`,league_id) values(1222,"Wilczek Wilkowo",337);
+insert into teams(id,`name`,league_id) values(1223,"Vęgoria Węgorzewo",337);
+insert into teams(id,`name`,league_id) values(1224,"Victoria Bartoszyce",337);
+insert into teams(id,`name`,league_id) values(1225,"Czarni Olecko",337);
+insert into teams(id,`name`,league_id) values(1226,"LKS Różnowo",337);
+insert into teams(id,`name`,league_id) values(1227,"Kłobuk Mikołajki",337);
+insert into teams(id,`name`,league_id) values(1228,"Cresovia Górowo Iławieckie",337);
+insert into teams(id,`name`,league_id) values(1229,"SKS Szczytno",337);
+-- warmińsko-mazurski ZPN klasa okręgowa II
+insert into teams(id,`name`,league_id) values(1230,"Barkas Tolkmicko",338);
+insert into teams(id,`name`,league_id) values(1231,"GSZS Rybno",338);
+insert into teams(id,`name`,league_id) values(1232,"GKS Stawiguda",338);
+insert into teams(id,`name`,league_id) values(1233,"Unia Susz",338);
+insert into teams(id,`name`,league_id) values(1234,"Start Nidzica",338);
+insert into teams(id,`name`,league_id) values(1235,"Polonia Iłowo",338);
+insert into teams(id,`name`,league_id) values(1236,"Ewingi Zalewo",338);
+insert into teams(id,`name`,league_id) values(1237,"Tęcza Miłomłyn",338);
+insert into teams(id,`name`,league_id) values(1238,"Fortuna Dorotowo Gągławki",338);
+insert into teams(id,`name`,league_id) values(1239,"Polonia Pasłęk",338);
+insert into teams(id,`name`,league_id) values(1240,"Olimpia Olsztynek",338);
+insert into teams(id,`name`,league_id) values(1241,"Grunwald Gierzwałd",338);
+insert into teams(id,`name`,league_id) values(1242,"Kormoran Zwierzewo",338);
+insert into teams(id,`name`,league_id) values(1243,"Płomień Turznica",338);
+insert into teams(id,`name`,league_id) values(1244,"Drwęca Nowe Miasto Lubawskie",338);
+insert into teams(id,`name`,league_id) values(1245,"Orzeł Janowiec Kościelny",338);
+-- wielkopolski ZPN V liga I
+insert into teams(id,`name`,league_id) values(1246,"Czarni Czerniejewo",348);
+insert into teams(id,`name`,league_id) values(1247,"Iskra Szydłowo",348);
+insert into teams(id,`name`,league_id) values(1248,"Huragan Pobiedziska",348);
+insert into teams(id,`name`,league_id) values(1249,"Leśnik Margonin",348);
+insert into teams(id,`name`,league_id) values(1250,"GLKS Wysoka",348);
+insert into teams(id,`name`,league_id) values(1251,"Zamek Gołańcz",348);
+insert into teams(id,`name`,league_id) values(1252,"Concordia Murowana Goślina",348);
+insert into teams(id,`name`,league_id) values(1253,"Wełna Skoki",348);
+insert into teams(id,`name`,league_id) values(1254,"Pogoń Łobżenica",348);
+insert into teams(id,`name`,league_id) values(1255,"Sparta Złotów",348);
+insert into teams(id,`name`,league_id) values(1256,"Noteć Czarnków",348);
+insert into teams(id,`name`,league_id) values(1257,"Sokół Pniewy",348);
+insert into teams(id,`name`,league_id) values(1258,"Zjednoczeni Trzemeszno",348);
+insert into teams(id,`name`,league_id) values(1259,"Płomień Połajewo",348);
+insert into teams(id,`name`,league_id) values(1260,"1922 Lechia Kostrzyn",348);
+insert into teams(id,`name`,league_id) values(1261,"Sparta Oborniki",348);
+-- wielkopolski ZPN V liga II
+insert into teams(id,`name`,league_id) values(1262,"GKS Dopiewo",349);
+insert into teams(id,`name`,league_id) values(1263,"Płomień Przyprostynia",349);
+insert into teams(id,`name`,league_id) values(1264,"Wiara Lecha Poznań",349);
+insert into teams(id,`name`,league_id) values(1265,"Lew Pogorzela",349);
+insert into teams(id,`name`,league_id) values(1266,"Rawia Rawicz",349);
+insert into teams(id,`name`,league_id) values(1267,"Kania Gostyń",349);
+insert into teams(id,`name`,league_id) values(1268,"AP Reissa OSiR Baranowo Poznań",349);
+insert into teams(id,`name`,league_id) values(1269,"Lipno Stęszew",349);
+insert into teams(id,`name`,league_id) values(1270,"PKS Racot",349);
+insert into teams(id,`name`,league_id) values(1271,"Grom Plewiska",349);
+insert into teams(id,`name`,league_id) values(1272,"Krobianka Krobia",349);
+insert into teams(id,`name`,league_id) values(1273,"Orkan Chorzemin",349);
+insert into teams(id,`name`,league_id) values(1274,"Korona Piaski",349);
+insert into teams(id,`name`,league_id) values(1275,"Pogoń Śmigiel",349);
+insert into teams(id,`name`,league_id) values(1276,"Promień Krzywiń",349);
+insert into teams(id,`name`,league_id) values(1277,"Patria Buk",349);
+-- wielkopolski ZPN V liga III
+insert into teams(id,`name`,league_id) values(1278,"Wilki Wilczyn",350);
+insert into teams(id,`name`,league_id) values(1279,"Odolanovia Odolanów",350);
+insert into teams(id,`name`,league_id) values(1280,"Stal Pleszew",350);
+insert into teams(id,`name`,league_id) values(1281,"SKP Słupca",350);
+insert into teams(id,`name`,league_id) values(1282,"Astra Krotoszyn",350);
+insert into teams(id,`name`,league_id) values(1283,"Orzeł Mroczeń",350);
+insert into teams(id,`name`,league_id) values(1284,"Polonus Kazimierz Biskupi",350);
+insert into teams(id,`name`,league_id) values(1285,"Piast Kobylin",350);
+insert into teams(id,`name`,league_id) values(1286,"Tulisia Tuliszków",350);
+insert into teams(id,`name`,league_id) values(1287,"Raszkowianka Raszków",350);
+insert into teams(id,`name`,league_id) values(1288,"GKS Sompolno",350);
+insert into teams(id,`name`,league_id) values(1289,"Piast Czekanów",350);
+insert into teams(id,`name`,league_id) values(1290,"Vitcovia Witkowo",350);
+insert into teams(id,`name`,league_id) values(1291,"Tur 1921 Turek",350);
+insert into teams(id,`name`,league_id) values(1292,"Zefka Kobyla Góra",350);
+insert into teams(id,`name`,league_id) values(1293,"Zjednoczeni Rychwał",350);
+-- wielkopolski ZPN klasa okręgowa I
+insert into teams(id,`name`,league_id) values(1294,"Victoria Skarszew",351);
+insert into teams(id,`name`,league_id) values(1295,"LKS Czarnylas",351);
+insert into teams(id,`name`,league_id) values(1296,"Biały Orzeł Koźmin Wielkopolski",351);
+insert into teams(id,`name`,league_id) values(1297,"GKS Rychtal",351);
+insert into teams(id,`name`,league_id) values(1298,"GKS Grębanin",351);
+insert into teams(id,`name`,league_id) values(1299,"LZS Doruchów",351);
+insert into teams(id,`name`,league_id) values(1300,"WKS Witaszyce",351);
+insert into teams(id,`name`,league_id) values(1301,"Pelikan Grabów",351);
+insert into teams(id,`name`,league_id) values(1302,"Olimpia Brzeziny",351);
+insert into teams(id,`name`,league_id) values(1303,"LZS Cielcza",351);
+insert into teams(id,`name`,league_id) values(1304,"Wisła Borek Wielkopolski",351);
+insert into teams(id,`name`,league_id) values(1305,"Strażak Słupia",351);
+insert into teams(id,`name`,league_id) values(1306,"Zieloni Koźminek",351);
+insert into teams(id,`name`,league_id) values(1307,"Ogniwo Łąkociny",351);
+insert into teams(id,`name`,league_id) values(1308,"Barycz Janków Przygodzki",351);
+insert into teams(id,`name`,league_id) values(1309,"Grom Golina",351);
+-- wielkopolski ZPN klasa okręgowa II
+insert into teams(id,`name`,league_id) values(1310,"MKS Dąbie",352);
+insert into teams(id,`name`,league_id) values(1311,"CKS Zbiersk",352);
+insert into teams(id,`name`,league_id) values(1312,"Polanin Strzałkowo",352);
+insert into teams(id,`name`,league_id) values(1313,"Warta Pyzdry",352);
+insert into teams(id,`name`,league_id) values(1314,"Warta Dobrów",352);
+insert into teams(id,`name`,league_id) values(1315,"Pelikan Niechanowo",352);
+insert into teams(id,`name`,league_id) values(1316,"Lechita Kłecko",352);
+insert into teams(id,`name`,league_id) values(1317,"Strażak Licheń Stary",352);
+insert into teams(id,`name`,league_id) values(1318,"Czarni Ostrowite",352);
+insert into teams(id,`name`,league_id) values(1319,"Warta Krzymów",352);
+insert into teams(id,`name`,league_id) values(1320,"Victoria II Września",352);
+insert into teams(id,`name`,league_id) values(1321,"Zryw Dąbie",352);
+insert into teams(id,`name`,league_id) values(1322,"LKS Ślesin",352);
+insert into teams(id,`name`,league_id) values(1323,"Orzeł Grzegorzew",352);
+insert into teams(id,`name`,league_id) values(1324,"Kasztelania Brudzew",352);
+insert into teams(id,`name`,league_id) values(1325,"Baszta Przedecz",352);
+-- wielkopolski ZPN klasa okręgowa III
+insert into teams(id,`name`,league_id) values(1326,"Stella Luboń",353);
+insert into teams(id,`name`,league_id) values(1327,"Piast Kobylnica",353);
+insert into teams(id,`name`,league_id) values(1328,"Przemysław Poznań",353);
+insert into teams(id,`name`,league_id) values(1329,"Kłos Zaniemyśl",353);
+insert into teams(id,`name`,league_id) values(1330,"Orkan Jarosławiec",353);
+insert into teams(id,`name`,league_id) values(1331,"Avia Kamionki",353);
+insert into teams(id,`name`,league_id) values(1332,"Polonia II Środa Wielkopolska",353);
+insert into teams(id,`name`,league_id) values(1333,"Warta Śrem",353);
+insert into teams(id,`name`,league_id) values(1334,"Płomień Nekla",353);
+insert into teams(id,`name`,league_id) values(1335,"Sparta Orzechowo",353);
+insert into teams(id,`name`,league_id) values(1336,"Lider Swarzędz",353);
+insert into teams(id,`name`,league_id) values(1337,"Meblorz Swarzędz",353);
+insert into teams(id,`name`,league_id) values(1338,"Phytopharm Klęka",353);
+insert into teams(id,`name`,league_id) values(1339,"Szturm Junikowo",353);
+insert into teams(id,`name`,league_id) values(1340,"GKS Żerków",353);
+insert into teams(id,`name`,league_id) values(1341,"Orlik Miłosław",353);
+-- wielkopolski ZPN klasa okręgowa IV
+insert into teams(id,`name`,league_id) values(1342,"Błękitni Wronki",354);
+insert into teams(id,`name`,league_id) values(1343,"Sparta Szamotuły",354);
+insert into teams(id,`name`,league_id) values(1344,"NKS Niepruszewo",354);
+insert into teams(id,`name`,league_id) values(1345,"Orkan Objezierze",354);
+insert into teams(id,`name`,league_id) values(1346,"Promień Opalenica",354);
+insert into teams(id,`name`,league_id) values(1347,"Suchary Suchy Las",354);
+insert into teams(id,`name`,league_id) values(1348,"Złoci Złotkowo",354);
+insert into teams(id,`name`,league_id) values(1349,"Orkan Konarzewo",354);
+insert into teams(id,`name`,league_id) values(1350,"Sokół Duszniki",354);
+insert into teams(id,`name`,league_id) values(1351,"LZS Wronczyn",354);
+insert into teams(id,`name`,league_id) values(1352,"Spójnia Strykowo",354);
+insert into teams(id,`name`,league_id) values(1353,"Canarinhos Skórzewo",354);
+insert into teams(id,`name`,league_id) values(1354,"Orzeł Granowo",354);
+insert into teams(id,`name`,league_id) values(1355,"Radwan Lubasz",354);
+insert into teams(id,`name`,league_id) values(1356,"Nasza Dyskobolia Grodzisk Wielkopolski",354);
+insert into teams(id,`name`,league_id) values(1357,"Czarni Wróblewo",354);
+-- wielkopolski ZPN klasa okręgowa V
+insert into teams(id,`name`,league_id) values(1358,"Sokół Chwałkowo",355);
+insert into teams(id,`name`,league_id) values(1359,"Grom Wolsztyn",355);
+insert into teams(id,`name`,league_id) values(1360,"Sparta Miejska Górka",355);
+insert into teams(id,`name`,league_id) values(1361,"Sarnowianka Sarnowa",355);
+insert into teams(id,`name`,league_id) values(1362,"Piast Poniec",355);
+insert into teams(id,`name`,league_id) values(1363,"LZS Stare Oborzyska",355);
+insert into teams(id,`name`,league_id) values(1364,"Rydzyniak Rydzyna",355);
+insert into teams(id,`name`,league_id) values(1365,"Piast Belęcin",355);
+insert into teams(id,`name`,league_id) values(1366,"Dąb Kębłowo",355);
+insert into teams(id,`name`,league_id) values(1367,"Sokół Kaszczor",355);
+insert into teams(id,`name`,league_id) values(1368,"Brenewia Wijewo",355);
+insert into teams(id,`name`,league_id) values(1369,"Grom Czacz",355);
+insert into teams(id,`name`,league_id) values(1370,"Helios Czempiń",355);
+insert into teams(id,`name`,league_id) values(1371,"Zjednoczeni Pudliszki",355);
+insert into teams(id,`name`,league_id) values(1372,"SSG Kamieniec",355);
+insert into teams(id,`name`,league_id) values(1373,"Korona Wilkowice",355);
+-- wielkopolski ZPN klasa okręgowa VI
+insert into teams(id,`name`,league_id) values(1374,"Unia Wapno",356);
+insert into teams(id,`name`,league_id) values(1375,"Polonia Chodzież",356);
+insert into teams(id,`name`,league_id) values(1376,"Sokół Damasławek",356);
+insert into teams(id,`name`,league_id) values(1377,"Orkan Śmiłowo",356);
+insert into teams(id,`name`,league_id) values(1378,"Zjednoczeni Kaczory",356);
+insert into teams(id,`name`,league_id) values(1379,"Kłos Budzyń",356);
+insert into teams(id,`name`,league_id) values(1380,"Wenus Jędrzejewo",356);
+insert into teams(id,`name`,league_id) values(1381,"Korona Stróżewo",356);
+insert into teams(id,`name`,league_id) values(1382,"Tarnovia Tarnówka",356);
+insert into teams(id,`name`,league_id) values(1383,"Noteć Rosko",356);
+insert into teams(id,`name`,league_id) values(1384,"Sokół Szamocin",356);
+insert into teams(id,`name`,league_id) values(1385,"Fortuna Wieleń",356);
+insert into teams(id,`name`,league_id) values(1386,"Noteć Dziembowo",356);
+insert into teams(id,`name`,league_id) values(1387,"Stella Białośliwie",356);
+insert into teams(id,`name`,league_id) values(1388,"Orzeł Pęckowo",356);
+insert into teams(id,`name`,league_id) values(1389,"Iskra Wyszyny",356);
+-- zachodniopomorski ZPN klasa okręgowa Koszalin III
+insert into teams(id,`name`,league_id) values(1390,"Sława Sławno",377);
+insert into teams(id,`name`,league_id) values(1391,"Wieża Postomino",377);
+insert into teams(id,`name`,league_id) values(1392,"Astra Ustronie Morskie",377);
+insert into teams(id,`name`,league_id) values(1393,"Bajgiel Będzino",377);
+insert into teams(id,`name`,league_id) values(1394,"Iskra Białogard",377);
+insert into teams(id,`name`,league_id) values(1395,"Wiekowianka Wiekowo",377);
+insert into teams(id,`name`,league_id) values(1396,"Zefir Wyszewo",377);
+insert into teams(id,`name`,league_id) values(1397,"Wybrzeże Biesiekierz",377);
+insert into teams(id,`name`,league_id) values(1398,"Victoria Sianów",377);
+insert into teams(id,`name`,league_id) values(1399,"LZS Zielenica",377);
+insert into teams(id,`name`,league_id) values(1400,"LZS Kowalewice",377);
+insert into teams(id,`name`,league_id) values(1401,"Błękitni Stary Jarosław",377);
+insert into teams(id,`name`,league_id) values(1402,"Saturn Mielno",377);
+insert into teams(id,`name`,league_id) values(1403,"Pomorzanin Sławoborze",377);
+insert into teams(id,`name`,league_id) values(1404,"Płomień Myślino",377);
+-- zachodniopomorski ZPN klasa okręgowa Koszalin IV
+insert into teams(id,`name`,league_id) values(1405,"Mechanik Bobolice",378);
+insert into teams(id,`name`,league_id) values(1406,"Korona Człopa",378);
+insert into teams(id,`name`,league_id) values(1407,"Jedność/Ikar Krosino",378);
+insert into teams(id,`name`,league_id) values(1408,"Błonie Barwice",378);
+insert into teams(id,`name`,league_id) values(1409,"Zawisza Grzmiąca",378);
+insert into teams(id,`name`,league_id) values(1410,"Redłovia Redło",378);
+insert into teams(id,`name`,league_id) values(1411,"Mechanik Turowo",378);
+insert into teams(id,`name`,league_id) values(1412,"Drzewiarz Świerczyna",378);
+insert into teams(id,`name`,league_id) values(1413,"Głaz Tychowo",378);
+insert into teams(id,`name`,league_id) values(1414,"Wiarus Żółtnica",378);
+insert into teams(id,`name`,league_id) values(1415,"Calisia Kalisz Pomorski",378);
+insert into teams(id,`name`,league_id) values(1416,"Pogoń Połczyn Zdrój",378);
+insert into teams(id,`name`,league_id) values(1417,"Sad Chwiram",378);
+insert into teams(id,`name`,league_id) values(1418,"Olimp Złocieniec",378);
+insert into teams(id,`name`,league_id) values(1419,"Orzeł Łubowo",378);
+insert into teams(id,`name`,league_id) values(1420,"Spójnia Świdwin",378);
+-- zachodniopomorski ZPN klasa okręgowa Szczecin I
+insert into teams(id,`name`,league_id) values(1421,"Jeziorak Załom",379);
+insert into teams(id,`name`,league_id) values(1422,"Polonia Płoty",379);
+insert into teams(id,`name`,league_id) values(1423,"Pomorzanin Nowogard",379);
+insert into teams(id,`name`,league_id) values(1424,"Iskra Golczewo",379);
+insert into teams(id,`name`,league_id) values(1425,"Wybrzeże Rewalskie Rewal",379);
+insert into teams(id,`name`,league_id) values(1426,"Stal Szczecin",379);
+insert into teams(id,`name`,league_id) values(1427,"Orzeł Łożnica",379);
+insert into teams(id,`name`,league_id) values(1428,"Piast Chociwel",379);
+insert into teams(id,`name`,league_id) values(1429,"Mierzynianka Mierzyn",379);
+insert into teams(id,`name`,league_id) values(1430,"Mewa Resko",379);
+insert into teams(id,`name`,league_id) values(1431,"Prawobrzeże Świnoujście",379);
+insert into teams(id,`name`,league_id) values(1432,"Sparta Gryfice",379);
+insert into teams(id,`name`,league_id) values(1433,"Zorza Dobrzany",379);
+insert into teams(id,`name`,league_id) values(1434,"Tanowia Tanowo",379);
+insert into teams(id,`name`,league_id) values(1435,"Wicher Brojce",379);
+insert into teams(id,`name`,league_id) values(1436,"Światowid 63 Łobez",379);
+-- zachodniopomorski ZPN klasa okręgowa Szczecin II
+insert into teams(id,`name`,league_id) values(1437,"Osadnik Myślibórz",380);
+insert into teams(id,`name`,league_id) values(1438,"Iskra Banie",380);
+insert into teams(id,`name`,league_id) values(1439,"Kłos Pełczyce",380);
+insert into teams(id,`name`,league_id) values(1440,"Energetyk Gryfino",380);
+insert into teams(id,`name`,league_id) values(1441,"Biali Sądów",380);
+insert into teams(id,`name`,league_id) values(1442,"Odra Chojna",380);
+insert into teams(id,`name`,league_id) values(1443,"Sokół Pyrzyce",380);
+insert into teams(id,`name`,league_id) values(1444,"Unia Dolice",380);
+insert into teams(id,`name`,league_id) values(1445,"Orkan Suchań",380);
+insert into teams(id,`name`,league_id) values(1446,"Drawa Drawno",380);
+insert into teams(id,`name`,league_id) values(1447,"Dąb Dębno",380);
+insert into teams(id,`name`,league_id) values(1448,"Czcibor Cedynia",380);
+insert into teams(id,`name`,league_id) values(1449,"Stal Lipiany",380);
+insert into teams(id,`name`,league_id) values(1450,"Piast Karsko",380);
+insert into teams(id,`name`,league_id) values(1451,"Gavia Choszczno",380);
+insert into teams(id,`name`,league_id) values(1452,"Morzycko Moryń",380);
+
+-- matches
+-- Ekstraklasa
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(1,1,14,0,2,3,unix_timestamp('2019-07-19 18:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(2,1,5,1,3,2,unix_timestamp('2019-07-21 17:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(3,1,15,0,10,0,unix_timestamp('2019-07-19 20:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(4,1,7,1,6,1,unix_timestamp('2019-07-20 20:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(5,1,12,0,16,1,unix_timestamp('2019-07-20 15:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(6,1,8,0,1,1,unix_timestamp('2019-07-20 17:30:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(7,1,11,1,9,1,unix_timestamp('2019-07-22 18:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(8,1,13,1,4,1,unix_timestamp('2019-07-21 15:00:00'),1,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(9,1,4,1,15,2,unix_timestamp('2019-07-27 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(10,1,9,1,13,0,unix_timestamp('2019-07-26 18:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(11,1,2,0,12,1,unix_timestamp('2019-07-27 20:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(12,1,16,1,5,2,unix_timestamp('2019-07-28 15:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(13,1,6,4,11,0,unix_timestamp('2019-07-26 20:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(14,1,10,0,8,0,unix_timestamp('2019-07-28 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(15,1,3,2,14,0,unix_timestamp('2019-07-29 18:00:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(16,1,1,2,7,1,unix_timestamp('2019-07-28 17:30:00'),2,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(17,1,14,1,16,1,unix_timestamp('2019-08-02 18:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(18,1,5,0,1,0,unix_timestamp('2019-08-04 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(19,1,15,1,6,2,unix_timestamp('2019-08-03 20:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(20,1,7,0,3,0,unix_timestamp('2019-08-04 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(21,1,12,1,4,3,unix_timestamp('2019-08-03 17:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(22,1,8,1,9,0,unix_timestamp('2019-08-05 18:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(23,1,11,1,10,2,unix_timestamp('2019-08-04 15:00:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(24,1,13,2,2,2,unix_timestamp('2019-08-02 20:30:00'),3,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(25,1,4,1,16,0,unix_timestamp('2019-08-11 17:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(26,1,9,1,12,0,unix_timestamp('2019-08-10 20:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(27,1,6,1,1,3,unix_timestamp('2019-08-09 20:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(28,1,10,1,2,1,unix_timestamp('2019-08-12 18:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(29,1,15,0,7,1,unix_timestamp('2019-08-11 15:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(30,1,3,1,8,0,unix_timestamp('2019-08-10 15:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(31,1,11,1,5,0,unix_timestamp('2019-09-18 18:00:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(32,1,13,2,14,0,unix_timestamp('2019-08-10 17:30:00'),4,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(33,1,14,0,6,0,unix_timestamp('2019-08-17 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(34,1,2,3,9,1,unix_timestamp('2019-08-17 20:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(35,1,16,0,3,1,unix_timestamp('2019-08-19 18:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(36,1,5,1,13,0,unix_timestamp('2019-08-18 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(37,1,7,1,11,0,unix_timestamp('2019-08-18 15:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(38,1,12,2,10,1,unix_timestamp('2019-08-18 17:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(39,1,1,2,4,1,unix_timestamp('2019-08-17 15:00:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(40,1,8,4,15,0,unix_timestamp('2019-08-16 20:30:00'),5,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(41,1,4,3,14,1,unix_timestamp('2019-08-24 15:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(42,1,9,3,16,0,unix_timestamp('2019-08-25 15:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(43,1,2,3,8,2,unix_timestamp('2019-08-23 20:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(44,1,10,1,1,1,unix_timestamp('2019-08-24 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(45,1,15,2,5,3,unix_timestamp('2019-08-25 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(46,1,3,1,11,2,unix_timestamp('2019-08-26 18:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(47,1,12,2,6,3,unix_timestamp('2019-08-24 20:00:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(48,1,13,0,7,3,unix_timestamp('2019-08-25 17:30:00'),6,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(49,1,14,1,9,0,unix_timestamp('2019-08-30 18:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(50,1,16,0,2,2,unix_timestamp('2019-08-30 20:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(51,1,6,1,4,2,unix_timestamp('2019-09-01 17:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(52,1,5,3,12,1,unix_timestamp('2019-09-01 20:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(53,1,7,1,10,2,unix_timestamp('2019-08-31 17:30:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(54,1,1,1,3,1,unix_timestamp('2019-09-01 15:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(55,1,8,4,13,2,unix_timestamp('2019-08-31 20:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(56,1,11,2,15,1,unix_timestamp('2019-08-31 15:00:00'),7,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(57,1,4,2,7,0,unix_timestamp('2019-09-16 18:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(58,1,9,0,1,0,unix_timestamp('2019-09-15 17:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(59,1,2,0,5,0,unix_timestamp('2019-09-13 20:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(60,1,16,1,8,1,unix_timestamp('2019-09-14 20:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(61,1,10,2,6,1,unix_timestamp('2019-09-14 17:30:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(62,1,3,1,15,0,unix_timestamp('2019-09-15 15:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(63,1,12,2,14,0,unix_timestamp('2019-09-14 15:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(64,1,13,5,11,0,unix_timestamp('2019-09-13 18:00:00'),8,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(65,1,4,null,5,null,unix_timestamp('2019-09-22 17:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(66,1,6,null,2,null,unix_timestamp('2019-09-20 20:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(67,1,10,null,16,null,unix_timestamp('2019-09-21 17:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(68,1,15,null,14,null,unix_timestamp('2019-09-21 15:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(69,1,7,null,12,null,unix_timestamp('2019-09-20 18:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(70,1,3,null,9,null,unix_timestamp('2019-09-22 15:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(71,1,1,null,13,null,unix_timestamp('2019-09-21 20:00:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(72,1,11,null,8,null,unix_timestamp('2019-09-22 12:30:00'),9,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(73,1,14,null,7,null,unix_timestamp('2019-09-29 12:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(74,1,9,null,6,null,unix_timestamp('2019-09-28 20:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(75,1,2,null,3,null,unix_timestamp('2019-09-29 15:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(76,1,16,null,1,null,unix_timestamp('2019-09-27 20:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(77,1,5,null,10,null,unix_timestamp('2019-09-28 17:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(78,1,12,null,11,null,unix_timestamp('2019-09-28 15:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(79,1,8,null,4,null,unix_timestamp('2019-09-29 17:30:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(80,1,13,null,15,null,unix_timestamp('2019-09-30 18:00:00'),10,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(81,1,4,null,9,null,unix_timestamp('2019-10-06 15:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(82,1,6,null,8,null,unix_timestamp('2019-10-05 17:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(83,1,10,null,13,null,unix_timestamp('2019-10-05 20:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(84,1,15,null,16,null,unix_timestamp('2019-10-06 12:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(85,1,7,null,5,null,unix_timestamp('2019-10-06 17:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(86,1,3,null,12,null,unix_timestamp('2019-10-05 15:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(87,1,1,null,2,null,unix_timestamp('2019-10-04 20:30:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(88,1,11,null,14,null,unix_timestamp('2019-10-04 18:00:00'),11,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(89,1,14,null,10,null,unix_timestamp('2019-10-20 15:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(90,1,9,null,15,null,unix_timestamp('2019-10-20 17:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(91,1,2,null,4,null,unix_timestamp('2019-10-19 20:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(92,1,16,null,11,null,unix_timestamp('2019-10-19 15:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(93,1,5,null,6,null,unix_timestamp('2019-10-19 17:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(94,1,12,null,1,null,unix_timestamp('2019-10-21 18:00:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(95,1,8,null,7,null,unix_timestamp('2019-10-18 20:30:00'),12,false);
+insert into matches(id,league_id,home_team_id,home_goals,away_team_id,away_goals,kick_off_timestamp,round,live)
+values(96,1,13,null,3,null,unix_timestamp('2019-10-18 18:00:00'),12,false);
